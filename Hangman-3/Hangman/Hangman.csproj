@@ -42,7 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Hangman.cs" />
+    <Compile Include="Engine.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="OutComparer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
