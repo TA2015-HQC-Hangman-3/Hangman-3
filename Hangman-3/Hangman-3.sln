@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hangman", "Hangman\Hangman.csproj", "{DE80F49A-6813-40FA-8ABF-1F5B3FE680AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hangman.Tests", "Hangman.Tests\Hangman.Tests.csproj", "{23D2AB0D-F465-4648-9995-209D12582B3B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{DE80F49A-6813-40FA-8ABF-1F5B3FE680AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE80F49A-6813-40FA-8ABF-1F5B3FE680AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE80F49A-6813-40FA-8ABF-1F5B3FE680AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23D2AB0D-F465-4648-9995-209D12582B3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23D2AB0D-F465-4648-9995-209D12582B3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23D2AB0D-F465-4648-9995-209D12582B3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23D2AB0D-F465-4648-9995-209D12582B3B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
