@@ -1,6 +1,5 @@
 ﻿namespace Hangman
 {
-
     using System;
     using System.Collections.Generic;
 
@@ -18,6 +17,7 @@
                                 "method",
                                 "variable"
                                 };
+        // Just testing wheather I'm succesfully added in the repo or not
         public const string START_MESSAGE = "Welcome to “Hangman” game. Please try to guess my secret word. \n" +
             "Use 'top' to view the top scoreboard, 'restart' to start a new game, 'help' \nto cheat and 'exit' " +
             "to quit the game.";
