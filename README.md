@@ -1,3 +1,5 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/2hybhdxd17j4dp3f?svg=true)](https://ci.appveyor.com/project/dilyantraykov/hangman-3)
+
 High-Quality Programming Code – Team Projects
 =============================================
 
