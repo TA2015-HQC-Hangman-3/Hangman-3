@@ -27,6 +27,7 @@
         private string theChosenWord;
         private char[] unknownWord;
         private Scoreboard scoreboard;
+        // isGameRunning is never used. We must figure out whether we are going to use it for something or not.
         private bool isGameRunning;
 
         public Engine()
@@ -100,20 +101,9 @@
                 default:
                     if (IsValidLetter(command))
                     {
-                        bool isLetterInTheWord = false;
-                        int lettersGuessed = 0;
-                        char enteredSymbol = char.Parse(command);
-                        for (int i = 0; i < unknownWord.Length; i++)
+                        if (IsLetterInTheWord(command))
                         {
-                            if (theChosenWord[i] == enteredSymbol)
-                            {
-                                unknownWord[i] = enteredSymbol;
-                                lettersGuessed++;
-                                isLetterInTheWord = true;
-                            }
-                        }
-                        if (isLetterInTheWord)
-                        {
+                            var lettersGuessed = GetNumberOfLettersThatAreGuessed(command);
                             Console.WriteLine("Good job! You revealed {0} letters.", lettersGuessed);
                         }
                         else
@@ -128,6 +118,37 @@
                     }
                     break;
             }
+        }
+
+        private int GetNumberOfLettersThatAreGuessed(string letter)
+        {
+            var lettersGuessed = 0;
+            char enteredSymbol = char.Parse(letter);
+            for (int i = 0; i < unknownWord.Length; i++)
+            {
+                if (theChosenWord[i] == enteredSymbol)
+                {
+                    lettersGuessed++;
+                }
+            }
+
+            return lettersGuessed;
+        }
+
+        private bool IsLetterInTheWord(string letter)
+        {
+            bool isLetterInTheWord = false;
+            char enteredSymbol = char.Parse(letter);
+            for (int i = 0; i < unknownWord.Length; i++)
+            {
+                if (theChosenWord[i] == enteredSymbol)
+                {
+                    unknownWord[i] = enteredSymbol;
+                    isLetterInTheWord = true;
+                }
+            }
+
+            return isLetterInTheWord;
         }
 
         private bool IsValidLetter(string input)
