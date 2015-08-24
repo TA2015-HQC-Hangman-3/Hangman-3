@@ -5,6 +5,10 @@
 
     public class Engine
     {
+        private const string START_MESSAGE = "Welcome to “Hangman” game. Please try to guess my secret word. \n" +
+           "Use 'top' to view the top scoreboard, 'restart' to start a new game, 'help' \nto cheat and 'exit' " +
+           "to quit the game.";
+
         private string[] searchWords = {
                                 "computer",
                                 "programmer",
@@ -17,15 +21,9 @@
                                 "method",
                                 "variable"
                                 };
-
-        private const string START_MESSAGE = "Welcome to “Hangman” game. Please try to guess my secret word. \n" +
-            "Use 'top' to view the top scoreboard, 'restart' to start a new game, 'help' \nto cheat and 'exit' " +
-            "to quit the game.";
         private bool isHelpUsed = false;
         private bool isRestartRequested = false;
-
         private int mistakeCounter = 0;
-
         private string theChosenWord;
         private char[] unknownWord;
         private Scoreboard scoreboard;
@@ -50,6 +48,7 @@
                 Console.Write("Enter a letter: ");
                 string enteredLetter = Console.ReadLine();
                 ExecuteCommand(enteredLetter);
+
                 if (isRestartRequested)
                 {
                     break;
@@ -68,9 +67,9 @@
                 Console.WriteLine("You won with {0} mistakes.", mistakeCounter);
                 PrintTheWord();
                 Console.Write("Please enter your name for the top scoreboard: ");
-                scoreboard.AddInScoreboard(scoreboard.Score, mistakeCounter);
+                scoreboard.AddScore(mistakeCounter);
                 mistakeCounter = 0;
-                scoreboard.PrintScoreboard(scoreboard.Score);
+                scoreboard.PrintScore();
             }
             else
             {
@@ -85,7 +84,7 @@
             switch (command)
             {
                 case "top":
-                    scoreboard.PrintScoreboard(scoreboard.Score);
+                    scoreboard.PrintScore();
                     break;
                 case "restart":
                     isRestartRequested = true;
