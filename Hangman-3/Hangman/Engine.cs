@@ -5,7 +5,7 @@
 
     public class Engine
     {
-        private string[] someWords = {
+        private string[] searchWords = {
                                 "computer",
                                 "programmer",
                                 "software",
@@ -17,26 +17,26 @@
                                 "method",
                                 "variable"
                                 };
-        // Just testing wheather I'm succesfully added in the repo or not
-        public const string START_MESSAGE = "Welcome to “Hangman” game. Please try to guess my secret word. \n" +
+
+        private const string START_MESSAGE = "Welcome to “Hangman” game. Please try to guess my secret word. \n" +
             "Use 'top' to view the top scoreboard, 'restart' to start a new game, 'help' \nto cheat and 'exit' " +
             "to quit the game.";
-        public bool isCheated = false;
-        public bool isRestartRequested = false;
+        private bool isHelpUsed = false;
+        private bool isRestartRequested = false;
 
-        public int mistakeCounter = 0;
+        private int mistakeCounter = 0;
 
-        public string theChosenWord;
-        public char[] unknownWord;
-        public Dictionary<string, int> score;
-        public bool isGameRunning;
+        private string theChosenWord;
+        private char[] unknownWord;
+        private Dictionary<string, int> score;
+        private bool isGameRunning;
 
         public Engine()
         {
             score = new Dictionary<string, int>();
-            GenerateWord();
+            GenerateRandomWord();
             Console.WriteLine(START_MESSAGE);
-            isCheated = false;
+            isHelpUsed = false;
             mistakeCounter = 0;
             isGameRunning = true;
         }
@@ -47,29 +47,28 @@
             {
                 Console.WriteLine();
                 PrintTheWord();
-                Console.Write("Enter your guess: ");
-                string enteredString = Console.ReadLine();
-                ExecuteCommand(enteredString);
+                Console.Write("Enter a letter: ");
+                string enteredLetter = Console.ReadLine();
+                ExecuteCommand(enteredLetter);
                 if (isRestartRequested)
                 {
                     break;
                 }
 
-            } while (!IsWordKnown());
+            } while (!IsWordGuessed());
+            
             if (isRestartRequested)
             {
                 isRestartRequested = false;
                 Console.WriteLine();
             }
-            if (!isCheated)
+
+            if (!isHelpUsed)
             {
                 Console.WriteLine("You won with {0} mistakes.", mistakeCounter);
                 PrintTheWord();
                 Console.Write("Please enter your name for the top scoreboard: ");
                 AddInScoreboard(score);
-
-
-
                 PrintScoreboard(score);
             }
             else
@@ -80,7 +79,7 @@
             }
         }
 
-        public void ExecuteCommand(string command)
+        private void ExecuteCommand(string command)
         {
             switch (command)
             {
@@ -90,19 +89,16 @@
                 case "restart":
                     isRestartRequested = true;
                     break;
-
                 case "help":
-                    isCheated = true;
+                    isHelpUsed = true;
                     Help();
-
-
                     break;
                 case "exit":
                     Console.WriteLine("Good bye!");
                     Environment.Exit(1);
                     break;
                 default:
-                    if (IsValidSymbol(command))
+                    if (IsValidLetter(command))
                     {
                         bool isLetterInTheWord = false;
                         int letterKnown = 0;
@@ -134,10 +130,10 @@
             }
         }
 
-        private bool IsValidSymbol(string enteredString)
+        private bool IsValidLetter(string input)
         {
             char enteredSymbol;
-            if ((char.TryParse(enteredString, out enteredSymbol)) &&
+            if ((char.TryParse(input, out enteredSymbol)) &&
                 ((int)enteredSymbol >= 97 && (int)enteredSymbol <= 122))
             {
                 return true;
@@ -155,10 +151,10 @@
             Console.WriteLine();
         }
 
-        private void GenerateWord()
+        private void GenerateRandomWord()
         {
             Random randomNumber = new Random();
-            theChosenWord = someWords[randomNumber.Next(0, 10)];
+            theChosenWord = searchWords[randomNumber.Next(0, 10)];
             int lengthOfTheWord = theChosenWord.Length;
             unknownWord = new char[lengthOfTheWord];
             for (int i = 0; i < lengthOfTheWord; i++)
@@ -167,7 +163,7 @@
             }
         }
 
-        private bool IsWordKnown()
+        private bool IsWordGuessed()
         {
             for (int i = 0; i < unknownWord.Length; i++)
             {
@@ -197,6 +193,7 @@
                     }
                 }
             } while (hasDouble);
+
             score.Add(name, mistakeCounter);
             mistakeCounter = 0;
         }
@@ -230,7 +227,7 @@
 
         private void Help()
         {
-            isCheated = true;
+            isHelpUsed = true;
             for (int i = 0; i < unknownWord.Length; i++)
             {
                 if (unknownWord[i] == '_')
