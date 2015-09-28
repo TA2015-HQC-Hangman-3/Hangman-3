@@ -1,21 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Hangman.Commands
+﻿namespace Hangman.Commands
 {
     public class GetHelpCommand : IHangmanCommand
     {
-        public GetHelpCommand()
+        public void Execute(GameContext context)
         {
-            // Dependencies
-        }
-
-        public void Execute(string command)
-        {
-
+            context.HasCheated = true;
+            context.Word.GetNextUnknownLetterOfWord();
         }
     }
 }

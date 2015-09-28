@@ -43,11 +43,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\CheaterGameEndCommand.cs" />
+    <Compile Include="Commands\CommandFactory.cs" />
     <Compile Include="Commands\ExitGameCommand.cs" />
     <Compile Include="Commands\GetHelpCommand.cs" />
     <Compile Include="Commands\HandleLetterCommand.cs" />
     <Compile Include="Commands\IHangmanCommand.cs" />
+    <Compile Include="Commands\LoadCommand.cs" />
+    <Compile Include="Commands\NormalGameEndCommand.cs" />
     <Compile Include="Commands\RestartCommand.cs" />
+    <Compile Include="Commands\SaveCommand.cs" />
     <Compile Include="Commands\ShowScoreboardCommand.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="GameContext.cs" />

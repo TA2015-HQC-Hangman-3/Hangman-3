@@ -1,21 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Hangman.Commands
+﻿namespace Hangman.Commands
 {
+    using System;
+
     public class HandleLetterCommand : IHangmanCommand
     {
-        public HandleLetterCommand()
+        public HandleLetterCommand(string guessLetter)
         {
-            // Dependencies
+            this.GuessLetter = guessLetter;
         }
 
-        public void Execute(string command)
-        {
+        public string GuessLetter { get; private set; }
 
+        public void Execute(GameContext context)
+        {
+            if (context.Word.IsValidLetter(this.GuessLetter))
+            {
+                if (context.Word.IsLetterInTheWord(this.GuessLetter))
+                {
+                    var lettersGuessed = context.Word.GetNumberOfLettersThatAreGuessed(this.GuessLetter);
+                    context.CurrentMessage = string.Format(GameContext.RevealedLetterMessage, lettersGuessed);
+                    Console.WriteLine(context.CurrentMessage);
+                }
+                else
+                {
+                    context.CurrentMessage = string.Format(GameContext.NotRevealedLetterMessage, this.GuessLetter);
+                    Console.WriteLine(context.CurrentMessage);
+                    context.CurrentMistakes++;
+                }
+            }
+            else
+            {
+                context.CurrentMessage = GameContext.IncorrectGuessOrCommandMessage;
+                Console.WriteLine(context.CurrentMessage);
+            }
         }
     }
 }

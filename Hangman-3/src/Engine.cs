@@ -3,38 +3,29 @@
     using System;
     using System.Collections.Generic;
 
+    using Commands;
+
     public class Engine
     {
-        private bool isRestartRequested = false;
-        private readonly GameContext context;
-        // Scoreboard will probably be made Singleton. Maybe with Save() capabillities (Memento);
-        private Scoreboard scoreboard;
-        private bool isGameRunning;
+        private const string NormalGameEndingCommandName = "finishGame";
+        private const string CheaterGameEndingCommandName = "cheater";
 
-        public Engine()
+        private readonly GameContext context;
+        private readonly CommandFactory commandFactory;
+
+        public Engine(GameContext context, CommandFactory commandFactory)
         {
-            this.context = new GameContext(new SimpleRandomWordProvider());
-            scoreboard = new Scoreboard();
-            isGameRunning = false;
+            this.context = context;
+            this.commandFactory = commandFactory;
         }
 
         public void Run()
         {
             Console.WriteLine(this.context.CurrentMessage);
-            this.isGameRunning = true;
 
             while (true)
             {
-                if (this.isRestartRequested)
-                {
-                    this.isRestartRequested = false;
-                    this.isGameRunning = true;
-                    Console.Clear();
-                    this.context.Reset();
-                    Console.WriteLine(this.context.CurrentMessage);
-                }
-
-                if (this.isGameRunning)
+                if (this.context.IsGameRunning)
                 {
                     this.context.CurrentMessage = GameContext.PropmtForUserGuess;
                     this.context.Word.PrintTheWord();
@@ -58,35 +49,18 @@
 
         private void EndCurrentGame()
         {
-            this.isGameRunning = false;
+            this.context.IsGameRunning = false;
 
             if (!this.context.HasCheated)
             {
-                this.context.CurrentMessage = string.Format(GameContext.WinMessage, this.context.CurrentMistakes);
-                Console.WriteLine(this.context.CurrentMessage);
-                this.context.Word.PrintTheWord();
-
-                this.context.CurrentMessage = GameContext.PromptForUserName;
-                Console.WriteLine(this.context.CurrentMessage);
-                scoreboard.AddScore(this.context.CurrentMistakes);
-
-                scoreboard.PrintScore();
-
-                this.context.CurrentMessage = GameContext.PromptForCommand;
-                Console.WriteLine(this.context.CurrentMessage);
+                this.ExecuteCommand(NormalGameEndingCommandName);                
 
                 string userInput = Console.ReadLine();
                 ExecuteCommand(userInput); 
             }
             else
             {
-                this.context.CurrentMessage = string.Format(GameContext.WinByCheatingMessage, this.context.CurrentMistakes);
-                Console.WriteLine(this.context.CurrentMessage);
-
-                this.context.Word.PrintTheWord();
-                
-                this.context.CurrentMessage = GameContext.PromptForCommand;
-                Console.WriteLine(this.context.CurrentMessage);
+                this.ExecuteCommand(CheaterGameEndingCommandName);                
 
                 string userInput = Console.ReadLine();
                 ExecuteCommand(userInput);
@@ -95,44 +69,10 @@
             this.context.Reset();
         }
 
-        private void ExecuteCommand(string command)
+        private void ExecuteCommand(string commandName)
         {
-            switch (command)
-            {
-                case "top":
-                    scoreboard.PrintScore();
-                    break;
-                case "restart":
-                    isRestartRequested = true;
-                    break;
-                case "help":
-                    this.context.HasCheated = true;
-                    this.context.Word.GetNextUnknownLetterOfWord();
-                    break;
-                case "exit":
-                    Console.WriteLine("Good bye!");
-                    Environment.Exit(1);
-                    break;
-                default:
-                    if (this.context.Word.IsValidLetter(command))
-                    {
-                        if (this.context.Word.IsLetterInTheWord(command))
-                        {
-                            var lettersGuessed = this.context.Word.GetNumberOfLettersThatAreGuessed(command);
-                            Console.WriteLine("Good job! You revealed {0} letters.", lettersGuessed);
-                        }
-                        else
-                        {
-                            Console.WriteLine("Sorry! There are no unrevealed letters \"{0}\".", command);
-                            this.context.CurrentMistakes++;
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("Incorrect guess or command!");
-                    }
-                    break;
-            }
+            var command = this.commandFactory.GetCommand(commandName);
+            command.Execute(this.context);
         }
     }
 }

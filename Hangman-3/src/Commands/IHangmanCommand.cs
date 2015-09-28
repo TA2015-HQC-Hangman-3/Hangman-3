@@ -2,6 +2,6 @@
 {
     public interface IHangmanCommand
     {
-        void Execute(string command);
+        void Execute(GameContext context);
     }
 }

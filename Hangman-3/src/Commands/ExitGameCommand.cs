@@ -1,21 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Hangman.Commands
+﻿namespace Hangman.Commands
 {
+    using System;
+
     public class ExitGameCommand : IHangmanCommand
     {
-        public ExitGameCommand()
+        public void Execute(GameContext context)
         {
-            // Dependencies
-        }
-
-        public void Execute(string command)
-        {
-
+            context.CurrentMessage = GameContext.GoodbyeMessage;
+            Console.WriteLine(context.CurrentMessage);
+            Environment.Exit(1);
         }
     }
 }

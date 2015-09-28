@@ -3,11 +3,14 @@
     using System;
     using System.Collections.Generic;
 
+    using Commands;
+
     public class MainProgram
     {
         static void Main()
         {
-            var engine = new Engine();
+            var context = new GameContext(new SimpleRandomWordProvider(), new Scoreboard());
+            var engine = new Engine(context, new CommandFactory());
             engine.Run();
         }
     }

@@ -1,10 +1,10 @@
 ﻿namespace Hangman.Commands
 {
-    public class ShowScoreboardCommand : IHangmanCommand
+    public class SaveCommand : IHangmanCommand
     {
         public void Execute(GameContext context)
         {
-            context.Scoreboard.PrintScore();
+            throw new System.NotImplementedException();
         }
     }
 }

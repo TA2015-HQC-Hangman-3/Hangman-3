@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Hangman.Commands
+﻿namespace Hangman.Commands
 {
+    using System;
+
     public class RestartCommand : IHangmanCommand
     {
-        public RestartCommand()
+        public void Execute(GameContext context)
         {
-            // Dependencies
-        }
-
-        public void Execute(string command)
-        {
-
+            Console.Clear();
+            context.Reset();
+            context.IsGameRunning = true;
+            Console.WriteLine(context.CurrentMessage);
         }
     }
 }
