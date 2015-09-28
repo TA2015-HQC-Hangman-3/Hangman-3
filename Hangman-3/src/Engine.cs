@@ -5,66 +5,94 @@
 
     public class Engine
     {
-        private const string START_MESSAGE = "Welcome to “Hangman” game. Please try to guess my secret word. \n" +
-           "Use 'top' to view the top scoreboard, 'restart' to start a new game, 'help' \nto cheat and 'exit' " +
-           "to quit the game.";
-
-        private bool isHelpUsed = false;
         private bool isRestartRequested = false;
-        private int mistakeCounter = 0;
-        private HangmanWord theWord;
+        private readonly GameContext context;
+        // Scoreboard will probably be made Singleton. Maybe with Save() capabillities (Memento);
         private Scoreboard scoreboard;
-        // isGameRunning is never used. We must figure out whether we are going to use it for something or not.
         private bool isGameRunning;
 
         public Engine()
         {
+            this.context = new GameContext(new SimpleRandomWordProvider());
             scoreboard = new Scoreboard();
-            theWord = new HangmanWord(new SimpleRandomWordGenerator());
-            Console.WriteLine(START_MESSAGE);
-            isHelpUsed = false;
-            mistakeCounter = 0;
-            isGameRunning = true;
+            isGameRunning = false;
         }
 
-        public void Start()
+        public void Run()
         {
-            do
-            {
-                Console.WriteLine();
-                this.theWord.PrintTheWord();
-                Console.Write("Enter a letter: ");
-                string enteredLetter = Console.ReadLine();
-                ExecuteCommand(enteredLetter);
+            Console.WriteLine(this.context.CurrentMessage);
+            this.isGameRunning = true;
 
-                if (isRestartRequested)
+            while (true)
+            {
+                if (this.isRestartRequested)
                 {
-                    break;
+                    this.isRestartRequested = false;
+                    this.isGameRunning = true;
+                    Console.Clear();
+                    this.context.Reset();
+                    Console.WriteLine(this.context.CurrentMessage);
                 }
 
-            } while (!this.theWord.IsWordGuessed());
-            
-            if (isRestartRequested)
-            {
-                isRestartRequested = false;
-                Console.WriteLine();
-            }
+                if (this.isGameRunning)
+                {
+                    this.context.CurrentMessage = GameContext.PropmtForUserGuess;
+                    this.context.Word.PrintTheWord();
+                }
+                else
+                {
+                    this.context.CurrentMessage = GameContext.PromptForCommand;
+                }                
 
-            if (!isHelpUsed)
+                Console.WriteLine();
+                Console.WriteLine(this.context.CurrentMessage);
+                string userInput = Console.ReadLine();
+                ExecuteCommand(userInput);
+
+                if (this.context.Word.IsWordGuessed())
+                {
+                    this.EndCurrentGame();
+                }
+            }            
+        }
+
+        private void EndCurrentGame()
+        {
+            this.isGameRunning = false;
+
+            if (!this.context.HasCheated)
             {
-                Console.WriteLine("You won with {0} mistakes.", mistakeCounter);
-                this.theWord.PrintTheWord();
-                Console.Write("Please enter your name for the top scoreboard: ");
-                scoreboard.AddScore(mistakeCounter);
-                mistakeCounter = 0;
+                this.context.CurrentMessage = string.Format(GameContext.WinMessage, this.context.CurrentMistakes);
+                Console.WriteLine(this.context.CurrentMessage);
+                this.context.Word.PrintTheWord();
+
+                this.context.CurrentMessage = GameContext.PromptForUserName;
+                Console.WriteLine(this.context.CurrentMessage);
+                scoreboard.AddScore(this.context.CurrentMistakes);
+
                 scoreboard.PrintScore();
+
+                this.context.CurrentMessage = GameContext.PromptForCommand;
+                Console.WriteLine(this.context.CurrentMessage);
+
+                string userInput = Console.ReadLine();
+                ExecuteCommand(userInput); 
             }
             else
             {
-                Console.WriteLine("You won with {0} mistakes but you have cheated. You are not allowed", mistakeCounter);
-                Console.WriteLine("to enter into the scoreboard.");
-                this.theWord.PrintTheWord();
+                this.context.CurrentMessage = string.Format(GameContext.WinByCheatingMessage, this.context.CurrentMistakes);
+                Console.WriteLine(this.context.CurrentMessage);
+
+                this.context.Word.PrintTheWord();
+                
+                this.context.CurrentMessage = GameContext.PromptForCommand;
+                Console.WriteLine(this.context.CurrentMessage);
+
+                string userInput = Console.ReadLine();
+                ExecuteCommand(userInput);
             }
+
+            this.context.Reset();
         }
 
         private void ExecuteCommand(string command)
@@ -78,25 +106,25 @@
                     isRestartRequested = true;
                     break;
                 case "help":
-                    isHelpUsed = true;
-                    this.theWord.GetNextUnknownLetterOfWord();
+                    this.context.HasCheated = true;
+                    this.context.Word.GetNextUnknownLetterOfWord();
                     break;
                 case "exit":
                     Console.WriteLine("Good bye!");
                     Environment.Exit(1);
                     break;
                 default:
-                    if (this.theWord.IsValidLetter(command))
+                    if (this.context.Word.IsValidLetter(command))
                     {
-                        if (this.theWord.IsLetterInTheWord(command))
+                        if (this.context.Word.IsLetterInTheWord(command))
                         {
-                            var lettersGuessed = this.theWord.GetNumberOfLettersThatAreGuessed(command);
+                            var lettersGuessed = this.context.Word.GetNumberOfLettersThatAreGuessed(command);
                             Console.WriteLine("Good job! You revealed {0} letters.", lettersGuessed);
                         }
                         else
                         {
                             Console.WriteLine("Sorry! There are no unrevealed letters \"{0}\".", command);
-                            mistakeCounter++;
+                            this.context.CurrentMistakes++;
                         }
                     }
                     else

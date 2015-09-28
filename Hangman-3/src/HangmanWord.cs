@@ -3,23 +3,10 @@
 namespace Hangman
 {
     public class HangmanWord
-    {
-        private string[] searchWords = {
-                                "computer",
-                                "programmer",
-                                "software",
-                                "debugger",
-                                "compiler",
-                                "developer",
-                                "algorithm",
-                                "array",
-                                "method",
-                                "variable"
-                                };
-
-        public HangmanWord(IRandomWordGenerator generator)
+    {        
+        public HangmanWord(string chosenWord)
         {
-            this.TheChosenWord = generator.GenerateRandomWord(searchWords);
+            this.TheChosenWord = chosenWord;
             this.UnknownWord = this.GenerateUnknownWord();
         }
 
