@@ -54,7 +54,7 @@
     <Compile Include="Commands\RestartCommand.cs" />
     <Compile Include="Commands\SaveCommand.cs" />
     <Compile Include="Commands\ShowScoreboardCommand.cs" />
-    <Compile Include="ConsolePrinterVisitor.cs" />
+    <Compile Include="ConsolePrinter.cs" />
     <Compile Include="HangmanGame.cs" />
     <Compile Include="GameContext.cs" />
     <Compile Include="HangmanWord.cs" />
