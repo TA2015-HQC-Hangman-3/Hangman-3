@@ -4,10 +4,17 @@
 
     public class ExitGameCommand : IHangmanCommand
     {
+        private readonly IPrinter printer;
+
+        public ExitGameCommand(IPrinter printer)
+        {
+            this.printer = printer;
+        }
+
         public void Execute(GameContext context)
         {
             context.CurrentMessage = GameContext.GoodbyeMessage;
-            Console.WriteLine(context.CurrentMessage);
+            this.printer.Print(context.CurrentMessage);
             Environment.Exit(1);
         }
     }

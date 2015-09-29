@@ -1,8 +1,5 @@
 ﻿namespace Hangman
 {
-    using System;
-    using System.Collections.Generic;
-
     public class GameContext
     {
         private readonly IRandomWordProvider randWordProvider;

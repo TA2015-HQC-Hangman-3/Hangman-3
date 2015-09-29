@@ -1,27 +1,28 @@
 ﻿namespace Hangman
 {
     using System;
-    using System.Collections.Generic;
 
     using Commands;
 
-    public class Engine
+    public class HangmanGame
     {
         private const string NormalGameEndingCommandName = "finishGame";
         private const string CheaterGameEndingCommandName = "cheater";
 
         private readonly GameContext context;
         private readonly CommandFactory commandFactory;
+        private readonly IPrinter printer;
 
-        public Engine(GameContext context, CommandFactory commandFactory)
+        public HangmanGame(GameContext context, CommandFactory commandFactory, IPrinter printer)
         {
             this.context = context;
             this.commandFactory = commandFactory;
+            this.printer = printer;
         }
 
         public void Run()
         {
-            Console.WriteLine(this.context.CurrentMessage);
+            printer.Print(this.context.CurrentMessage);
 
             while (true)
             {
@@ -33,10 +34,10 @@
                 else
                 {
                     this.context.CurrentMessage = GameContext.PromptForCommand;
-                }                
+                }
 
-                Console.WriteLine();
-                Console.WriteLine(this.context.CurrentMessage);
+                printer.Print("\n");
+                printer.Print(this.context.CurrentMessage);
                 string userInput = Console.ReadLine();
                 ExecuteCommand(userInput);
 
@@ -71,7 +72,7 @@
 
         private void ExecuteCommand(string commandName)
         {
-            var command = this.commandFactory.GetCommand(commandName);
+            var command = this.commandFactory.GetCommand(commandName, this.printer);
             command.Execute(this.context);
         }
     }

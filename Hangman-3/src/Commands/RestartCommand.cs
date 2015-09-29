@@ -1,15 +1,20 @@
 ﻿namespace Hangman.Commands
 {
-    using System;
-
     public class RestartCommand : IHangmanCommand
     {
+        private readonly IPrinter printer;
+
+        public RestartCommand(IPrinter printer)
+        {
+            this.printer = printer;
+        }
+
         public void Execute(GameContext context)
         {
-            Console.Clear();
+            this.printer.ClearScreen();
             context.Reset();
             context.IsGameRunning = true;
-            Console.WriteLine(context.CurrentMessage);
+            this.printer.Print(context.CurrentMessage);
         }
     }
 }

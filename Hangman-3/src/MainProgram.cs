@@ -6,8 +6,9 @@
     {
         static void Main()
         {
-            var context = new GameContext(new SimpleRandomWordProvider(), new Scoreboard());
-            var game = new HangmanGame(context, new CommandFactory());
+            var printer = new ConsolePrinter();
+            var context = new GameContext(new SimpleRandomWordProvider(), new Scoreboard(printer));
+            var game = new HangmanGame(context, new CommandFactory(), printer);
             game.Run();
         }
     }

@@ -1,23 +1,28 @@
 ﻿namespace Hangman.Commands
 {
-    using System;
-
     public class NormalGameEndCommand : IHangmanCommand
     {
+        private readonly IPrinter printer;
+
+        public NormalGameEndCommand(IPrinter printer)
+        {
+            this.printer = printer;
+        }
+
         public void Execute(GameContext context)
         {
             context.CurrentMessage = string.Format(GameContext.WinMessage, context.CurrentMistakes);
-            Console.WriteLine(context.CurrentMessage);
+            this.printer.Print(context.CurrentMessage);
             context.Word.PrintTheWord();
 
             context.CurrentMessage = GameContext.PromptForUserName;
-            Console.WriteLine(context.CurrentMessage);
+            this.printer.Print(context.CurrentMessage);
             context.Scoreboard.AddScore(context.CurrentMistakes);
 
             context.Scoreboard.PrintScore();
 
             context.CurrentMessage = GameContext.PromptForCommand;
-            Console.WriteLine(context.CurrentMessage);
+            this.printer.Print(context.CurrentMessage);
         }
     }
 }

@@ -1,18 +1,23 @@
 ﻿namespace Hangman.Commands
 {
-    using System;
-
     public class CheaterGameEndCommand : IHangmanCommand
     {
+        private readonly IPrinter printer;
+
+        public CheaterGameEndCommand(IPrinter printer)
+        {
+            this.printer = printer;
+        }
+
         public void Execute(GameContext context)
         {
             context.CurrentMessage = string.Format(GameContext.WinByCheatingMessage, context.CurrentMistakes);
-            Console.WriteLine(context.CurrentMessage);
+            this.printer.Print(context.CurrentMessage);
 
             context.Word.PrintTheWord();
 
             context.CurrentMessage = GameContext.PromptForCommand;
-            Console.WriteLine(context.CurrentMessage);
+            this.printer.Print(context.CurrentMessage);
         }
     }
 }

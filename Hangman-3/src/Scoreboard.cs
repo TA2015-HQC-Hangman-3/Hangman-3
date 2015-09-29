@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Hangman
+﻿namespace Hangman
 {
+    using System;
+    using System.Collections.Generic;
+
     public class Scoreboard
     {
-
+        private readonly IPrinter printer;
         private Dictionary<string, int> score;
 
-        public Scoreboard()
+        public Scoreboard(IPrinter printer)
         {
             this.Score = new Dictionary<string, int>();
+            this.printer = printer;
         }
 
         public Dictionary<string, int> Score { get; set; }
@@ -30,7 +28,7 @@ namespace Hangman
                 {
                     if (item.Key == name)
                     {
-                        Console.Write("This name already exists in the Scoreboard! Type another: ");
+                        this.printer.Print("This name already exists in the Scoreboard! Type another: ");
                         hasDouble = true;
                         //podari fakta che Dictionary-to ne e Multi (Wintellect Power Collections), ne moje da povarqme imena
                     }
@@ -44,27 +42,31 @@ namespace Hangman
         {
             if (this.Score.Count == 0)
             {
-                Console.WriteLine("Empty Scoreboard!");
+                this.printer.Print("Empty Scoreboard!");
                 return;
             }
+
             List<KeyValuePair<string, int>> key = new List<KeyValuePair<string, int>>();
             foreach (var item in this.Score)
             {
                 KeyValuePair<string, int> current = new KeyValuePair<string, int>(item.Key, item.Value);
                 key.Add(current);
             }
+
             key.Sort(new OutComparer());
-            Console.WriteLine("Scoreboard:");
+            this.printer.Print("Scoreboard:");
             for (int i = 0; i < this.Score.Count; i++)
             {
-                Console.WriteLine("{0}. {1} --> {2} mistake", i + 1, key[i].Key, key[i].Value);
+                var scoreEntry = string.Format("{0}. {1} --> {2} mistake", i + 1, key[i].Key, key[i].Value);
+                this.printer.Print(scoreEntry);
                 if (i == 4)
                 {
                     //Ima izlishak ot informacia, pokazvame samo parvite 5, no pazim vsichki (izlishno moje bi)
                     break;
                 }
             }
-            Console.WriteLine();
+
+            this.printer.Print("\n");
         }
     }
 }
