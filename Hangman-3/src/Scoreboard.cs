@@ -28,12 +28,13 @@
                 {
                     if (item.Key == name)
                     {
+                        // podari fakta che Dictionary-to ne e Multi (Wintellect Power Collections), ne moje da povarqme imena
                         this.printer.Print("This name already exists in the Scoreboard! Type another: ");
                         hasDouble = true;
-                        //podari fakta che Dictionary-to ne e Multi (Wintellect Power Collections), ne moje da povarqme imena
                     }
                 }
-            } while (hasDouble);
+            } 
+            while (hasDouble);
 
             this.Score.Add(name, mistakes);
         }
@@ -61,7 +62,7 @@
                 this.printer.Print(scoreEntry);
                 if (i == 4)
                 {
-                    //Ima izlishak ot informacia, pokazvame samo parvite 5, no pazim vsichki (izlishno moje bi)
+                    // Ima izlishak ot informacia, pokazvame samo parvite 5, no pazim vsichki (izlishno moje bi)
                     break;
                 }
             }

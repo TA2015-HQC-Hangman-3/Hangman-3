@@ -22,7 +22,7 @@
 
         public void Run()
         {
-            printer.Print(this.context.CurrentMessage);
+            this.printer.Print(this.context.CurrentMessage);
 
             while (true)
             {
@@ -36,10 +36,10 @@
                     this.context.CurrentMessage = GameContext.PromptForCommand;
                 }
 
-                printer.Print("\n");
-                printer.Print(this.context.CurrentMessage);
+                this.printer.Print("\n");
+                this.printer.Print(this.context.CurrentMessage);
                 string userInput = Console.ReadLine();
-                ExecuteCommand(userInput);
+                this.ExecuteCommand(userInput);
 
                 if (this.context.Word.IsWordGuessed())
                 {
@@ -57,14 +57,14 @@
                 this.ExecuteCommand(NormalGameEndingCommandName);                
 
                 string userInput = Console.ReadLine();
-                ExecuteCommand(userInput); 
+                this.ExecuteCommand(userInput); 
             }
             else
             {
                 this.ExecuteCommand(CheaterGameEndingCommandName);                
 
                 string userInput = Console.ReadLine();
-                ExecuteCommand(userInput);
+                this.ExecuteCommand(userInput);
             }
 
             this.context.Reset();

@@ -2,11 +2,10 @@
 {
     public class GameContext
     {
-        private readonly IRandomWordProvider randWordProvider;
-
         public const string StartMessage = "Welcome to “Hangman” game. Please try to guess my secret word. \n" +
                                            "Use 'top' to view the top scoreboard, 'restart' to start a new game, 'help' \nto cheat and 'exit' " +
                                            "to quit the game.";
+
         public const string PropmtForUserGuess = "Enter a letter/command: ";
         public const string PromptForCommand = "Enter command - restart, top, exit: ";
         public const string WinMessage = "You won with {0} mistakes.";
@@ -16,6 +15,8 @@
         public const string RevealedLetterMessage = "Good job! You revealed {0} letters.";
         public const string NotRevealedLetterMessage = "Sorry! There are no unrevealed letters \"{0}\".";
         public const string IncorrectGuessOrCommandMessage = "Incorrect guess or command!";
+
+        private readonly IRandomWordProvider randWordProvider;
 
         public GameContext(IRandomWordProvider wordProvider, Scoreboard scoreboard)
         {

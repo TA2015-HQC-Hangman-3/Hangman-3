@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace Hangman
+﻿namespace Hangman
 {
+    using System;
+
     public class HangmanWord
     {        
         public HangmanWord(string chosenWord)
@@ -11,16 +11,18 @@ namespace Hangman
         }
 
         public char[] UnknownWord { get; set; }
+
         public string TheChosenWord { get; set; }
 
         public bool IsValidLetter(string input)
         {
             char enteredSymbol;
-            if ((char.TryParse(input, out enteredSymbol)) &&
+            if (char.TryParse(input, out enteredSymbol) &&
                 ((int)enteredSymbol >= 97 && (int)enteredSymbol <= 122))
             {
                 return true;
             }
+
             return false;
         }
 
@@ -31,6 +33,7 @@ namespace Hangman
             {
                 Console.Write("{0} ", this.UnknownWord[i]);
             }
+
             Console.WriteLine();
         }
 
@@ -55,6 +58,7 @@ namespace Hangman
                     return false;
                 }
             }
+
             return true;
         }
 
@@ -64,7 +68,7 @@ namespace Hangman
             char enteredSymbol = char.Parse(letter);
             for (int i = 0; i < this.UnknownWord.Length; i++)
             {
-                if (TheChosenWord[i] == enteredSymbol)
+                if (this.TheChosenWord[i] == enteredSymbol)
                 {
                     this.UnknownWord[i] = enteredSymbol;
                     isLetterInTheWord = true;
@@ -88,7 +92,6 @@ namespace Hangman
 
             return lettersGuessed;
         }
-
 
         public void GetNextUnknownLetterOfWord()
         {

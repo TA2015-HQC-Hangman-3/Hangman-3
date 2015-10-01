@@ -4,7 +4,7 @@
 
     public class MainProgram
     {
-        static void Main()
+        public static void Main()
         {
             var printer = new ConsolePrinter();
             var context = new GameContext(new SimpleRandomWordProvider(), new Scoreboard(printer));
