@@ -55,9 +55,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\src\Hangman.csproj">
+    <ProjectReference Include="..\Hangman.Logic\Hangman.Logic.csproj">
       <Project>{de80f49a-6813-40fa-8abf-1f5b3fe680aa}</Project>
-      <Name>Hangman</Name>
+      <Name>Hangman.Logic</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

@@ -1,8 +1,8 @@
-﻿namespace Hangman
+﻿namespace Hangman.UI
 {
     using Commands;
 
-    public class MainProgram
+    public class StartGame
     {
         public static void Main()
         {
