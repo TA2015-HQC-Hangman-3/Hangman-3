@@ -14,6 +14,7 @@
         public const string GoodbyeMessage = "Good bye!";
         public const string RevealedLetterMessage = "Good job! You revealed {0} letters.";
         public const string NotRevealedLetterMessage = "Sorry! There are no unrevealed letters \"{0}\".";
+        public const string LetterHasBeenTriedMessage = "Sorry! You have tried entering \"{0}\" before!";
         public const string IncorrectGuessOrCommandMessage = "Incorrect guess or command!";
 
         private readonly IRandomWordProvider randWordProvider;

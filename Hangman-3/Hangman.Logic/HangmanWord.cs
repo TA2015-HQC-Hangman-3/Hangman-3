@@ -1,6 +1,7 @@
 ﻿namespace Hangman
 {
     using System;
+    using System.Collections.Generic;
 
     public class HangmanWord
     {        
@@ -14,6 +15,8 @@
 
         public string TheChosenWord { get; set; }
 
+        private List<char> ListOfLettersTried = new List<char>();
+
         public bool IsValidLetter(string input)
         {
             char enteredSymbol;
@@ -24,6 +27,17 @@
             }
 
             return false;
+        }
+
+        public bool IsLetterGuessedForFirstTime(string letter)
+        {
+            char enteredLetter = Convert.ToChar(letter);
+            if (ListOfLettersTried.Contains(enteredLetter))
+            {
+                return false;
+            }
+            ListOfLettersTried.Add(enteredLetter);
+            return true;
         }
 
         public void PrintTheWord()

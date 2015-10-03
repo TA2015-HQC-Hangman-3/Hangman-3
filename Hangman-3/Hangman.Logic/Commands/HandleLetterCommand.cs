@@ -16,18 +16,27 @@
         {
             if (context.Word.IsValidLetter(this.GuessLetter))
             {
-                if (context.Word.IsLetterInTheWord(this.GuessLetter))
+                if (context.Word.IsLetterGuessedForFirstTime(this.GuessLetter))
                 {
-                    var lettersGuessed = context.Word.GetNumberOfLettersThatAreGuessed(this.GuessLetter);
-                    context.CurrentMessage = string.Format(GameContext.RevealedLetterMessage, lettersGuessed);
-                    this.printer.Print(context.CurrentMessage);
+                    if (context.Word.IsLetterInTheWord(this.GuessLetter))
+                    {
+                        var lettersGuessed = context.Word.GetNumberOfLettersThatAreGuessed(this.GuessLetter);
+                        context.CurrentMessage = string.Format(GameContext.RevealedLetterMessage, lettersGuessed);
+                        this.printer.Print(context.CurrentMessage);
+                    }
+                    else
+                    {
+                        context.CurrentMessage = string.Format(GameContext.NotRevealedLetterMessage, this.GuessLetter);
+                        this.printer.Print(context.CurrentMessage);
+                        context.CurrentMistakes++;
+                    }
                 }
                 else
                 {
-                    context.CurrentMessage = string.Format(GameContext.NotRevealedLetterMessage, this.GuessLetter);
+                    context.CurrentMessage = string.Format(GameContext.LetterHasBeenTriedMessage, this.GuessLetter);
                     this.printer.Print(context.CurrentMessage);
-                    context.CurrentMistakes++;
                 }
+                
             }
             else
             {
