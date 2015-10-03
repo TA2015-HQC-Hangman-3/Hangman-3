@@ -8,9 +8,9 @@
         public const int IndexOfTheLastPersonShownOnTheScoreboard = 4;
         public const string MessageWhenNameAlreadyExistsInTheScoreBoard = "This name already exists in the Scoreboard! Type another: ";
         public const string MessageForEmptyScoreboard = "Scoreboard is empty!";
-
+        
+        // private Dictionary<string, int> score;
         private readonly IPrinter printer;
-        //private Dictionary<string, int> score;
 
         public Scoreboard(IPrinter printer)
         {

@@ -1,10 +1,9 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using Hangman;
-
-namespace Hangman.Tests
+﻿namespace Hangman.Tests
 {
+    using System;
+    using Hangman;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class HangmanTests
     {

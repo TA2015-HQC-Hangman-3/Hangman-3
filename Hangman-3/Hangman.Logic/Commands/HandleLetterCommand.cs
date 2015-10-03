@@ -36,7 +36,6 @@
                     context.CurrentMessage = string.Format(GameContext.LetterHasBeenTriedMessage, this.GuessLetter);
                     this.printer.Print(context.CurrentMessage);
                 }
-                
             }
             else
             {

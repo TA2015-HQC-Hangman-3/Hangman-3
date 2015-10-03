@@ -9,15 +9,37 @@
         private const string NormalGameEndingCommandName = "finishGame";
         private const string CheaterGameEndingCommandName = "cheater";
 
+        private static volatile HangmanGame hangmanGameInstance;
+        private static object syncLock = new object();
+
         private readonly GameContext context;
         private readonly CommandFactory commandFactory;
         private readonly IPrinter printer;
 
-        public HangmanGame(GameContext context, CommandFactory commandFactory, IPrinter printer)
+        private HangmanGame()
         {
-            this.context = context;
-            this.commandFactory = commandFactory;
-            this.printer = printer;
+            this.printer = new ConsolePrinter();
+            this.context = new GameContext(new SimpleRandomWordProvider(), new Scoreboard(this.printer));
+            this.commandFactory = new CommandFactory();
+        }
+
+        public static HangmanGame Instance
+        {
+            get
+            {
+                if (hangmanGameInstance == null)
+                {
+                    lock (syncLock)
+                    {
+                        if (hangmanGameInstance == null)
+                        {
+                            hangmanGameInstance = new HangmanGame();
+                        }
+                    }
+                }
+
+                return hangmanGameInstance;
+            }
         }
 
         public void Run()
@@ -45,7 +67,7 @@
                 {
                     this.EndCurrentGame();
                 }
-            }            
+            }
         }
 
         private void EndCurrentGame()
@@ -54,14 +76,14 @@
 
             if (!this.context.HasCheated)
             {
-                this.ExecuteCommand(NormalGameEndingCommandName);                
+                this.ExecuteCommand(NormalGameEndingCommandName);
 
                 string userInput = Console.ReadLine();
-                this.ExecuteCommand(userInput); 
+                this.ExecuteCommand(userInput);
             }
             else
             {
-                this.ExecuteCommand(CheaterGameEndingCommandName);                
+                this.ExecuteCommand(CheaterGameEndingCommandName);
 
                 string userInput = Console.ReadLine();
                 this.ExecuteCommand(userInput);
