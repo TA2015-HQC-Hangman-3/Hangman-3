@@ -4,7 +4,10 @@
     using System.Collections.Generic;
 
     public class HangmanWord
-    {        
+    {
+        public const int LowerBoundaryFromTheAsciiTable = 97;
+        public const int UpperBoundaryFromTheAsciiTable = 122;
+
         public HangmanWord(string chosenWord)
         {
             this.TheChosenWord = chosenWord;
@@ -21,7 +24,8 @@
         {
             char enteredSymbol;
             if (char.TryParse(input, out enteredSymbol) &&
-                ((int)enteredSymbol >= 97 && (int)enteredSymbol <= 122))
+                ((int)enteredSymbol >= LowerBoundaryFromTheAsciiTable && 
+                 (int)enteredSymbol <= UpperBoundaryFromTheAsciiTable))
             {
                 return true;
             }

@@ -5,8 +5,12 @@
 
     public class Scoreboard
     {
+        public const int IndexOfTheLastPersonShownOnTheScoreboard = 4;
+        public const string MessageWhenNameAlreadyExistsInTheScoreBoard = "This name already exists in the Scoreboard! Type another: ";
+        public const string MessageForEmptyScoreboard = "Scoreboard is empty!";
+
         private readonly IPrinter printer;
-        private Dictionary<string, int> score;
+        //private Dictionary<string, int> score;
 
         public Scoreboard(IPrinter printer)
         {
@@ -29,7 +33,7 @@
                     if (item.Key == name)
                     {
                         // podari fakta che Dictionary-to ne e Multi (Wintellect Power Collections), ne moje da povarqme imena
-                        this.printer.Print("This name already exists in the Scoreboard! Type another: ");
+                        this.printer.Print(MessageWhenNameAlreadyExistsInTheScoreBoard);
                         hasDouble = true;
                     }
                 }
@@ -43,7 +47,7 @@
         {
             if (this.Score.Count == 0)
             {
-                this.printer.Print("Empty Scoreboard!");
+                this.printer.Print(MessageForEmptyScoreboard);
                 return;
             }
 
@@ -60,9 +64,8 @@
             {
                 var scoreEntry = string.Format("{0}. {1} --> {2} mistake", i + 1, key[i].Key, key[i].Value);
                 this.printer.Print(scoreEntry);
-                if (i == 4)
+                if (i == IndexOfTheLastPersonShownOnTheScoreboard)
                 {
-                    // Ima izlishak ot informacia, pokazvame samo parvite 5, no pazim vsichki (izlishno moje bi)
                     break;
                 }
             }
