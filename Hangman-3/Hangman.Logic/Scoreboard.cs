@@ -2,19 +2,19 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
 
     public class Scoreboard
     {
         public const int IndexOfTheLastPersonShownOnTheScoreboard = 4;
         public const string MessageWhenNameAlreadyExistsInTheScoreBoard = "This name already exists in the Scoreboard! Type another: ";
         public const string MessageForEmptyScoreboard = "Scoreboard is empty!";
+        public const string ScoreFilePath = "../../../Hangman.Logic/files/scores.txt";
         
-        // private Dictionary<string, int> score;
         private readonly IPrinter printer;
 
         public Scoreboard(IPrinter printer)
         {
-            this.Score = new Dictionary<string, int>();
             this.printer = printer;
         }
 
@@ -28,7 +28,8 @@
             {
                 hasDouble = false;
                 name = Console.ReadLine();
-                foreach (var item in this.Score)
+                var scores = ReadScores(ScoreFilePath);
+                foreach (var item in scores)
                 {
                     if (item.Key == name)
                     {
@@ -40,19 +41,21 @@
             } 
             while (hasDouble);
 
-            this.Score.Add(name, mistakes);
+            WriteScore(name, mistakes, ScoreFilePath);
         }
 
         public void PrintScore()
         {
-            if (this.Score.Count == 0)
+            var scores = ReadScores(ScoreFilePath);
+
+            if (scores.Count == 0)
             {
                 this.printer.Print(MessageForEmptyScoreboard);
                 return;
             }
 
             List<KeyValuePair<string, int>> key = new List<KeyValuePair<string, int>>();
-            foreach (var item in this.Score)
+            foreach (var item in scores)
             {
                 KeyValuePair<string, int> current = new KeyValuePair<string, int>(item.Key, item.Value);
                 key.Add(current);
@@ -60,7 +63,7 @@
 
             key.Sort(new OutComparer());
             this.printer.Print("Scoreboard:");
-            for (int i = 0; i < this.Score.Count; i++)
+            for (int i = 0; i < scores.Count; i++)
             {
                 var scoreEntry = string.Format("{0}. {1} --> {2} mistake", i + 1, key[i].Key, key[i].Value);
                 this.printer.Print(scoreEntry);
@@ -71,6 +74,52 @@
             }
 
             this.printer.Print("\n");
+        }
+
+        private Dictionary<string, int> ReadScores(string filePath)
+        {
+            StreamReader scoresReader = new StreamReader(filePath);
+            Dictionary<string, int> result = new Dictionary<string, int>();
+            string currLine = string.Empty;
+
+            using(scoresReader)
+            {
+                while ((currLine = scoresReader.ReadLine()) != null)
+                {
+                    string[] data = currLine.Split(' ');
+                    string name = string.Empty;
+                    int score;
+
+                    if (data.Length == 2)
+                    {
+                        name = data[0];
+                        score = int.Parse(data[1]);
+                    }
+                    else
+                    {
+                        for (int i = 0; i < data.Length - 1; i++)
+                        {
+                            name += data[i];
+                        }
+
+                        score = int.Parse(data[data.Length - 1]);
+                    }
+                    
+                    result.Add(name, score);
+                }
+            }
+
+            return result;
+        }
+
+        private void WriteScore(string name, int mistakes, string filePath)
+        {
+            StreamWriter scoreWriter = new StreamWriter(filePath, true);
+
+            using (scoreWriter)
+            {
+                scoreWriter.WriteLine("{0} {1}", name, mistakes);
+            }
         }
     }
 }
