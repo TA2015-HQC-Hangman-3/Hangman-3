@@ -2,7 +2,9 @@
 {
     using System;
     using Commands;
-    using Hangman.Logic;
+    using Hangman.Logic;    
+    using Hangman.Logic.Contracts;
+    using Hangman.Logic.SaveLoad;
 
     public class HangmanGame
     {
@@ -16,6 +18,7 @@
         private readonly CommandFactory commandFactory;
         private readonly IPrinter printer;
         private ISorter sorter;
+        private ISaverLoader gameSaver;
 
         private HangmanGame()
         {
@@ -23,6 +26,7 @@
             this.printer = new ConsolePrinter();
             this.context = new GameContext(new SimpleRandomWordProvider(), new Scoreboard(this.printer, this.sorter));
             this.commandFactory = new CommandFactory();
+            this.gameSaver = new SaveLoadManager();
         }
 
         public static HangmanGame Instance
@@ -96,7 +100,7 @@
 
         private void ExecuteCommand(string commandName)
         {
-            var command = this.commandFactory.GetCommand(commandName, this.printer);
+            var command = this.commandFactory.GetCommand(commandName, this.printer, this.gameSaver);
             command.Execute(this.context);
         }
     }

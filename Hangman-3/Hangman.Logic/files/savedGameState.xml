@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SaveLoadManager xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <GameState>
+    <Word>
+      <ListOfLettersTried>
+        <char>101</char>
+        <char>97</char>
+        <char>108</char>
+        <char>103</char>
+        <char>111</char>
+      </ListOfLettersTried>
+      <UnknownWord>
+        <char>97</char>
+        <char>108</char>
+        <char>103</char>
+        <char>111</char>
+        <char>95</char>
+        <char>95</char>
+        <char>95</char>
+        <char>95</char>
+        <char>95</char>
+      </UnknownWord>
+      <TheChosenWord>algorithm</TheChosenWord>
+    </Word>
+    <CurrentMistakes>1</CurrentMistakes>
+    <HasCheated>false</HasCheated>
+    <IsGameRunning>true</IsGameRunning>
+  </GameState>
+</SaveLoadManager>

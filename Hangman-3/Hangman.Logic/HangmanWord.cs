@@ -8,14 +8,19 @@
         public const int LowerBoundaryFromTheAsciiTable = 97;
         public const int UpperBoundaryFromTheAsciiTable = 122;
 
-        private List<char> listOfLettersTried;
+
+        public HangmanWord()
+        {
+        }
 
         public HangmanWord(string chosenWord)
         {
             this.TheChosenWord = chosenWord;
             this.UnknownWord = this.GenerateUnknownWord();
-            this.listOfLettersTried = new List<char>();
+            this.ListOfLettersTried = new List<char>();
         }
+
+        public List<char> ListOfLettersTried { get; set; }
 
         public char[] UnknownWord { get; set; }
 
@@ -37,12 +42,12 @@
         public bool IsLetterGuessedForFirstTime(string letter)
         {
             char enteredLetter = Convert.ToChar(letter);
-            if (this.listOfLettersTried.Contains(enteredLetter))
+            if (this.ListOfLettersTried.Contains(enteredLetter))
             {
                 return false;
             }
 
-            this.listOfLettersTried.Add(enteredLetter);
+            this.ListOfLettersTried.Add(enteredLetter);
             return true;
         }
 

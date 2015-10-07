@@ -1,5 +1,9 @@
 ﻿namespace Hangman.Logic
 {
+    using System;
+
+    using Hangman.Logic.SaveLoad;
+
     public class GameContext : IGameContext
     {
         public const string StartMessage = "Welcome to “Hangman” game. Please try to guess my secret word. \n" +
@@ -48,6 +52,31 @@
             this.CurrentMistakes = 0;
             this.CurrentMessage = GameContext.StartMessage;
             this.HasCheated = false;
+        }
+
+
+        public Memento Save()
+        {
+            return new Memento
+            {
+                Word = this.Word,
+                CurrentMistakes = this.CurrentMistakes,
+                HasCheated = this.HasCheated,
+                IsGameRunning = this.IsGameRunning
+            };
+        }
+
+        public void Load(Memento gameState)
+        {
+            if (gameState == null)
+            {
+                throw new ArgumentNullException("Error: Loaded memento cannot be null!");
+            }
+
+            this.Word = gameState.Word;
+            this.CurrentMistakes = gameState.CurrentMistakes;
+            this.HasCheated = gameState.HasCheated;
+            this.IsGameRunning = gameState.IsGameRunning;
         }
     }
 }

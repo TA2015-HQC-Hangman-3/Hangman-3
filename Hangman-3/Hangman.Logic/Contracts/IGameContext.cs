@@ -1,5 +1,7 @@
 ﻿namespace Hangman.Logic
 {
+    using Hangman.Logic.SaveLoad;
+
     public interface IGameContext
     {
         HangmanWord Word { get; set; }
@@ -16,5 +18,8 @@
 
         void Reset();
 
+        Memento Save();
+
+        void Load(Memento gameState);
     }
 }
