@@ -59,12 +59,13 @@
     <Compile Include="Commands\ShowScoreboardCommand.cs" />
     <Compile Include="ComparerSorter.cs" />
     <Compile Include="ConsolePrinter.cs" />
+    <Compile Include="Contracts\IGameContext.cs" />
     <Compile Include="HangmanGame.cs" />
     <Compile Include="GameContext.cs" />
     <Compile Include="HangmanWord.cs" />
-    <Compile Include="IPrinter.cs" />
-    <Compile Include="IRandomWordProvider.cs" />
-    <Compile Include="ISorter.cs" />
+    <Compile Include="Contracts\IPrinter.cs" />
+    <Compile Include="Contracts\IRandomWordProvider.cs" />
+    <Compile Include="Contracts\ISorter.cs" />
     <Compile Include="OutComparer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scoreboard.cs" />

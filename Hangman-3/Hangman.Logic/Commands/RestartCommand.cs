@@ -1,5 +1,7 @@
 ﻿namespace Hangman.Commands
 {
+    using Hangman.Logic;
+
     public class RestartCommand : IHangmanCommand
     {
         private readonly IPrinter printer;
@@ -9,7 +11,7 @@
             this.printer = printer;
         }
 
-        public void Execute(GameContext context)
+        public void Execute(IGameContext context)
         {
             this.printer.ClearScreen();
             context.Reset();

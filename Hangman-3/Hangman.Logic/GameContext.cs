@@ -1,6 +1,6 @@
-﻿namespace Hangman
+﻿namespace Hangman.Logic
 {
-    public class GameContext
+    public class GameContext : IGameContext
     {
         public const string StartMessage = "Welcome to “Hangman” game. Please try to guess my secret word. \n" +
                                            "Use 'top' to view the top scoreboard, 'restart' to start a new game, 'help' \nto cheat and 'exit' " +

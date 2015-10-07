@@ -1,8 +1,10 @@
 ﻿namespace Hangman.Commands
 {
+    using Hangman.Logic;
+
     public class ShowScoreboardCommand : IHangmanCommand
     {
-        public void Execute(GameContext context)
+        public void Execute(IGameContext context)
         {
             context.Scoreboard.PrintScore();
         }

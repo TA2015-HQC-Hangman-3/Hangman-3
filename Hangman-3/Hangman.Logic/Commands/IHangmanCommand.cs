@@ -1,7 +1,10 @@
-﻿namespace Hangman.Commands
+﻿
+namespace Hangman.Commands
 {
+    using Hangman.Logic;
+
     public interface IHangmanCommand
     {
-        void Execute(GameContext context);
+        void Execute(IGameContext context);
     }
 }

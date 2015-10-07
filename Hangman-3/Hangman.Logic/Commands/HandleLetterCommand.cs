@@ -1,5 +1,7 @@
 ﻿namespace Hangman.Commands
 {
+    using Hangman.Logic;
+
     public class HandleLetterCommand : IHangmanCommand
     {
         private readonly IPrinter printer;
@@ -12,7 +14,7 @@
 
         public string GuessLetter { get; private set; }
 
-        public void Execute(GameContext context)
+        public void Execute(IGameContext context)
         {
             if (context.Word.IsValidLetter(this.GuessLetter))
             {

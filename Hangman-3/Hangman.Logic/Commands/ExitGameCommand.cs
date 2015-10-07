@@ -1,6 +1,7 @@
 ﻿namespace Hangman.Commands
 {
     using System;
+    using Hangman.Logic;
 
     public class ExitGameCommand : IHangmanCommand
     {
@@ -11,7 +12,7 @@
             this.printer = printer;
         }
 
-        public void Execute(GameContext context)
+        public void Execute(IGameContext context)
         {
             context.CurrentMessage = GameContext.GoodbyeMessage;
             this.printer.Print(context.CurrentMessage);

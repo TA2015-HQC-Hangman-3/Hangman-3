@@ -1,6 +1,6 @@
 ﻿namespace Hangman.UI
 {
-    using Commands;
+    using Hangman.Logic;
 
     public class StartGame
     {
