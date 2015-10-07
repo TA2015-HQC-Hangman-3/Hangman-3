@@ -1,6 +1,5 @@
-tre 0
-op 2
 dse 6
-tyuiy 6
-dev 2
-aslan 3
+TYTY 2
+dedede 4
+tre 0
+tito 0

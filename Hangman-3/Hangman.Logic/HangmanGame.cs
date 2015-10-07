@@ -1,8 +1,8 @@
 ﻿namespace Hangman
 {
     using System;
-
     using Commands;
+    using Hangman.Logic;
 
     public class HangmanGame
     {
@@ -15,11 +15,13 @@
         private readonly GameContext context;
         private readonly CommandFactory commandFactory;
         private readonly IPrinter printer;
+        private ISorter sorter;
 
         private HangmanGame()
         {
+            this.sorter = new SelectionSorter();
             this.printer = new ConsolePrinter();
-            this.context = new GameContext(new SimpleRandomWordProvider(), new Scoreboard(this.printer));
+            this.context = new GameContext(new SimpleRandomWordProvider(), new Scoreboard(this.printer, this.sorter));
             this.commandFactory = new CommandFactory();
         }
 

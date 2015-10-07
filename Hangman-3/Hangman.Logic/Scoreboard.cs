@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using Hangman.Logic;
 
     public class Scoreboard
     {
@@ -12,10 +13,12 @@
         public const string ScoreFilePath = "../../../Hangman.Logic/files/scores.txt";
         
         private readonly IPrinter printer;
+        private ISorter sorter;
 
-        public Scoreboard(IPrinter printer)
+        public Scoreboard(IPrinter printer, ISorter sorter)
         {
             this.printer = printer;
+            this.sorter = sorter;
         }
 
         public Dictionary<string, int> Score { get; set; }
@@ -28,7 +31,7 @@
             {
                 hasDouble = false;
                 name = Console.ReadLine();
-                var scores = ReadScores(ScoreFilePath);
+                var scores = this.ReadScores(ScoreFilePath);
                 foreach (var item in scores)
                 {
                     if (item.Key == name)
@@ -41,12 +44,12 @@
             } 
             while (hasDouble);
 
-            WriteScore(name, mistakes, ScoreFilePath);
+            this.WriteScore(name, mistakes, ScoreFilePath);
         }
 
         public void PrintScore()
         {
-            var scores = ReadScores(ScoreFilePath);
+            var scores = this.ReadScores(ScoreFilePath);
 
             if (scores.Count == 0)
             {
@@ -54,18 +57,18 @@
                 return;
             }
 
-            List<KeyValuePair<string, int>> key = new List<KeyValuePair<string, int>>();
+            List<KeyValuePair<string, int>> listOfScores = new List<KeyValuePair<string, int>>();
             foreach (var item in scores)
             {
                 KeyValuePair<string, int> current = new KeyValuePair<string, int>(item.Key, item.Value);
-                key.Add(current);
+                listOfScores.Add(current);
             }
 
-            key.Sort(new OutComparer());
+            this.sorter.Sort(listOfScores);
             this.printer.Print("Scoreboard:");
             for (int i = 0; i < scores.Count; i++)
             {
-                var scoreEntry = string.Format("{0}. {1} --> {2} mistake", i + 1, key[i].Key, key[i].Value);
+                var scoreEntry = string.Format("{0}. {1} --> {2} mistake", i + 1, listOfScores[i].Key, listOfScores[i].Value);
                 this.printer.Print(scoreEntry);
                 if (i == IndexOfTheLastPersonShownOnTheScoreboard)
                 {
@@ -82,7 +85,7 @@
             Dictionary<string, int> result = new Dictionary<string, int>();
             string currLine = string.Empty;
 
-            using(scoresReader)
+            using (scoresReader)
             {
                 while ((currLine = scoresReader.ReadLine()) != null)
                 {
@@ -99,7 +102,14 @@
                     {
                         for (int i = 0; i < data.Length - 1; i++)
                         {
-                            name += data[i];
+                            if (i == data.Length - 2)
+                            {
+                                name += data[i];
+                            }
+                            else
+                            {
+                                name += data[i] + " ";
+                            }
                         }
 
                         score = int.Parse(data[data.Length - 1]);
