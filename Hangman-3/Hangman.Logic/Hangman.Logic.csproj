@@ -57,7 +57,7 @@
     <Compile Include="Commands\RestartCommand.cs" />
     <Compile Include="Commands\SaveCommand.cs" />
     <Compile Include="Commands\ShowScoreboardCommand.cs" />
-    <Compile Include="ComparerSorter.cs" />
+    <Compile Include="Sorters\ComparerSorter.cs" />
     <Compile Include="ConsolePrinter.cs" />
     <Compile Include="Contracts\IGameContext.cs" />
     <Compile Include="Contracts\ISaverLoader.cs" />
@@ -72,7 +72,7 @@
     <Compile Include="SaveLoad\Memento.cs" />
     <Compile Include="SaveLoad\SaveLoadManager.cs" />
     <Compile Include="Scoreboard.cs" />
-    <Compile Include="SelectionSorter.cs" />
+    <Compile Include="Sorters\SelectionSorter.cs" />
     <Compile Include="SimpleRandomWordProvider.cs" />
   </ItemGroup>
   <ItemGroup>

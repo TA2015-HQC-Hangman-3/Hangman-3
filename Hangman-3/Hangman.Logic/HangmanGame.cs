@@ -1,10 +1,12 @@
 ﻿namespace Hangman
 {
     using System;
-    using Commands;
-    using Hangman.Logic;    
+
+    using Hangman.Commands;
+    using Hangman.Logic;
     using Hangman.Logic.Contracts;
     using Hangman.Logic.SaveLoad;
+    using Hangman.Logic.Sorters;
 
     public class HangmanGame
     {
