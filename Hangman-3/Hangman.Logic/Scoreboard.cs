@@ -11,15 +11,23 @@
         public const int IndexOfTheLastPersonShownOnTheScoreboard = 4;
         public const string MessageWhenNameAlreadyExistsInTheScoreBoard = "This name already exists in the Scoreboard! Type another: ";
         public const string MessageForEmptyScoreboard = "Scoreboard is empty!";
-        public const string ScoreFilePath = "../../../Hangman.Logic/files/scores.txt";
+        public const string DefaultScoreFilePath = "../../../Hangman.Logic/files/scores.txt";
 
         private readonly IPrinter printer;
         private ISorter sorter;
+        private string scoreFilePath;
 
         public Scoreboard(IPrinter printer, ISorter sorter)
+            : this(printer, sorter, DefaultScoreFilePath)
+        {
+
+        }
+
+        public Scoreboard(IPrinter printer, ISorter sorter, string scoreFilePath)
         {
             this.printer = printer;
             this.sorter = sorter;
+            this.scoreFilePath = scoreFilePath;
         }
 
         public Dictionary<string, int> Score { get; set; }
@@ -32,7 +40,7 @@
             {
                 hasDouble = false;
                 name = Console.ReadLine();
-                var scores = this.ReadScores(ScoreFilePath);
+                var scores = this.ReadScores(this.scoreFilePath);
                 foreach (var item in scores)
                 {
                     if (item.Key == name)
@@ -45,12 +53,12 @@
             }
             while (hasDouble);
 
-            this.WriteScore(name, mistakes, ScoreFilePath);
+            this.WriteScore(name, mistakes, this.scoreFilePath);
         }
 
         public void PrintScore()
         {
-            var scores = this.ReadScores(ScoreFilePath);
+            var scores = this.ReadScores(this.scoreFilePath);
 
             if (scores.Count == 0)
             {
@@ -90,12 +98,15 @@
         {
             StreamReader scoresReader = new StreamReader(filePath);
             Dictionary<string, int> result = new Dictionary<string, int>();
-            string currLine = string.Empty;
 
             using (scoresReader)
             {
-                while ((currLine = scoresReader.ReadLine()) != null)
-                {
+                while (true) {
+                    var currLine = scoresReader.ReadLine();
+                    if(currLine  == null || currLine.Trim() == "")
+                    {
+                        break;
+                    }
                     string[] data = currLine.Split(' ');
                     string name = string.Empty;
                     int score;
