@@ -4,6 +4,6 @@
 
     public interface ISorter
     {
-        List<KeyValuePair<string, int>> Sort(List<KeyValuePair<string, int>> scores);
+        IEnumerable<KeyValuePair<string, int>> Sort(IEnumerable<KeyValuePair<string, int>> scores);
     }
 }

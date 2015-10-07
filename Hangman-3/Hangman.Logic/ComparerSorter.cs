@@ -1,13 +1,16 @@
 ﻿namespace Hangman.Logic
 {
     using System.Collections.Generic;
+    using System.Linq;
 
     public class ComparerSorter : ISorter
     {
-        public List<KeyValuePair<string, int>> Sort(List<KeyValuePair<string, int>> scores)
+        public IEnumerable<KeyValuePair<string, int>> Sort(IEnumerable<KeyValuePair<string, int>> scores)
         {
-            scores.Sort(new OutComparer());
-            return scores;
+            //scores.Sort(new OutComparer());
+            //return scores;
+
+            return scores.OrderBy(score => score.Value);
         }
     }
 }

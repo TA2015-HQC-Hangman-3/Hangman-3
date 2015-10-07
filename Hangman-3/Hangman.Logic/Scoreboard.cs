@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.IO;
     using Hangman.Logic;
+    using System.Linq;
 
     public class Scoreboard
     {
@@ -11,7 +12,7 @@
         public const string MessageWhenNameAlreadyExistsInTheScoreBoard = "This name already exists in the Scoreboard! Type another: ";
         public const string MessageForEmptyScoreboard = "Scoreboard is empty!";
         public const string ScoreFilePath = "../../../Hangman.Logic/files/scores.txt";
-        
+
         private readonly IPrinter printer;
         private ISorter sorter;
 
@@ -41,7 +42,7 @@
                         hasDouble = true;
                     }
                 }
-            } 
+            }
             while (hasDouble);
 
             this.WriteScore(name, mistakes, ScoreFilePath);
@@ -57,23 +58,29 @@
                 return;
             }
 
-            List<KeyValuePair<string, int>> listOfScores = new List<KeyValuePair<string, int>>();
-            foreach (var item in scores)
-            {
-                KeyValuePair<string, int> current = new KeyValuePair<string, int>(item.Key, item.Value);
-                listOfScores.Add(current);
-            }
 
-            this.sorter.Sort(listOfScores);
+            //List<KeyValuePair<string, int>> listOfScores = scores.ToList();
+
+            //List<KeyValuePair<string, int>> listOfScores = new List<KeyValuePair<string, int>>();
+            //foreach (var item in scores)
+            //{
+            //    KeyValuePair<string, int> current = new KeyValuePair<string, int>(item.Key, item.Value);
+            //    listOfScores.Add(current);
+            //}
+
+            var sortedScores = this.sorter.Sort(scores);
+
             this.printer.Print("Scoreboard:");
-            for (int i = 0; i < scores.Count; i++)
+            var index = 0;
+            foreach (var score in sortedScores)
             {
-                var scoreEntry = string.Format("{0}. {1} --> {2} mistake", i + 1, listOfScores[i].Key, listOfScores[i].Value);
+                var scoreEntry = string.Format("{0}. {1} --> {2} mistake", index + 1, score.Key, score.Value);
                 this.printer.Print(scoreEntry);
-                if (i == IndexOfTheLastPersonShownOnTheScoreboard)
+                if (index == IndexOfTheLastPersonShownOnTheScoreboard)
                 {
                     break;
                 }
+                index += 1;
             }
 
             this.printer.Print("\n");
@@ -114,7 +121,7 @@
 
                         score = int.Parse(data[data.Length - 1]);
                     }
-                    
+
                     result.Add(name, score);
                 }
             }
