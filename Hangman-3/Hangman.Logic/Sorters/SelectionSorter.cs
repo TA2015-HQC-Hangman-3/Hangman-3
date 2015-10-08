@@ -8,6 +8,7 @@
         public IEnumerable<KeyValuePair<string, int>> Sort(IEnumerable<KeyValuePair<string, int>> scores)
         {
             var scoresToSort = scores.ToList();
+
             // pos_min is short for position of min
             int minPosition;
             KeyValuePair<string, int> changer;

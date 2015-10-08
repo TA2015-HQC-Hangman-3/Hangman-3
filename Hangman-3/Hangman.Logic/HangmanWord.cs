@@ -8,7 +8,6 @@
         public const int LowerBoundaryFromTheAsciiTable = 97;
         public const int UpperBoundaryFromTheAsciiTable = 122;
 
-
         public HangmanWord()
         {
         }

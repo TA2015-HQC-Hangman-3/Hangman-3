@@ -33,7 +33,7 @@
             this.gameStateInfoManager = dataManager;
         }
 
-        public Memento GameState { get; set;}
+        public Memento GameState { get; set; }
 
         public void SaveGame()
         {
@@ -43,7 +43,7 @@
         }
 
         public void LoadGame()
-        {   
+        {
             SaveLoadManager game = this.gameStateInfoManager.Read(SavePath);
 
             if (game == null)

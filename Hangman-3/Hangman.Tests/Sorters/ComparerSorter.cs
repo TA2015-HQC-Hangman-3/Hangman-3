@@ -1,13 +1,10 @@
-﻿
-namespace Hangman.Tests.Sorters
+﻿namespace Hangman.Tests.Sorters
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
-
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-
     using Logic.Sorters;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
     public class ComparerSorterTests
@@ -21,15 +18,13 @@ namespace Hangman.Tests.Sorters
             };
             var sorter = new ComparerSorter();
 
-            //act
+            // act
             var result = sorter.Sort(collection);
 
-            //assert
-
+            // assert
             Assert.AreEqual(collection.Count(), result.Count());
             Assert.AreEqual(collection[0], result.ElementAt(0));
         }
-
 
         [TestMethod]
         public void ComparerSorterSort_WhenCollectionHasTwoSortedElements_ShouldReturnTheSameElementInTheSameOrder()
@@ -41,11 +36,10 @@ namespace Hangman.Tests.Sorters
             };
             var sorter = new ComparerSorter();
 
-            //act
+            // act
             var result = sorter.Sort(collection);
 
-            //assert
-
+            // assert
             Assert.AreEqual(collection.Length, result.Count());
             for (int i = 0; i < collection.Length; i++)
             {
@@ -63,11 +57,11 @@ namespace Hangman.Tests.Sorters
             };
             var sorter = new ComparerSorter();
 
-            //act
+            // act
             var actual = sorter.Sort(collection);
             var expected = collection.OrderBy(item => item.Value).ToArray();
 
-            //assert
+            // assert
             Assert.AreEqual(expected.Count(), actual.Count());
             for (int i = 0; i < expected.Count(); i++)
             {
@@ -78,15 +72,14 @@ namespace Hangman.Tests.Sorters
         [TestMethod]
         public void ComparerSorterSort_WhenCollectionIsEmpty_ShouldReturnEmtpyCollection()
         {
-            //arrange 
+            // arrange 
             KeyValuePair<string, int>[] collection = { };
             var sorter = new ComparerSorter();
 
-            //act
+            // act
             var result = sorter.Sort(collection);
 
-            //assert
-
+            // assert
             Assert.IsNotNull(result);
             Assert.AreEqual(0, result.Count());
         }
@@ -95,11 +88,11 @@ namespace Hangman.Tests.Sorters
         [ExpectedException(typeof(ArgumentNullException))]
         public void ComparerSorterSort_WhenCollectionIsNull_ShouldThrow()
         {
-            //arrange 
+            // arrange 
             KeyValuePair<string, int>[] collection = null;
             var sorter = new ComparerSorter();
 
-            //act
+            // act
             var result = sorter.Sort(collection);
         }
     }

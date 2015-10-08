@@ -1,10 +1,11 @@
 ﻿namespace Hangman
 {
     using System;
-
+    using System.Collections.Generic;
     using Hangman.Logic;
     using Hangman.Logic.Commands;
     using Hangman.Logic.Contracts;
+    using Hangman.Logic.DataManagers;
     using Hangman.Logic.SaveLoad;
     using Hangman.Logic.Sorters;
 
@@ -20,6 +21,7 @@
         private readonly CommandFactory commandFactory;
         private readonly IPrinter printer;
         private ISorter sorter;
+        private IDataManager<Dictionary<string, int>> scoresDataManager;
         private ISaveLoadManager gameSaver;
         private ICommandInvoker commandExecutioner;
 
@@ -27,7 +29,8 @@
         {
             this.printer = new ConsolePrinter();
             this.sorter = new SelectionSorter();
-            this.context = new GameContext(new SimpleRandomWordProvider(), new Scoreboard(this.printer, this.sorter));
+            this.scoresDataManager = new TextFileScoreboardDataManager<Dictionary<string, int>>();
+            this.context = new GameContext(new SimpleRandomWordProvider(), new Scoreboard(this.printer, this.sorter, this.scoresDataManager));
             this.commandFactory = new CommandFactory();
             this.gameSaver = new SaveLoadManager(this.printer);
             this.commandExecutioner = new HangmanCommandInvoker();

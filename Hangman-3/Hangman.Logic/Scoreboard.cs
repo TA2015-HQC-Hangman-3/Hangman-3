@@ -21,13 +21,12 @@
         private IDataManager<Dictionary<string, int>> scoresDataManager;
         private string scoreFilePath;
 
-        public Scoreboard(IPrinter printer, ISorter sorter)
-            : this(printer, sorter, DefaultScoreFilePath, new TextFileScoreboardDataManager<Dictionary<string, int>>())
+        public Scoreboard(IPrinter printer, ISorter sorter, IDataManager<Dictionary<string, int>> scoresDataManager)
+            : this(printer, sorter, scoresDataManager, DefaultScoreFilePath)
         {
-
         }
 
-        public Scoreboard(IPrinter printer, ISorter sorter, string scoreFilePath, IDataManager<Dictionary<string, int>> scoresDataManager)
+        public Scoreboard(IPrinter printer, ISorter sorter, IDataManager<Dictionary<string, int>> scoresDataManager, string scoreFilePath)
         {
             this.Score = new Dictionary<string, int>();
             this.printer = printer;
@@ -75,16 +74,13 @@
                 return;
             }
 
-
-            //List<KeyValuePair<string, int>> listOfScores = scores.ToList();
-
-            //List<KeyValuePair<string, int>> listOfScores = new List<KeyValuePair<string, int>>();
-            //foreach (var item in scores)
-            //{
-            //    KeyValuePair<string, int> current = new KeyValuePair<string, int>(item.Key, item.Value);
-            //    listOfScores.Add(current);
-            //}
-
+            // List<KeyValuePair<string, int>> listOfScores = scores.ToList();
+            // List<KeyValuePair<string, int>> listOfScores = new List<KeyValuePair<string, int>>();
+            // foreach (var item in scores)
+            // {
+            // KeyValuePair<string, int> current = new KeyValuePair<string, int>(item.Key, item.Value);
+            // listOfScores.Add(current);
+            // }
             var sortedScores = this.sorter.Sort(scores);
 
             this.printer.PrintLine("Scoreboard:");
@@ -97,10 +93,11 @@
                 {
                     break;
                 }
+
                 index += 1;
             }
 
             this.printer.PrintLine();
-        } 
+        }
     }
 }

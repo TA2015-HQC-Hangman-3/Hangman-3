@@ -54,7 +54,6 @@
             this.HasCheated = false;
         }
 
-
         public Memento Save()
         {
             return new Memento

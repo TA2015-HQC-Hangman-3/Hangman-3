@@ -7,7 +7,6 @@
 
     public class TextFileScoreboardDataManager<T> : IDataManager<T> where T : Dictionary<string, int>
     {
-
         public T Read(string filePath)
         {
             StreamReader scoresReader = new StreamReader(filePath);
@@ -18,10 +17,11 @@
                 while (true)
                 {
                     var currLine = scoresReader.ReadLine();
-                    if (currLine == null || currLine.Trim() == "")
+                    if (currLine == null || currLine.Trim() == string.Empty)
                     {
                         break;
                     }
+
                     string[] data = currLine.Split(' ');
                     string name = string.Empty;
                     int score;

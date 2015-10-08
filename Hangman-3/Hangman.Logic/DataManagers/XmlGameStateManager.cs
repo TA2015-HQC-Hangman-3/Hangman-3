@@ -8,7 +8,6 @@
 
     public class XmlGameStateManager<T> : IDataManager<T> where T : SaveLoadManager
     {
-
         public T Read(string filePath)
         {
             if (!File.Exists(filePath))
