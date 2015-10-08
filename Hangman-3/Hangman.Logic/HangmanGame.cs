@@ -31,7 +31,7 @@
             this.scoreManager = new ScoreDataManager();
             this.context = new GameContext(new SimpleRandomWordProvider(), new Scoreboard(this.printer, this.sorter, this.scoreManager));
             this.commandFactory = new CommandFactory();
-            this.gameSaver = new SaveLoadManager();
+            this.gameSaver = new SaveLoadManager(this.printer);
             this.commandExecutioner = new HangmanCommandInvoker();
         }
 
@@ -56,7 +56,8 @@
 
         public void Run()
         {
-            this.printer.Print(this.context.CurrentMessage);
+            this.printer.PrintLine(this.context.CurrentMessage);
+            this.printer.PrintLine();
 
             while (true)
             {
@@ -69,8 +70,8 @@
                 {
                     this.context.CurrentMessage = GameContext.PromptForCommand;
                 }
-
-                this.printer.Print("\n");
+                
+                this.printer.PrintLine();
                 this.printer.Print(this.context.CurrentMessage);
                 string userInput = Console.ReadLine();
                 this.ExecuteCommand(userInput);

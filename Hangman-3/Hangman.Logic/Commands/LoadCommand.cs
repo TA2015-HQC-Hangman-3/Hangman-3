@@ -26,11 +26,11 @@
             }
             catch (FileNotFoundException ex)
             {
-                this.printer.Print(ex.Message);
+                this.printer.PrintLine(ex.Message);
             }
             catch (ArgumentNullException nullEx)
             {
-                this.printer.Print(nullEx.Message);
+                this.printer.PrintLine(nullEx.Message);
             }            
         }
     }

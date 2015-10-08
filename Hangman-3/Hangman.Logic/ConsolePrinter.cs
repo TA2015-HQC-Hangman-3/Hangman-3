@@ -6,6 +6,16 @@
     {
         public void Print(string currentText)
         {
+            Console.Write(currentText);
+        }
+
+        public void PrintLine()
+        {
+            Console.WriteLine();
+        }
+
+        public void PrintLine(string currentText)
+        {
             Console.WriteLine(currentText);
         }
 

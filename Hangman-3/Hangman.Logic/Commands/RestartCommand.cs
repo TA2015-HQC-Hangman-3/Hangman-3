@@ -16,7 +16,7 @@
             this.printer.ClearScreen();
             context.Reset();
             context.IsGameRunning = true;
-            this.printer.Print(context.CurrentMessage);
+            this.printer.PrintLine(context.CurrentMessage);
         }
     }
 }

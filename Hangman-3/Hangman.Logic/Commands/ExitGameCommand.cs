@@ -15,7 +15,7 @@
         public void Execute(IGameContext context)
         {
             context.CurrentMessage = GameContext.GoodbyeMessage;
-            this.printer.Print(context.CurrentMessage);
+            this.printer.PrintLine(context.CurrentMessage);
             Environment.Exit(1);
         }
     }

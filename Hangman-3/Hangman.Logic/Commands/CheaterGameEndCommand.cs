@@ -14,12 +14,12 @@
         public void Execute(IGameContext context)
         {
             context.CurrentMessage = string.Format(GameContext.WinByCheatingMessage, context.CurrentMistakes);
-            this.printer.Print(context.CurrentMessage);
+            this.printer.PrintLine(context.CurrentMessage);
 
             context.Word.PrintTheWord();
 
             context.CurrentMessage = GameContext.PromptForCommand;
-            this.printer.Print(context.CurrentMessage);
+            this.printer.PrintLine(context.CurrentMessage);
         }
     }
 }

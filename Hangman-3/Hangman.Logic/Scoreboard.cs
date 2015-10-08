@@ -65,7 +65,7 @@ using Hangman.Logic.Contracts;
 
             if (scores.Count == 0)
             {
-                this.printer.Print(MessageForEmptyScoreboard);
+                this.printer.PrintLine(MessageForEmptyScoreboard);
                 return;
             }
 
@@ -81,12 +81,12 @@ using Hangman.Logic.Contracts;
 
             var sortedScores = this.sorter.Sort(scores);
 
-            this.printer.Print("Scoreboard:");
+            this.printer.PrintLine("Scoreboard:");
             var index = 0;
             foreach (var score in sortedScores)
             {
                 var scoreEntry = string.Format("{0}. {1} --> {2} mistake", index + 1, score.Key, score.Value);
-                this.printer.Print(scoreEntry);
+                this.printer.PrintLine(scoreEntry);
                 if (index == IndexOfTheLastPersonShownOnTheScoreboard)
                 {
                     break;
@@ -94,7 +94,7 @@ using Hangman.Logic.Contracts;
                 index += 1;
             }
 
-            this.printer.Print("\n");
+            this.printer.PrintLine();
         }
     }
 }

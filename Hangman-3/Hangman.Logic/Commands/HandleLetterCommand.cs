@@ -24,25 +24,25 @@
                     {
                         var lettersGuessed = context.Word.GetNumberOfLettersThatAreGuessed(this.GuessLetter);
                         context.CurrentMessage = string.Format(GameContext.RevealedLetterMessage, lettersGuessed);
-                        this.printer.Print(context.CurrentMessage);
+                        this.printer.PrintLine(context.CurrentMessage);
                     }
                     else
                     {
                         context.CurrentMessage = string.Format(GameContext.NotRevealedLetterMessage, this.GuessLetter);
-                        this.printer.Print(context.CurrentMessage);
+                        this.printer.PrintLine(context.CurrentMessage);
                         context.CurrentMistakes++;
                     }
                 }
                 else
                 {
                     context.CurrentMessage = string.Format(GameContext.LetterHasBeenTriedMessage, this.GuessLetter);
-                    this.printer.Print(context.CurrentMessage);
+                    this.printer.PrintLine(context.CurrentMessage);
                 }
             }
             else
             {
                 context.CurrentMessage = GameContext.IncorrectGuessOrCommandMessage;
-                this.printer.Print(context.CurrentMessage);
+                this.printer.PrintLine(context.CurrentMessage);
             }
         }
     }
