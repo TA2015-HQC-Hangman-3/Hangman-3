@@ -1,4 +1,4 @@
-﻿namespace Hangman.Commands
+﻿namespace Hangman.Logic.Commands
 {
     using System;
     using Hangman.Logic;

@@ -1,10 +1,10 @@
-﻿namespace Hangman.Commands
+﻿namespace Hangman.Logic.Commands
 {
     using Hangman.Logic.Contracts;
 
     public class CommandFactory
     {
-        public IHangmanCommand GetCommand(string command, IPrinter printer, ISaverLoader gameSaver)
+        public IHangmanCommand GetCommand(string command, IPrinter printer, ISaveLoadManager gameSaver)
         {
             // The string command will come from a ConsoleInputParser/Reader and it will be validated there;
             switch (command)
@@ -20,7 +20,7 @@
                 case "save":
                     return new SaveCommand(gameSaver);
                 case "load":
-                    return new LoadCommand(gameSaver);
+                    return new LoadCommand(gameSaver, printer);
                 case "finishGame":
                     return new NormalGameEndCommand(printer);
                 case "cheater":

@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Commands\CheaterGameEndCommand.cs" />
     <Compile Include="Commands\CommandFactory.cs" />
+    <Compile Include="Commands\HangmanCommandInvoker.cs" />
     <Compile Include="Commands\ExitGameCommand.cs" />
     <Compile Include="Commands\GetHelpCommand.cs" />
     <Compile Include="Commands\HandleLetterCommand.cs" />
@@ -57,10 +58,11 @@
     <Compile Include="Commands\RestartCommand.cs" />
     <Compile Include="Commands\SaveCommand.cs" />
     <Compile Include="Commands\ShowScoreboardCommand.cs" />
+    <Compile Include="Contracts\ICommandInvoker.cs" />
     <Compile Include="Sorters\ComparerSorter.cs" />
     <Compile Include="ConsolePrinter.cs" />
     <Compile Include="Contracts\IGameContext.cs" />
-    <Compile Include="Contracts\ISaverLoader.cs" />
+    <Compile Include="Contracts\ISaveLoadManager.cs" />
     <Compile Include="HangmanGame.cs" />
     <Compile Include="GameContext.cs" />
     <Compile Include="HangmanWord.cs" />

@@ -1,13 +1,13 @@
-﻿namespace Hangman.Commands
+﻿namespace Hangman.Logic.Commands
 {
     using Hangman.Logic;
     using Hangman.Logic.Contracts;
 
     public class SaveCommand : IHangmanCommand
     {
-        private ISaverLoader gameSaver;
+        private ISaveLoadManager gameSaver;
 
-        public SaveCommand(ISaverLoader gameSaver)
+        public SaveCommand(ISaveLoadManager gameSaver)
         {
             this.gameSaver = gameSaver;
         }

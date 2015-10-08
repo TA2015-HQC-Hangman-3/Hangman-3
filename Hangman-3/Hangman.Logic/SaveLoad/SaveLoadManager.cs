@@ -6,7 +6,7 @@
 
     using Hangman.Logic.Contracts;
 
-    public class SaveLoadManager : ISaverLoader
+    public class SaveLoadManager : ISaveLoadManager
     {
         private const string SavePath = @"..\..\..\Hangman.Logic\files\savedGameState.xml";
 

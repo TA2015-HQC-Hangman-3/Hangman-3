@@ -1,21 +1,37 @@
-﻿namespace Hangman.Commands
+﻿namespace Hangman.Logic.Commands
 {
+    using System;
+    using System.IO;
+
     using Hangman.Logic;
     using Hangman.Logic.Contracts;
 
     public class LoadCommand : IHangmanCommand
     {
-        private ISaverLoader gameSaver;
+        private ISaveLoadManager gameSaver;
+        private IPrinter printer;
 
-        public LoadCommand(ISaverLoader gameSaver)
+        public LoadCommand(ISaveLoadManager gameSaver, IPrinter printer)
         {
             this.gameSaver = gameSaver;
+            this.printer = printer;
         }
 
         public void Execute(IGameContext context)
         {
-            this.gameSaver.LoadGame();
-            context.Load(this.gameSaver.GameState);
+            try
+            {
+                this.gameSaver.LoadGame();
+                context.Load(this.gameSaver.GameState);
+            }
+            catch (FileNotFoundException ex)
+            {
+                this.printer.Print(ex.Message);
+            }
+            catch (ArgumentNullException nullEx)
+            {
+                this.printer.Print(nullEx.Message);
+            }            
         }
     }
 }

@@ -2,7 +2,7 @@
 {
     using Hangman.Logic.SaveLoad;
 
-     public interface ISaverLoader
+     public interface ISaveLoadManager
     {
          Memento GameState {get; set;}
 
