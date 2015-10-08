@@ -3,8 +3,11 @@
     using System;
     using System.Collections.Generic;
     using System.IO;
-    using Hangman.Logic;
     using System.Linq;
+
+    using Hangman.Logic;
+    using Hangman.Logic.Contracts;
+    using Hangman.Logic.DataManagers;
 
     public class Scoreboard
     {
@@ -15,6 +18,7 @@
 
         private readonly IPrinter printer;
         private ISorter sorter;
+        private IDataManager<Dictionary<string, int>> scoresDataManager;
         private string scoreFilePath;
 
         public Scoreboard(IPrinter printer, ISorter sorter)
@@ -25,9 +29,11 @@
 
         public Scoreboard(IPrinter printer, ISorter sorter, string scoreFilePath)
         {
+            this.Score = new Dictionary<string, int>();
             this.printer = printer;
             this.sorter = sorter;
             this.scoreFilePath = scoreFilePath;
+            this.scoresDataManager = new TextFileScoreboardDataManager<Dictionary<string, int>>();
         }
 
         public Dictionary<string, int> Score { get; set; }
@@ -40,7 +46,9 @@
             {
                 hasDouble = false;
                 name = Console.ReadLine();
-                var scores = this.ReadScores(this.scoreFilePath);
+                this.Score.Add(name, mistakes);
+
+                var scores = this.scoresDataManager.Read(this.scoreFilePath);
                 foreach (var item in scores)
                 {
                     if (item.Key == name)
@@ -53,12 +61,13 @@
             }
             while (hasDouble);
 
-            this.WriteScore(name, mistakes, this.scoreFilePath);
+            this.scoresDataManager.Write(this.scoreFilePath, this.Score);
+            this.Score.Remove(name);
         }
 
         public void PrintScore()
         {
-            var scores = this.ReadScores(this.scoreFilePath);
+            var scores = this.scoresDataManager.Read(this.scoreFilePath);
 
             if (scores.Count == 0)
             {
@@ -92,62 +101,6 @@
             }
 
             this.printer.Print("\n");
-        }
-
-        private Dictionary<string, int> ReadScores(string filePath)
-        {
-            StreamReader scoresReader = new StreamReader(filePath);
-            Dictionary<string, int> result = new Dictionary<string, int>();
-
-            using (scoresReader)
-            {
-                while (true) {
-                    var currLine = scoresReader.ReadLine();
-                    if(currLine  == null || currLine.Trim() == "")
-                    {
-                        break;
-                    }
-                    string[] data = currLine.Split(' ');
-                    string name = string.Empty;
-                    int score;
-
-                    if (data.Length == 2)
-                    {
-                        name = data[0];
-                        score = int.Parse(data[1]);
-                    }
-                    else
-                    {
-                        for (int i = 0; i < data.Length - 1; i++)
-                        {
-                            if (i == data.Length - 2)
-                            {
-                                name += data[i];
-                            }
-                            else
-                            {
-                                name += data[i] + " ";
-                            }
-                        }
-
-                        score = int.Parse(data[data.Length - 1]);
-                    }
-
-                    result.Add(name, score);
-                }
-            }
-
-            return result;
-        }
-
-        private void WriteScore(string name, int mistakes, string filePath)
-        {
-            StreamWriter scoreWriter = new StreamWriter(filePath, true);
-
-            using (scoreWriter)
-            {
-                scoreWriter.WriteLine("{0} {1}", name, mistakes);
-            }
-        }
+        } 
     }
 }
