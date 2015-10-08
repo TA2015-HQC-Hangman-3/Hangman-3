@@ -8,31 +8,45 @@
 
     public class XmlGameStateManager<T> : IDataManager<T> where T : SaveLoadManager
     {
-        public T Read(string filePath)
+        private const string DefaultXmlSavePath = @"..\..\..\Hangman.Logic\files\savedGameState.xml";
+
+        private readonly XmlSerializer xmlSerializer;
+        private readonly string xmlSavePath;
+
+        public XmlGameStateManager()
         {
-            if (!File.Exists(filePath))
+            this.xmlSavePath = DefaultXmlSavePath;
+            this.xmlSerializer = new XmlSerializer(typeof(T));
+        }
+
+        public XmlGameStateManager(string filePath)
+        {
+            this.xmlSavePath = filePath;
+            this.xmlSerializer = new XmlSerializer(typeof(T));
+        }
+
+        public T Read()
+        {
+            if (!File.Exists(this.xmlSavePath))
             {
                 throw new FileNotFoundException("Error: file not found!");
             }
 
             T information;
 
-            using (StreamReader reader = new StreamReader(filePath))
+            using (StreamReader reader = new StreamReader(this.xmlSavePath))
             {
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
-                information = xmlSerializer.Deserialize(reader) as T;
+                information = this.xmlSerializer.Deserialize(reader) as T;
             }
 
             return information;
         }
 
-        public void Write(string filePath, T information)
+        public void Write(T information)
         {
-            using (StreamWriter writer = new StreamWriter(filePath))
+            using (StreamWriter writer = new StreamWriter(this.xmlSavePath))
             {
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
-
-                xmlSerializer.Serialize(writer, information);
+                this.xmlSerializer.Serialize(writer, information);
             }
         }
     }

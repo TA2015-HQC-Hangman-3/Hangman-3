@@ -8,9 +8,7 @@
     using DataManagers;
 
     public class SaveLoadManager : ISaveLoadManager
-    {
-        private const string SavePath = @"..\..\..\Hangman.Logic\files\savedGameState.xml";
-
+    { 
         private IPrinter printer;
         private IDataManager<SaveLoadManager> gameStateInfoManager;
 
@@ -37,14 +35,14 @@
 
         public void SaveGame()
         {
-            this.gameStateInfoManager.Write(SavePath, this);
+            this.gameStateInfoManager.Write(this);
 
             this.printer.PrintLine("Game successfully saved!");
         }
 
         public void LoadGame()
         {
-            SaveLoadManager game = this.gameStateInfoManager.Read(SavePath);
+            SaveLoadManager game = this.gameStateInfoManager.Read();
 
             if (game == null)
             {

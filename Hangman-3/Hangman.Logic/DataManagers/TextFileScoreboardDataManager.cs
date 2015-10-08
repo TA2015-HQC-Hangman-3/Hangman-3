@@ -7,9 +7,23 @@
 
     public class TextFileScoreboardDataManager<T> : IDataManager<T> where T : Dictionary<string, int>
     {
-        public T Read(string filePath)
+        private const string DefaultScorePath = "../../../Hangman.Logic/files/scores.txt";
+
+        private readonly string scoreFilePath;
+
+        public TextFileScoreboardDataManager()
         {
-            StreamReader scoresReader = new StreamReader(filePath);
+            this.scoreFilePath = DefaultScorePath;
+        }
+
+        public TextFileScoreboardDataManager(string filePath)
+        {
+            this.scoreFilePath = filePath;
+        }
+
+        public T Read()
+        {
+            StreamReader scoresReader = new StreamReader(this.scoreFilePath);
             Dictionary<string, int> result = new Dictionary<string, int>();
 
             using (scoresReader)
@@ -55,9 +69,9 @@
             return (T)result;
         }
 
-        public void Write(string filePath, T information)
+        public void Write(T information)
         {
-            StreamWriter scoreWriter = new StreamWriter(filePath, true);
+            StreamWriter scoreWriter = new StreamWriter(this.scoreFilePath, true);
 
             string name = string.Empty;
             int mistakes = 0;

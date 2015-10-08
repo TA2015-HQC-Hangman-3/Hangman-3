@@ -14,24 +14,16 @@
         public const int IndexOfTheLastPersonShownOnTheScoreboard = 4;
         public const string MessageWhenNameAlreadyExistsInTheScoreBoard = "This name already exists in the Scoreboard! Type another: ";
         public const string MessageForEmptyScoreboard = "Scoreboard is empty!";
-        public const string DefaultScoreFilePath = "../../../Hangman.Logic/files/scores.txt";
 
         private readonly IPrinter printer;
         private ISorter sorter;
         private IDataManager<Dictionary<string, int>> scoresDataManager;
-        private string scoreFilePath;
-
+        
         public Scoreboard(IPrinter printer, ISorter sorter, IDataManager<Dictionary<string, int>> scoresDataManager)
-            : this(printer, sorter, scoresDataManager, DefaultScoreFilePath)
-        {
-        }
-
-        public Scoreboard(IPrinter printer, ISorter sorter, IDataManager<Dictionary<string, int>> scoresDataManager, string scoreFilePath)
         {
             this.Score = new Dictionary<string, int>();
             this.printer = printer;
             this.sorter = sorter;
-            this.scoreFilePath = scoreFilePath;
             this.scoresDataManager = scoresDataManager;
         }
 
@@ -47,7 +39,7 @@
                 name = Console.ReadLine();
                 this.Score.Add(name, mistakes);
 
-                var scores = this.scoresDataManager.Read(this.scoreFilePath);
+                var scores = this.scoresDataManager.Read();
                 foreach (var item in scores)
                 {
                     if (item.Key == name)
@@ -60,13 +52,13 @@
             }
             while (hasDouble);
 
-            this.scoresDataManager.Write(this.scoreFilePath, this.Score);
+            this.scoresDataManager.Write(this.Score);
             this.Score.Remove(name);
         }
 
         public void PrintScore()
         {
-            var scores = this.scoresDataManager.Read(this.scoreFilePath);
+            var scores = this.scoresDataManager.Read();
 
             if (scores.Count == 0)
             {

@@ -63,9 +63,9 @@
             printer.Setup(p => p.PrintLine(It.IsAny<string>()))
                     .Callback(() => ++messagesCount);
             var sorter = new SelectionSorter();
-            var scoreDataManager = new TextFileScoreboardDataManager<Dictionary<string, int>>();
+            var scoreDataManager = new TextFileScoreboardDataManager<Dictionary<string, int>>("../../test-score.txt");
 
-            var scoreboard = new Scoreboard(printer.Object, sorter, scoreDataManager, "../../test-score.txt");
+            var scoreboard = new Scoreboard(printer.Object, sorter, scoreDataManager);
 
             scoreboard.PrintScore();
 

@@ -4,21 +4,18 @@
     <Word>
       <ListOfLettersTried>
         <char>97</char>
-        <char>101</char>
+        <char>114</char>
       </ListOfLettersTried>
       <UnknownWord>
-        <char>95</char>
-        <char>101</char>
-        <char>95</char>
-        <char>95</char>
-        <char>95</char>
-        <char>95</char>
-        <char>101</char>
+        <char>97</char>
+        <char>114</char>
+        <char>114</char>
+        <char>97</char>
         <char>95</char>
       </UnknownWord>
-      <TheChosenWord>debugger</TheChosenWord>
+      <TheChosenWord>array</TheChosenWord>
     </Word>
-    <CurrentMistakes>1</CurrentMistakes>
+    <CurrentMistakes>0</CurrentMistakes>
     <HasCheated>false</HasCheated>
     <IsGameRunning>true</IsGameRunning>
   </GameState>
