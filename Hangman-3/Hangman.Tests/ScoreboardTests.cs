@@ -13,7 +13,7 @@
     public class ScoreboardTests
     {
 
-        class FakePrinter : IPrinter
+        public class FakePrinter : IPrinter
         {
             public List<string> Messages { get; set; }
 
@@ -30,6 +30,16 @@
             public void Print(string text)
             {
                 this.Messages.Add(text);
+            }
+
+            public void PrintLine()
+            {
+                this.Messages.Add("\r\n");
+            }
+
+            public void PrintLine(string text)
+            {
+                this.Messages.Add(text + "\r\n");
             }
         }
 
