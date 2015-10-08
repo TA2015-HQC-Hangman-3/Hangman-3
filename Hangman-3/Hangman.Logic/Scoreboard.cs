@@ -4,7 +4,6 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-using Hangman.Logic.Contracts;
 
     using Hangman.Logic;
     using Hangman.Logic.Contracts;
@@ -22,18 +21,17 @@ using Hangman.Logic.Contracts;
         private IDataManager<Dictionary<string, int>> scoresDataManager;
         private string scoreFilePath;
 
-        public Scoreboard(IPrinter printer, ISorter sorter, IDataManager scoreManager)
-            : this(printer, sorter, scoreManager, DefaultScoreFilePath)
+        public Scoreboard(IPrinter printer, ISorter sorter)
+            : this(printer, sorter, DefaultScoreFilePath, new TextFileScoreboardDataManager<Dictionary<string, int>>())
         {
 
         }
 
-        public Scoreboard(IPrinter printer, ISorter sorter, IDataManager scoreManager, string scoreFilePath)
+        public Scoreboard(IPrinter printer, ISorter sorter, string scoreFilePath, IDataManager<Dictionary<string, int>> scoresDataManager)
         {
             this.Score = new Dictionary<string, int>();
             this.printer = printer;
             this.sorter = sorter;
-            this.scoreManager = scoreManager;
             this.scoreFilePath = scoreFilePath;
             this.scoresDataManager = new TextFileScoreboardDataManager<Dictionary<string, int>>();
         }
