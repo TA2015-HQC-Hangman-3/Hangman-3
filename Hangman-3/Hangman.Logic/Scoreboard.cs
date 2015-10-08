@@ -33,7 +33,7 @@
             this.printer = printer;
             this.sorter = sorter;
             this.scoreFilePath = scoreFilePath;
-            this.scoresDataManager = new TextFileScoreboardDataManager<Dictionary<string, int>>();
+            this.scoresDataManager = scoresDataManager;
         }
 
         public Dictionary<string, int> Score { get; set; }
