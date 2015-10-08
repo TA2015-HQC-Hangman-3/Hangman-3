@@ -61,7 +61,7 @@
         {
             var printer = new Mock<IPrinter>();
             var messagesCount = 0;
-            printer.Setup(p => p.Print(It.IsAny<string>()))
+            printer.Setup(p => p.PrintLine(It.IsAny<string>()))
                     .Callback(() => ++messagesCount);
             var sorter = new SelectionSorter();
 
