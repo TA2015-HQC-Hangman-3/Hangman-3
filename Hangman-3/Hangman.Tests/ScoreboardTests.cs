@@ -5,6 +5,7 @@
     using System.Linq;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Logic.DataManagers;
     using Logic.Sorters;
     using Moq;
 
@@ -54,7 +55,7 @@
                     .Callback(() => ++messagesCount);
             var sorter = new SelectionSorter();
 
-            var scoreboard = new Scoreboard(printer.Object, sorter, "../../test-score.txt");
+            var scoreboard = new Scoreboard(printer.Object, sorter, "../../test-score.txt", new TextFileScoreboardDataManager<Dictionary<string, int>>());
             
             scoreboard.PrintScore();
 

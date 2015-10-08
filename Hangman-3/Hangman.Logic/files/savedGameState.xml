@@ -3,17 +3,14 @@
   <GameState>
     <Word>
       <ListOfLettersTried>
-        <char>99</char>
-        <char>100</char>
+        <char>97</char>
         <char>101</char>
-        <char>98</char>
-        <char>117</char>
       </ListOfLettersTried>
       <UnknownWord>
-        <char>100</char>
+        <char>95</char>
         <char>101</char>
-        <char>98</char>
-        <char>117</char>
+        <char>95</char>
+        <char>95</char>
         <char>95</char>
         <char>95</char>
         <char>101</char>

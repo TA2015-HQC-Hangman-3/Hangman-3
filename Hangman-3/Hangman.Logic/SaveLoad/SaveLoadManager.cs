@@ -4,51 +4,47 @@
     using System.IO;
     using System.Xml.Serialization;
 
-    using Hangman.Logic.Contracts;
+    using Contracts;
+    using DataManagers;
 
     public class SaveLoadManager : ISaveLoadManager
     {
         private const string SavePath = @"..\..\..\Hangman.Logic\files\savedGameState.xml";
+
         private IPrinter printer;
+        private IDataManager<SaveLoadManager> gameStateInfoManager;
 
         public SaveLoadManager()
-            : this(new ConsolePrinter())
         {
+            // Poor man's IoC
+            this.printer = new ConsolePrinter();
+            this.gameStateInfoManager = new XmlGameStateManager<SaveLoadManager>();
         }
 
         public SaveLoadManager(IPrinter printer)
         {
             this.printer = printer;
+            this.gameStateInfoManager = new XmlGameStateManager<SaveLoadManager>();
+        }
+
+        public SaveLoadManager(IPrinter printer, IDataManager<SaveLoadManager> dataManager)
+        {
+            this.printer = printer;
+            this.gameStateInfoManager = dataManager;
         }
 
         public Memento GameState { get; set;}
 
         public void SaveGame()
         {
-            using (StreamWriter writer = new StreamWriter(SavePath))
-            {
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(SaveLoadManager));
-
-                xmlSerializer.Serialize(writer, this);
-            }
+            this.gameStateInfoManager.Write(SavePath, this);
 
             this.printer.PrintLine("Game successfully saved!");
         }
 
         public void LoadGame()
-        {
-            if (!File.Exists(SavePath))
-            {
-                throw new FileNotFoundException("Error: saveGameState.xml not found!");
-            }
-
-            SaveLoadManager game;
-
-            using (StreamReader reader = new StreamReader(SavePath))
-            {
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(SaveLoadManager));
-                game = xmlSerializer.Deserialize(reader) as SaveLoadManager;
-            }
+        {   
+            SaveLoadManager game = this.gameStateInfoManager.Read(SavePath);
 
             if (game == null)
             {

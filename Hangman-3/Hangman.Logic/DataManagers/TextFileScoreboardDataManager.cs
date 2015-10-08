@@ -1,12 +1,14 @@
-﻿namespace Hangman.Logic
+﻿namespace Hangman.Logic.DataManagers
 {
-    using Hangman.Logic.Contracts;
     using System.Collections.Generic;
     using System.IO;
 
-    public class ScoreDataManager : IDataManager
+    using Contracts;
+
+    public class TextFileScoreboardDataManager<T> : IDataManager<T> where T : Dictionary<string, int>
     {
-        public Dictionary<string, int> Read(string filePath)
+
+        public T Read(string filePath)
         {
             StreamReader scoresReader = new StreamReader(filePath);
             Dictionary<string, int> result = new Dictionary<string, int>();
@@ -50,12 +52,20 @@
                 }
             }
 
-            return result;
+            return (T)result;
         }
 
-        public void Write(string name, int mistakes, string filePath)
+        public void Write(string filePath, T information)
         {
             StreamWriter scoreWriter = new StreamWriter(filePath, true);
+
+            string name = string.Empty;
+            int mistakes = 0;
+            foreach (var score in information)
+            {
+                name = score.Key;
+                mistakes = score.Value;
+            }
 
             using (scoreWriter)
             {
