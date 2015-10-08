@@ -1,11 +1,8 @@
 ﻿namespace Hangman.Logic.Contracts
 {
-    using System.Collections.Generic;
-
-    public interface IDataManager
+    public interface IDataManager<T>
     {
-        Dictionary<string, int> Read(string filePath);
-
-        void Write(string name, int count, string filePath);
+        T Read(string filePath);
+        void Write(string filePath, T information);
     }
 }

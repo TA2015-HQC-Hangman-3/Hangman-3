@@ -3,9 +3,12 @@
     using System;
     using System.Collections.Generic;
     using System.IO;
-    using Hangman.Logic;
     using System.Linq;
 using Hangman.Logic.Contracts;
+
+    using Hangman.Logic;
+    using Hangman.Logic.Contracts;
+    using Hangman.Logic.DataManagers;
 
     public class Scoreboard
     {
@@ -16,7 +19,7 @@ using Hangman.Logic.Contracts;
 
         private readonly IPrinter printer;
         private ISorter sorter;
-        private IDataManager scoreManager;
+        private IDataManager<Dictionary<string, int>> scoresDataManager;
         private string scoreFilePath;
 
         public Scoreboard(IPrinter printer, ISorter sorter, IDataManager scoreManager)
@@ -27,10 +30,12 @@ using Hangman.Logic.Contracts;
 
         public Scoreboard(IPrinter printer, ISorter sorter, IDataManager scoreManager, string scoreFilePath)
         {
+            this.Score = new Dictionary<string, int>();
             this.printer = printer;
             this.sorter = sorter;
             this.scoreManager = scoreManager;
             this.scoreFilePath = scoreFilePath;
+            this.scoresDataManager = new TextFileScoreboardDataManager<Dictionary<string, int>>();
         }
 
         public Dictionary<string, int> Score { get; set; }
@@ -43,7 +48,9 @@ using Hangman.Logic.Contracts;
             {
                 hasDouble = false;
                 name = Console.ReadLine();
-                var scores = this.scoreManager.Read(this.scoreFilePath);
+                this.Score.Add(name, mistakes);
+
+                var scores = this.scoresDataManager.Read(this.scoreFilePath);
                 foreach (var item in scores)
                 {
                     if (item.Key == name)
@@ -56,12 +63,13 @@ using Hangman.Logic.Contracts;
             }
             while (hasDouble);
 
-            this.scoreManager.Write(name, mistakes, this.scoreFilePath);
+            this.scoresDataManager.Write(this.scoreFilePath, this.Score);
+            this.Score.Remove(name);
         }
 
         public void PrintScore()
         {
-            var scores = this.scoreManager.Read(this.scoreFilePath);
+            var scores = this.scoresDataManager.Read(this.scoreFilePath);
 
             if (scores.Count == 0)
             {
@@ -95,6 +103,6 @@ using Hangman.Logic.Contracts;
             }
 
             this.printer.Print("\n");
-        }
+        } 
     }
 }
