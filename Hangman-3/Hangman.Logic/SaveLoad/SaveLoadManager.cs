@@ -9,6 +9,17 @@
     public class SaveLoadManager : ISaveLoadManager
     {
         private const string SavePath = @"..\..\..\Hangman.Logic\files\savedGameState.xml";
+        private IPrinter printer;
+
+        public SaveLoadManager()
+            : this(new ConsolePrinter())
+        {
+        }
+
+        public SaveLoadManager(IPrinter printer)
+        {
+            this.printer = printer;
+        }
 
         public Memento GameState { get; set;}
 
@@ -21,7 +32,7 @@
                 xmlSerializer.Serialize(writer, this);
             }
 
-            Console.WriteLine("Game successfully saved!");
+            this.printer.PrintLine("Game successfully saved!");
         }
 
         public void LoadGame()
@@ -46,7 +57,7 @@
 
             this.GameState = game.GameState;
 
-            Console.WriteLine("Game successfully loaded!");
+            this.printer.PrintLine("Game successfully loaded!");
         }
     }
 }
