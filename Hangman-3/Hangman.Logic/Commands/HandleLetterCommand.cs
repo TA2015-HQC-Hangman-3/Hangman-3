@@ -1,5 +1,7 @@
 ﻿namespace Hangman.Logic.Commands
 {
+    using System;
+
     using Hangman.Logic;
 
     public class HandleLetterCommand : IHangmanCommand
@@ -16,7 +18,7 @@
 
         public void Execute(IGameContext context)
         {
-            if (context.Word.IsValidLetter(this.GuessLetter))
+            try
             {
                 if (context.Word.IsLetterGuessedForFirstTime(this.GuessLetter))
                 {
@@ -39,10 +41,10 @@
                     this.printer.PrintLine(context.CurrentMessage);
                 }
             }
-            else
+            catch(ArgumentException ex)
             {
                 context.CurrentMessage = GameContext.IncorrectGuessOrCommandMessage;
-                this.printer.PrintLine(context.CurrentMessage);
+                this.printer.PrintLine(context.CurrentMessage + " " + ex.ParamName);
             }
         }
     }

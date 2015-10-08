@@ -61,9 +61,11 @@
     <Compile Include="Commands\ShowScoreboardCommand.cs" />
     <Compile Include="Contracts\ICommandInvoker.cs" />
     <Compile Include="Contracts\IDataManager.cs" />
+    <Compile Include="Contracts\IWord.cs" />
     <Compile Include="DataManagers\TextFileScoreboardDataManager.cs" />
     <Compile Include="DataManagers\JsonGameStateManager.cs" />
     <Compile Include="DataManagers\XmlGameStateManager.cs" />
+    <Compile Include="HangmanWordProxy.cs" />
     <Compile Include="Sorters\ComparerSorter.cs" />
     <Compile Include="ConsolePrinter.cs" />
     <Compile Include="Contracts\IGameContext.cs" />

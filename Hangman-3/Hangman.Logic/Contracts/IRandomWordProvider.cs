@@ -1,7 +1,9 @@
 ﻿namespace Hangman
 {
+    using Hangman.Logic.Contracts;
+
     public interface IRandomWordProvider
     {
-        HangmanWord GetWord();
+        IWord GetWord();
     }
 }

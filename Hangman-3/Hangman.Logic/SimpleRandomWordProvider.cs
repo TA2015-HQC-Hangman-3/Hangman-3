@@ -2,6 +2,9 @@
 {
     using System;
 
+    using Logic;
+    using Hangman.Logic.Contracts;
+
     public class SimpleRandomWordProvider : IRandomWordProvider
     {
         private static Random rand = new Random();
@@ -20,10 +23,10 @@
                                                     "variable"
                                                     };
 
-        public HangmanWord GetWord()
+        public IWord GetWord()
         {
             var theChosenWord = this.availableWords[rand.Next(0, this.availableWords.Length)];
-            return new HangmanWord(theChosenWord);
+            return new HangmanWordProxy(theChosenWord);
         }
     }
 }

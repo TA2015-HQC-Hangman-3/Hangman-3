@@ -2,20 +2,27 @@
 <SaveLoadManager xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <GameState>
     <Word>
-      <ListOfLettersTried>
-        <char>97</char>
-        <char>114</char>
-      </ListOfLettersTried>
-      <UnknownWord>
-        <char>97</char>
-        <char>114</char>
-        <char>114</char>
-        <char>97</char>
-        <char>95</char>
-      </UnknownWord>
-      <TheChosenWord>array</TheChosenWord>
+      <Word>
+        <ListOfLettersTried>
+          <char>100</char>
+          <char>99</char>
+          <char>111</char>
+          <char>109</char>
+        </ListOfLettersTried>
+        <UnknownWord>
+          <char>99</char>
+          <char>111</char>
+          <char>109</char>
+          <char>95</char>
+          <char>95</char>
+          <char>95</char>
+          <char>95</char>
+          <char>95</char>
+        </UnknownWord>
+        <TheChosenWord>computer</TheChosenWord>
+      </Word>
     </Word>
-    <CurrentMistakes>0</CurrentMistakes>
+    <CurrentMistakes>1</CurrentMistakes>
     <HasCheated>false</HasCheated>
     <IsGameRunning>true</IsGameRunning>
   </GameState>

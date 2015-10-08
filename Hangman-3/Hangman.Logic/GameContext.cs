@@ -3,6 +3,7 @@
     using System;
 
     using Hangman.Logic.SaveLoad;
+    using Hangman.Logic.Contracts;
 
     public class GameContext : IGameContext
     {
@@ -34,7 +35,7 @@
             this.IsGameRunning = true;
         }
 
-        public HangmanWord Word { get; set; }
+        public IWord Word { get; set; }
 
         public Scoreboard Scoreboard { get; set; }
 
@@ -58,7 +59,7 @@
         {
             return new Memento
             {
-                Word = this.Word,
+                Word = this.Word as HangmanWordProxy,
                 CurrentMistakes = this.CurrentMistakes,
                 HasCheated = this.HasCheated,
                 IsGameRunning = this.IsGameRunning

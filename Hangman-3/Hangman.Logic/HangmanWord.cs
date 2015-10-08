@@ -3,7 +3,9 @@
     using System;
     using System.Collections.Generic;
 
-    public class HangmanWord
+    using Logic.Contracts;
+
+    public class HangmanWord : IWord
     {
         public const int LowerBoundaryFromTheAsciiTable = 97;
         public const int UpperBoundaryFromTheAsciiTable = 122;
@@ -25,18 +27,6 @@
 
         public string TheChosenWord { get; set; }
 
-        public bool IsValidLetter(string input)
-        {
-            char enteredSymbol;
-            if (char.TryParse(input, out enteredSymbol) &&
-                ((int)enteredSymbol >= LowerBoundaryFromTheAsciiTable && 
-                 (int)enteredSymbol <= UpperBoundaryFromTheAsciiTable))
-            {
-                return true;
-            }
-
-            return false;
-        }
 
         public bool IsLetterGuessedForFirstTime(string letter)
         {
