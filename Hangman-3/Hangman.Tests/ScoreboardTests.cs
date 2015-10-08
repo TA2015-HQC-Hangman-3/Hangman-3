@@ -11,6 +11,36 @@
     [TestClass]
     public class ScoreboardTests
     {
+        public class FakePrinter : IPrinter
+        {
+            public List<string> Messages { get; set; }
+
+            public FakePrinter()
+            {
+                this.Messages = new List<string>();
+            }
+
+            public void ClearScreen()
+            {
+                this.Messages.Clear();
+            }
+
+            public void Print(string text)
+            {
+                this.Messages.Add(text);
+            }
+
+            public void PrintLine()
+            {
+                this.Messages.Add("\r\n");
+            }
+
+            public void PrintLine(string text)
+            {
+                this.Messages.Add(text + "\r\n");
+            }
+        }
+
         [TestMethod]
         public void Sample()
         {
@@ -30,7 +60,7 @@
         {
             var printer = new Mock<IPrinter>();
             var messagesCount = 0;
-            printer.Setup(p => p.Print(It.IsAny<string>()))
+            printer.Setup(p => p.PrintLine(It.IsAny<string>()))
                     .Callback(() => ++messagesCount);
             var sorter = new SelectionSorter();
             var scoreDataManager = new TextFileScoreboardDataManager<Dictionary<string, int>>();
@@ -43,26 +73,6 @@
 
             // assert
             Assert.AreEqual(1, messagesCount);
-        }
-
-        public class FakePrinter : IPrinter
-        {
-            public FakePrinter()
-            {
-                this.Messages = new List<string>();
-            }
-
-            public List<string> Messages { get; set; }
-
-            public void ClearScreen()
-            {
-                this.Messages.Clear();
-            }
-
-            public void Print(string text)
-            {
-                this.Messages.Add(text);
-            }
         }
     }
 }
