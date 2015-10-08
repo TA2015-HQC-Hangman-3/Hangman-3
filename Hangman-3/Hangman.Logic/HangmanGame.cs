@@ -20,14 +20,16 @@
         private readonly CommandFactory commandFactory;
         private readonly IPrinter printer;
         private ISorter sorter;
+        private IDataManager scoreManager;
         private ISaveLoadManager gameSaver;
         private ICommandInvoker commandExecutioner;
 
         private HangmanGame()
         {
-            this.sorter = new SelectionSorter();
             this.printer = new ConsolePrinter();
-            this.context = new GameContext(new SimpleRandomWordProvider(), new Scoreboard(this.printer, this.sorter));
+            this.sorter = new SelectionSorter();
+            this.scoreManager = new ScoreDataManager();
+            this.context = new GameContext(new SimpleRandomWordProvider(), new Scoreboard(this.printer, this.sorter, this.scoreManager));
             this.commandFactory = new CommandFactory();
             this.gameSaver = new SaveLoadManager();
             this.commandExecutioner = new HangmanCommandInvoker();
