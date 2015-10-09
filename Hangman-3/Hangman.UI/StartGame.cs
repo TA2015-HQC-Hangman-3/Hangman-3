@@ -2,6 +2,9 @@
 {
     using Hangman.Logic;
 
+    /// <summary>
+    /// Entry point of the game.
+    /// </summary>
     public class StartGame
     {
         public static void Main()

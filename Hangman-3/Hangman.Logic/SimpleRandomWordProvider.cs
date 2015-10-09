@@ -2,6 +2,9 @@
 {
     using System;
 
+    /// <summary>
+    /// Class representing random word provider. Contains list of available words and methods for randomly choosing one.
+    /// </summary>
     public class SimpleRandomWordProvider : IRandomWordProvider
     {
         private static Random rand = new Random();

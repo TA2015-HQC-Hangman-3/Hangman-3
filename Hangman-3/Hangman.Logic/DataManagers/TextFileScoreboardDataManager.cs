@@ -5,8 +5,17 @@
 
     using Contracts;
 
+    /// <summary>
+    /// Class representing type Data Manager as Text File Scoreboard.
+    /// </summary>
+    /// <typeparam name="T">The type of the parameter is dictionary.</typeparam>
     public class TextFileScoreboardDataManager<T> : IDataManager<T> where T : Dictionary<string, int>
     {
+        /// <summary>
+        /// Method for reading from file.
+        /// </summary>
+        /// <param name="filePath">The path to the file to be read from.</param>
+        /// <returns>Collection of type dictionary.</returns>
         public T Read(string filePath)
         {
             StreamReader scoresReader = new StreamReader(filePath);
@@ -55,6 +64,11 @@
             return (T)result;
         }
 
+        /// <summary>
+        /// Method for writing in file.
+        /// </summary>
+        /// <param name="filePath">The path to the file.</param>
+        /// <param name="information">Collection containing the information to be written in dictionary.</param>
         public void Write(string filePath, T information)
         {
             StreamWriter scoreWriter = new StreamWriter(filePath, true);

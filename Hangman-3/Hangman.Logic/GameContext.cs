@@ -4,6 +4,9 @@
 
     using Hangman.Logic.SaveLoad;
 
+    /// <summary>
+    /// Class representing the context of the game.
+    /// </summary>
     public class GameContext : IGameContext
     {
         public const string StartMessage = "Welcome to “Hangman” game. Please try to guess my secret word. \n" +
@@ -23,6 +26,11 @@
 
         private readonly IRandomWordProvider randWordProvider;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GameContext"/> class.
+        /// </summary>
+        /// <param name="wordProvider">Accepts first parameter of type IRandomWordProvider specifying the word for this game context. </param>
+        /// <param name="scoreboard"> Second parameter from type Scoreboard to keep the score from this game context.</param>
         public GameContext(IRandomWordProvider wordProvider, Scoreboard scoreboard)
         {
             this.randWordProvider = wordProvider;
@@ -46,6 +54,9 @@
 
         public string CurrentMessage { get; set; }
 
+        /// <summary>
+        /// Method for clearing game context and starting again.
+        /// </summary>
         public void Reset()
         {
             this.Word = this.randWordProvider.GetWord();
@@ -54,6 +65,10 @@
             this.HasCheated = false;
         }
 
+        /// <summary>
+        /// Method for saving the current game context.
+        /// </summary>
+        /// <returns>Object containing the information for the game context.</returns>
         public Memento Save()
         {
             return new Memento
@@ -65,6 +80,10 @@
             };
         }
 
+        /// <summary>
+        /// method for loading the game.
+        /// </summary>
+        /// <param name="gameState">The game state that must be loaded for the game.</param>
         public void Load(Memento gameState)
         {
             if (gameState == null)

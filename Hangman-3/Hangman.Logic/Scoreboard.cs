@@ -8,7 +8,10 @@
     using Hangman.Logic;
     using Hangman.Logic.Contracts;
     using Hangman.Logic.DataManagers;
-
+    
+    /// <summary>
+    /// Class representing the scoreboard of the game. 
+    /// </summary>
     public class Scoreboard
     {
         public const int IndexOfTheLastPersonShownOnTheScoreboard = 4;
@@ -21,11 +24,24 @@
         private IDataManager<Dictionary<string, int>> scoresDataManager;
         private string scoreFilePath;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Scoreboard"/> class.
+        /// </summary>
+        /// <param name="printer">Accepts parameter printer to show messages.</param>
+        /// <param name="sorter">Accepts parameter sorter to sort the scores.</param>
+        /// <param name="scoresDataManager">Accepts parameter scores data manager to read the scores.</param>
         public Scoreboard(IPrinter printer, ISorter sorter, IDataManager<Dictionary<string, int>> scoresDataManager)
             : this(printer, sorter, scoresDataManager, DefaultScoreFilePath)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Scoreboard"/> class.
+        /// </summary>
+        /// <param name="printer">Accepts parameter printer to show messages.</param>
+        /// <param name="sorter">Accepts parameter sorter to sort the scores.</param>
+        /// <param name="scoresDataManager">Accepts parameter scores data manager to read the scores.</param>
+        /// <param name="scoreFilePath">Accepts parameter score file path to show from where the score should be read.</param>
         public Scoreboard(IPrinter printer, ISorter sorter, IDataManager<Dictionary<string, int>> scoresDataManager, string scoreFilePath)
         {
             this.Score = new Dictionary<string, int>();

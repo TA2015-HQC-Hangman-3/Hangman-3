@@ -8,7 +8,10 @@
     using Hangman.Logic.DataManagers;
     using Hangman.Logic.SaveLoad;
     using Hangman.Logic.Sorters;
-
+    
+    /// <summary>
+    /// Class containing the logic of the game.
+    /// </summary>
     public class HangmanGame
     {
         private const string NormalGameEndingCommandName = "finishGame";
@@ -24,7 +27,10 @@
         private IDataManager<Dictionary<string, int>> scoresDataManager;
         private ISaveLoadManager gameSaver;
         private ICommandInvoker commandExecutioner;
-
+        
+        /// <summary>
+        /// Prevents a default instance of the <see cref="HangmanGame"/> class from being created.
+        /// </summary>
         private HangmanGame()
         {
             this.printer = new ConsolePrinter();
@@ -55,6 +61,9 @@
             }
         }
 
+        /// <summary>
+        /// Method for starting the game.
+        /// </summary>
         public void Run()
         {
             this.printer.PrintLine(this.context.CurrentMessage);
@@ -84,6 +93,9 @@
             }
         }
 
+        /// <summary>
+        /// Method for ending the game.
+        /// </summary>
         private void EndCurrentGame()
         {
             this.context.IsGameRunning = false;
@@ -106,6 +118,10 @@
             this.context.Reset();
         }
 
+        /// <summary>
+        /// Method for executing command in the game.
+        /// </summary>
+        /// <param name="commandName">Specifies which command should be executed.</param>
         private void ExecuteCommand(string commandName)
         {
             var command = this.commandFactory.GetCommand(commandName, this.printer, this.gameSaver);
