@@ -86,13 +86,16 @@
     <Compile Include="SaveLoad\SaveLoadManager.cs" />
     <Compile Include="Scoreboard.cs" />
     <Compile Include="Sorters\SelectionSorter.cs" />
-    <Compile Include="SimpleRandomWordProvider.cs" />
+    <Compile Include="WordProviders\BaseWordProvider.cs" />
+    <Compile Include="WordProviders\SimpleRandomWordProvider.cs" />
+    <Compile Include="WordProviders\XmlWordProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="files\words.xml" />
     <Content Include="files\savedGameState.xml" />
     <Content Include="files\scores.txt" />
   </ItemGroup>

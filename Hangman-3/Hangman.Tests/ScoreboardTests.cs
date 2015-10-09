@@ -1,4 +1,5 @@
-﻿namespace Hangman.Tests
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+namespace Hangman.Tests
 {
     using System;
     using System.Collections.Generic;
@@ -11,50 +12,6 @@
     [TestClass]
     public class ScoreboardTests
     {
-        public class FakePrinter : IPrinter
-        {
-            public List<string> Messages { get; set; }
-
-            public FakePrinter()
-            {
-                this.Messages = new List<string>();
-            }
-
-            public void ClearScreen()
-            {
-                this.Messages.Clear();
-            }
-
-            public void Print(string text)
-            {
-                this.Messages.Add(text);
-            }
-
-            public void PrintLine()
-            {
-                this.Messages.Add("\r\n");
-            }
-
-            public void PrintLine(string text)
-            {
-                this.Messages.Add(text + "\r\n");
-            }
-        }
-
-        [TestMethod]
-        public void Sample()
-        {
-            var printer = new FakePrinter();
-            var sorter = new SelectionSorter();
-            var scoreDataManager = new TextFileScoreboardDataManager<Dictionary<string, int>>();
-
-            var scoreboard = new Scoreboard(printer, sorter, scoreDataManager);
-
-            scoreboard.PrintScore();
-
-            // check printer.Messages
-        }
-
         [TestMethod]
         public void ScoreboardPrintScores_WhenNoScores_ShouldPrint1Message()
         {

@@ -1,3 +1,8 @@
 gogogo 1
 momomo 2
 hohoho 1
+Cookie 1
+Cookie2 0
+ 0
+E 1
+restart 2

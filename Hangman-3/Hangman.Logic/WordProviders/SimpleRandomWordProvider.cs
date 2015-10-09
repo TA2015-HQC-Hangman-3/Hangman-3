@@ -1,14 +1,12 @@
-﻿namespace Hangman
+﻿namespace Hangman.Logic.WordProviders
 {
     using System;
 
     using Logic;
     using Hangman.Logic.Contracts;
 
-    public sealed class SimpleRandomWordProvider : IWordProvider
+    public sealed class SimpleRandomWordProvider : BaseWordProvider
     {
-        private static Random rand = new Random();
-
         private static volatile SimpleRandomWordProvider randWordProviderInstance;
         private static object syncLock = new object();
 
@@ -28,7 +26,7 @@
 
         private SimpleRandomWordProvider()
         {
-
+            this.AvailableWords = this.availableWords;
         }
 
         public static SimpleRandomWordProvider Instance
@@ -48,12 +46,6 @@
 
                 return randWordProviderInstance;
             }
-        }
-
-        public IWord GetWord()
-        {
-            var theChosenWord = this.availableWords[rand.Next(0, this.availableWords.Length)];
-            return new HangmanWordProxy(theChosenWord);
         }
     }
 }

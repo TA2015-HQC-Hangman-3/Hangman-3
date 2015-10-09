@@ -10,6 +10,7 @@
     using Hangman.Logic.SaveLoad;
     using Hangman.Logic.Sorters;
     using Ninject;
+    using Logic.WordProviders;
 
     public class StartGame
     {
@@ -29,7 +30,8 @@
             var gameStateManager = kernel.Get<IDataManager<SaveLoadManager>>();
             var commandFactory = new CommandFactory();
             var commandExecutioner = kernel.Get<ICommandInvoker>();
-            var wordProvider = SimpleRandomWordProvider.Instance;
+            //var wordProvider = SimpleRandomWordProvider.Instance;
+            var wordProvider = XmlWordProvider.Instance;
 
             var game = new HangmanGame(printer, sorter, scoresDataManager, gameStateManager, commandFactory, commandExecutioner, wordProvider);
             game.Run();

@@ -8,6 +8,7 @@
     using Hangman.Logic.DataManagers;
     using Hangman.Logic.SaveLoad;
     using Hangman.Logic.Sorters;
+    using Logic.WordProviders;
 
     public class HangmanGame : IGameEngine
     {
