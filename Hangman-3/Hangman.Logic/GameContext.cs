@@ -21,6 +21,7 @@
         public const string NotRevealedLetterMessage = "Sorry! There are no unrevealed letters \"{0}\".";
         public const string LetterHasBeenTriedMessage = "Sorry! You have tried entering \"{0}\" before!";
         public const string IncorrectGuessOrCommandMessage = "Incorrect guess or command!";
+        public const string CurrentlyUsedLettersMessage = "Currently used letters: {0}";
 
         private readonly IWordProvider randWordProvider;
 

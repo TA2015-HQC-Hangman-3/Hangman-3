@@ -2,7 +2,8 @@
 {
     using System;
 
-    using Contracts; 
+    using Contracts;
+    using System.Collections.Generic; 
 
     public  class HangmanWordProxy : IWord
     {
@@ -87,6 +88,11 @@
             }
 
             return false;
+        }
+
+        public List<char> GetAllTriedLetters()
+        {
+            return this.Word.ListOfLettersTried;
         }
     }
 }

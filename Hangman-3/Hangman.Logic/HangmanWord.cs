@@ -118,5 +118,10 @@
                 }
             }
         }
+
+        public List<char> GetAllTriedLetters()
+        {
+            return this.ListOfLettersTried;
+        }
     }
 }

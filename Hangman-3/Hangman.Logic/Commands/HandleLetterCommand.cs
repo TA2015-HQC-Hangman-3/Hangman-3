@@ -1,7 +1,7 @@
 ﻿namespace Hangman.Logic.Commands
 {
     using System;
-
+    using System.Linq;
     using Hangman.Logic;
 
     public class HandleLetterCommand : IHangmanCommand
@@ -25,19 +25,22 @@
                     if (context.Word.IsLetterInTheWord(this.GuessLetter))
                     {
                         var lettersGuessed = context.Word.GetNumberOfLettersThatAreGuessed(this.GuessLetter);
-                        context.CurrentMessage = string.Format(GameContext.RevealedLetterMessage, lettersGuessed);
+                        var allCurrentlyGuessedLetters = string.Join(", ", context.Word.GetAllTriedLetters().Select(x => x.ToString()).ToArray());
+                        context.CurrentMessage = string.Format(GameContext.CurrentlyUsedLettersMessage, allCurrentlyGuessedLetters) + "\n" + string.Format(GameContext.RevealedLetterMessage, lettersGuessed);
                         this.printer.PrintLine(context.CurrentMessage);
                     }
                     else
                     {
-                        context.CurrentMessage = string.Format(GameContext.NotRevealedLetterMessage, this.GuessLetter);
+                        var allCurrentlyGuessedLetters = string.Join(", ", context.Word.GetAllTriedLetters().Select(x => x.ToString()).ToArray());
+                        context.CurrentMessage = string.Format(GameContext.CurrentlyUsedLettersMessage, allCurrentlyGuessedLetters) + "\n" + string.Format(GameContext.NotRevealedLetterMessage, this.GuessLetter);
                         this.printer.PrintLine(context.CurrentMessage);
                         context.CurrentMistakes++;
                     }
                 }
                 else
                 {
-                    context.CurrentMessage = string.Format(GameContext.LetterHasBeenTriedMessage, this.GuessLetter);
+                    var allCurrentlyGuessedLetters = string.Join(", ", context.Word.GetAllTriedLetters().Select(x => x.ToString()).ToArray());
+                    context.CurrentMessage = string.Format(GameContext.CurrentlyUsedLettersMessage, allCurrentlyGuessedLetters) + "\n" + string.Format(GameContext.LetterHasBeenTriedMessage, this.GuessLetter);
                     this.printer.PrintLine(context.CurrentMessage);
                 }
             }

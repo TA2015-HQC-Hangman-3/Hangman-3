@@ -1,4 +1,5 @@
-﻿namespace Hangman.Logic.Contracts
+﻿using System.Collections.Generic;
+namespace Hangman.Logic.Contracts
 {
     public interface IWord
     {
@@ -15,5 +16,7 @@
         int GetNumberOfLettersThatAreGuessed(string letter);
 
         void GetNextUnknownLetterOfWord();
+
+        List<char> GetAllTriedLetters();
     }
 }
