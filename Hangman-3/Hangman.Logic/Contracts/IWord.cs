@@ -7,7 +7,7 @@ namespace Hangman.Logic.Contracts
 
         void PrintTheWord();
 
-        char[] GenerateUnknownWord();
+        char[] GenerateHiddenWord();
 
         bool IsWordGuessed();
 

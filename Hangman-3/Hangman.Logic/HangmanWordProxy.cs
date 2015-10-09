@@ -38,9 +38,9 @@
             this.Word.PrintTheWord();
         }
 
-        public char[] GenerateUnknownWord()
+        public char[] GenerateHiddenWord()
         {
-            return this.Word.GenerateUnknownWord();
+            return this.Word.GenerateHiddenWord();
         }
 
         public bool IsWordGuessed()

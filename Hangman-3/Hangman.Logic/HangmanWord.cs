@@ -17,13 +17,13 @@
         public HangmanWord(string chosenWord)
         {
             this.TheChosenWord = chosenWord;
-            this.UnknownWord = this.GenerateUnknownWord();
+            this.HiddenWord = this.GenerateHiddenWord();
             this.ListOfLettersTried = new List<char>();
         }
 
         public List<char> ListOfLettersTried { get; set; }
 
-        public char[] UnknownWord { get; set; }
+        public char[] HiddenWord { get; set; }
 
         public string TheChosenWord { get; set; }
 
@@ -43,31 +43,31 @@
         public void PrintTheWord()
         {
             Console.Write("The secret word is: ");
-            for (int i = 0; i < this.UnknownWord.Length; i++)
+            for (int i = 0; i < this.HiddenWord.Length; i++)
             {
-                Console.Write("{0} ", this.UnknownWord[i]);
+                Console.Write("{0} ", this.HiddenWord[i]);
             }
 
             Console.WriteLine();
         }
 
-        public char[] GenerateUnknownWord()
+        public char[] GenerateHiddenWord()
         {
             var lengthOfTheWord = this.TheChosenWord.Length;
-            var unknownWord = new char[lengthOfTheWord];
+            var hiddenWord = new char[lengthOfTheWord];
             for (int i = 0; i < lengthOfTheWord; i++)
             {
-                unknownWord[i] = '_';
+                hiddenWord[i] = '_';
             }
 
-            return unknownWord;
+            return hiddenWord;
         }
 
         public bool IsWordGuessed()
         {
-            for (int i = 0; i < this.UnknownWord.Length; i++)
+            for (int i = 0; i < this.HiddenWord.Length; i++)
             {
-                if (this.UnknownWord[i] == '_')
+                if (this.HiddenWord[i] == '_')
                 {
                     return false;
                 }
@@ -80,11 +80,11 @@
         {
             bool isLetterInTheWord = false;
             char enteredSymbol = char.Parse(letter);
-            for (int i = 0; i < this.UnknownWord.Length; i++)
+            for (int i = 0; i < this.HiddenWord.Length; i++)
             {
                 if (this.TheChosenWord[i] == enteredSymbol)
                 {
-                    this.UnknownWord[i] = enteredSymbol;
+                    this.HiddenWord[i] = enteredSymbol;
                     isLetterInTheWord = true;
                 }
             }
@@ -96,7 +96,7 @@
         {
             var lettersGuessed = 0;
             char enteredSymbol = char.Parse(letter);
-            for (int i = 0; i < this.UnknownWord.Length; i++)
+            for (int i = 0; i < this.HiddenWord.Length; i++)
             {
                 if (this.TheChosenWord[i] == enteredSymbol)
                 {
@@ -109,11 +109,11 @@
 
         public void GetNextUnknownLetterOfWord()
         {
-            for (int i = 0; i < this.UnknownWord.Length; i++)
+            for (int i = 0; i < this.HiddenWord.Length; i++)
             {
-                if (this.UnknownWord[i] == '_')
+                if (this.HiddenWord[i] == '_')
                 {
-                    this.UnknownWord[i] = this.TheChosenWord[i];
+                    this.HiddenWord[i] = this.TheChosenWord[i];
                     break;
                 }
             }
