@@ -5,9 +5,12 @@
     using Logic;
     using Hangman.Logic.Contracts;
 
-    public class SimpleRandomWordProvider : IWordProvider
+    public sealed class SimpleRandomWordProvider : IWordProvider
     {
         private static Random rand = new Random();
+
+        private static volatile SimpleRandomWordProvider randWordProviderInstance;
+        private static object syncLock = new object();
 
         private readonly string[] availableWords = 
                                                     {
@@ -22,6 +25,30 @@
                                                     "method",
                                                     "variable"
                                                     };
+
+        private SimpleRandomWordProvider()
+        {
+
+        }
+
+        public static SimpleRandomWordProvider Instance
+        {
+            get
+            {
+                if (randWordProviderInstance == null)
+                {
+                    lock (syncLock)
+                    {
+                        if (randWordProviderInstance == null)
+                        {
+                            randWordProviderInstance = new SimpleRandomWordProvider();
+                        }
+                    }
+                }
+
+                return randWordProviderInstance;
+            }
+        }
 
         public IWord GetWord()
         {

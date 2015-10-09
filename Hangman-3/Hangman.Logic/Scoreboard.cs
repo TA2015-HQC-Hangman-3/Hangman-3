@@ -95,7 +95,7 @@
             catch (FileNotFoundException ex)
             {
 
-                this.printer.Print(MessageForEmptyScoreboard);
+                this.printer.Print(MessageForEmptyScoreboard + " " + ex.Message);
             }
 
             this.printer.PrintLine();

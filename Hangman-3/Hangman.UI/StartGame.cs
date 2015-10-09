@@ -21,7 +21,6 @@
             kernel.Bind<IDataManager<Dictionary<string, int>>>().To<TextFileScoreboardDataManager<Dictionary<string, int>>>();
             kernel.Bind<IDataManager<SaveLoadManager>>().To<XmlGameStateManager<SaveLoadManager>>();
             kernel.Bind<ISorter>().To<SelectionSorter>();
-            kernel.Bind<IWordProvider>().To<SimpleRandomWordProvider>();
             kernel.Bind<ICommandInvoker>().To<HangmanCommandInvoker>();
 
             var printer = kernel.Get<IPrinter>();
@@ -30,7 +29,7 @@
             var gameStateManager = kernel.Get<IDataManager<SaveLoadManager>>();
             var commandFactory = new CommandFactory();
             var commandExecutioner = kernel.Get<ICommandInvoker>();
-            var wordProvider = kernel.Get<IWordProvider>();
+            var wordProvider = SimpleRandomWordProvider.Instance;
 
             var game = new HangmanGame(printer, sorter, scoresDataManager, gameStateManager, commandFactory, commandExecutioner, wordProvider);
             game.Run();

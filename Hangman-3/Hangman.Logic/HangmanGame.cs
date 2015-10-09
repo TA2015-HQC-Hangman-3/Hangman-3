@@ -23,7 +23,7 @@
         public HangmanGame()
         {
             this.printer = new ConsolePrinter();
-            this.context = new GameContext(new SimpleRandomWordProvider(), new Scoreboard(new ConsolePrinter(), new SelectionSorter(), new TextFileScoreboardDataManager<Dictionary<string, int>>()));
+            this.context = new GameContext(SimpleRandomWordProvider.Instance, new Scoreboard(new ConsolePrinter(), new SelectionSorter(), new TextFileScoreboardDataManager<Dictionary<string, int>>()));
             this.commandFactory = new CommandFactory();
             this.gameSaver = new SaveLoadManager(this.printer, new XmlGameStateManager<SaveLoadManager>());
             this.commandExecutioner = new HangmanCommandInvoker();
