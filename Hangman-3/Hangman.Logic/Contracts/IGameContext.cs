@@ -3,11 +3,6 @@
     using Hangman.Logic.Contracts;
     using Hangman.Logic.SaveLoad;
 
-    /// <summary>
-    /// Interface stating that a game context must have Word, Scoreboard,
-    /// Current Mistakes count, if it was cheated, if the game is running and the current message.
-    /// Also methods for: Load, Save and Reset.
-    /// </summary>
     public interface IGameContext
     {
         IWord Word { get; set; }

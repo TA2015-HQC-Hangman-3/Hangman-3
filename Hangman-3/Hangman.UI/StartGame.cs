@@ -1,21 +1,3 @@
-<<<<<<< HEAD
-﻿namespace Hangman.UI
-{
-    using Hangman.Logic;
-
-    /// <summary>
-    /// Entry point of the game.
-    /// </summary>
-    public class StartGame
-    {
-        public static void Main()
-        {
-            var game = HangmanGame.Instance;
-            game.Run();
-        }
-    }
-}
-=======
 ﻿namespace Hangman.UI
 {
     using System.Collections.Generic;
@@ -56,4 +38,3 @@
         }
     }
 }
->>>>>>> b6e5466bce575ebb4498be25c79f1bf7c40f1770

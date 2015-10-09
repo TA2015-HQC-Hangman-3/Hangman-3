@@ -5,20 +5,8 @@
 
     using Contracts;
 
-    /// <summary>
-    /// Class representing type Data Manager as Text File Scoreboard.
-    /// </summary>
-    /// <typeparam name="T">The type of the parameter is dictionary.</typeparam>
     public class TextFileScoreboardDataManager<T> : IDataManager<T> where T : Dictionary<string, int>
     {
-<<<<<<< HEAD
-        /// <summary>
-        /// Method for reading from file.
-        /// </summary>
-        /// <param name="filePath">The path to the file to be read from.</param>
-        /// <returns>Collection of type dictionary.</returns>
-        public T Read(string filePath)
-=======
         private const string DefaultScorePath = "../../../Hangman.Logic/files/scores.txt";
 
         private readonly string scoreFilePath;
@@ -34,7 +22,6 @@
         }
 
         public T Read()
->>>>>>> b6e5466bce575ebb4498be25c79f1bf7c40f1770
         {
             StreamReader scoresReader = new StreamReader(this.scoreFilePath);
             Dictionary<string, int> result = new Dictionary<string, int>();
@@ -82,16 +69,7 @@
             return (T)result;
         }
 
-<<<<<<< HEAD
-        /// <summary>
-        /// Method for writing in file.
-        /// </summary>
-        /// <param name="filePath">The path to the file.</param>
-        /// <param name="information">Collection containing the information to be written in dictionary.</param>
-        public void Write(string filePath, T information)
-=======
         public void Write(T information)
->>>>>>> b6e5466bce575ebb4498be25c79f1bf7c40f1770
         {
             StreamWriter scoreWriter = new StreamWriter(this.scoreFilePath, true);
 

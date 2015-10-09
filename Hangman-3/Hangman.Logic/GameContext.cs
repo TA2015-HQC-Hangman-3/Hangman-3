@@ -5,9 +5,6 @@
     using Hangman.Logic.SaveLoad;
     using Hangman.Logic.Contracts;
 
-    /// <summary>
-    /// Class representing the context of the game.
-    /// </summary>
     public class GameContext : IGameContext
     {
         public const string StartMessage = "Welcome to “Hangman” game. Please try to guess my secret word. \n" +
@@ -28,16 +25,7 @@
 
         private readonly IWordProvider randWordProvider;
 
-<<<<<<< HEAD
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GameContext"/> class.
-        /// </summary>
-        /// <param name="wordProvider">Accepts first parameter of type IRandomWordProvider specifying the word for this game context. </param>
-        /// <param name="scoreboard"> Second parameter from type Scoreboard to keep the score from this game context.</param>
-        public GameContext(IRandomWordProvider wordProvider, Scoreboard scoreboard)
-=======
         public GameContext(IWordProvider wordProvider, Scoreboard scoreboard)
->>>>>>> b6e5466bce575ebb4498be25c79f1bf7c40f1770
         {
             this.randWordProvider = wordProvider;
             this.Word = this.randWordProvider.GetWord();
@@ -60,9 +48,6 @@
 
         public string CurrentMessage { get; set; }
 
-        /// <summary>
-        /// Method for clearing game context and starting again.
-        /// </summary>
         public void Reset()
         {
             this.Word = this.randWordProvider.GetWord();
@@ -71,10 +56,6 @@
             this.HasCheated = false;
         }
 
-        /// <summary>
-        /// Method for saving the current game context.
-        /// </summary>
-        /// <returns>Object containing the information for the game context.</returns>
         public Memento Save()
         {
             return new Memento
@@ -86,10 +67,6 @@
             };
         }
 
-        /// <summary>
-        /// method for loading the game.
-        /// </summary>
-        /// <param name="gameState">The game state that must be loaded for the game.</param>
         public void Load(Memento gameState)
         {
             if (gameState == null)

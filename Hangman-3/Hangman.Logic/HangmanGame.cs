@@ -8,17 +8,9 @@
     using Hangman.Logic.DataManagers;
     using Hangman.Logic.SaveLoad;
     using Hangman.Logic.Sorters;
-<<<<<<< HEAD
-    
-    /// <summary>
-    /// Class containing the logic of the game.
-    /// </summary>
-    public class HangmanGame
-=======
     using Logic.WordProviders;
 
     public class HangmanGame : IGameEngine
->>>>>>> b6e5466bce575ebb4498be25c79f1bf7c40f1770
     {
         private const string NormalGameEndingCommandName = "finishGame";
         private const string CheaterGameEndingCommandName = "cheater";
@@ -28,16 +20,8 @@
         private readonly IPrinter printer;
         private ISaveLoadManager gameSaver;
         private ICommandInvoker commandExecutioner;
-<<<<<<< HEAD
-        
-        /// <summary>
-        /// Prevents a default instance of the <see cref="HangmanGame"/> class from being created.
-        /// </summary>
-        private HangmanGame()
-=======
 
         public HangmanGame()
->>>>>>> b6e5466bce575ebb4498be25c79f1bf7c40f1770
         {
             this.printer = new ConsolePrinter();
             this.context = new GameContext(SimpleRandomWordProvider.Instance, new Scoreboard(new ConsolePrinter(), new SelectionSorter(), new TextFileScoreboardDataManager<Dictionary<string, int>>()));
@@ -56,9 +40,6 @@
             this.commandExecutioner = new HangmanCommandInvoker();
         }
 
-        /// <summary>
-        /// Method for starting the game.
-        /// </summary>
         public void Run()
         {
             this.printer.PrintLine(this.context.CurrentMessage);
@@ -88,9 +69,6 @@
             }
         }
 
-        /// <summary>
-        /// Method for ending the game.
-        /// </summary>
         private void EndCurrentGame()
         {
             this.context.IsGameRunning = false;
@@ -113,10 +91,6 @@
             this.context.Reset();
         }
 
-        /// <summary>
-        /// Method for executing command in the game.
-        /// </summary>
-        /// <param name="commandName">Specifies which command should be executed.</param>
         private void ExecuteCommand(string commandName)
         {
             var command = this.commandFactory.GetCommand(commandName, this.printer, this.gameSaver);
