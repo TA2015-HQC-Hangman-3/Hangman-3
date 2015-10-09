@@ -1,7 +1,9 @@
 ﻿namespace Hangman.Tests.WordProviders
 {
+    using Logic.WordProviders;
     //using Extensions;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System;
     using System.IO;
     using System.Linq;
     using System.Xml.Linq;
@@ -33,8 +35,55 @@
         public void XmlWordProviderGetWord_ManyWordsInFileAndCalledTwice_ShouldReturnDifferentWords()
         {
             var path = GetFilePathForWordsCount(15);
+            var wordProvider = XmlWordProvider.Instance;
+            wordProvider.XmlWordsFilePath = path;
 
-            var b = 5;
+            var word1 = wordProvider.GetWord();
+            var word2 = wordProvider.GetWord();
+
+            Assert.AreNotEqual(word1, word2);
+        }
+
+        [TestMethod]
+        public void XmlWordProviderGetWord_OneWordsInFileAndCalledTwice_ShouldReturnTheSameWord()
+        {
+            var path = GetFilePathForWordsCount(1);
+            var wordProvider = XmlWordProvider.Instance;
+            wordProvider.XmlWordsFilePath = path;
+
+            var word1 = wordProvider.GetWord();
+            var word2 = wordProvider.GetWord();
+            
+            Assert.AreEqual(word1, word2);
+        }
+
+
+        [TestMethod]
+        public void XmlWordProviderGetWord_FourtyWordsInFileAndCalledTwice_ShouldReturnDifferentWords()
+        {
+            var path = GetFilePathForWordsCount(40);
+            var wordProvider = XmlWordProvider.Instance;
+            wordProvider.XmlWordsFilePath = path;
+
+            var word1 = wordProvider.GetWord();
+            var word2 = wordProvider.GetWord();
+            
+            Assert.AreNotEqual(word1, word2);
+        }
+
+        [TestMethod]
+        public void XmlWordProviderGetWord_RandomcountOfWordsInFileAndCalledTwice_ShouldReturnDifferentWords()
+        {
+            Random random = new Random();
+            var randomNumber = random.Next(10, 1000);
+            var path = GetFilePathForWordsCount(randomNumber);
+            var wordProvider = XmlWordProvider.Instance;
+            wordProvider.XmlWordsFilePath = path;
+
+            var word1 = wordProvider.GetWord();
+            var word2 = wordProvider.GetWord();
+
+            Assert.AreNotEqual(word1, word2);
         }
     }
 }

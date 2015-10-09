@@ -94,5 +94,20 @@
         {
             return this.Word.ListOfLettersTried;
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            HangmanWordProxy word = obj as HangmanWordProxy;
+            if (word == null)
+            {
+                return false;
+            }
+            return this.Word.Equals(word.Word);
+        }
     }
 }

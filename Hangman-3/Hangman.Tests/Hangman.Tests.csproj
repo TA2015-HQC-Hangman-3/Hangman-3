@@ -66,6 +66,7 @@
     <Compile Include="ScoreboardTests.cs" />
     <Compile Include="Sorters\ComparerSorterTests.cs" />
     <Compile Include="Sorters\SelectionSorterTests.cs" />
+    <Compile Include="WordProviders\SimpleRandomWordProviderTests.cs" />
     <Compile Include="WordProviders\XmlWordProviderTests.cs" />
   </ItemGroup>
   <ItemGroup>

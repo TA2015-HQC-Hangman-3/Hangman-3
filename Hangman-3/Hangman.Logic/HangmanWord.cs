@@ -123,5 +123,20 @@
         {
             return this.ListOfLettersTried;
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            HangmanWord word = obj as HangmanWord;
+            if (word == null)
+            {
+                return false;
+            }
+
+            return this.TheChosenWord == word.TheChosenWord;
+        }
     }
 }
