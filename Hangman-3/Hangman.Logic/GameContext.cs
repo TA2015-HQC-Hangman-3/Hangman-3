@@ -3,6 +3,7 @@
     using System;
 
     using Hangman.Logic.SaveLoad;
+    using Hangman.Logic.Contracts;
 
     /// <summary>
     /// Class representing the context of the game.
@@ -23,15 +24,20 @@
         public const string NotRevealedLetterMessage = "Sorry! There are no unrevealed letters \"{0}\".";
         public const string LetterHasBeenTriedMessage = "Sorry! You have tried entering \"{0}\" before!";
         public const string IncorrectGuessOrCommandMessage = "Incorrect guess or command!";
+        public const string CurrentlyUsedLettersMessage = "Currently used letters: {0}";
 
-        private readonly IRandomWordProvider randWordProvider;
+        private readonly IWordProvider randWordProvider;
 
+<<<<<<< HEAD
         /// <summary>
         /// Initializes a new instance of the <see cref="GameContext"/> class.
         /// </summary>
         /// <param name="wordProvider">Accepts first parameter of type IRandomWordProvider specifying the word for this game context. </param>
         /// <param name="scoreboard"> Second parameter from type Scoreboard to keep the score from this game context.</param>
         public GameContext(IRandomWordProvider wordProvider, Scoreboard scoreboard)
+=======
+        public GameContext(IWordProvider wordProvider, Scoreboard scoreboard)
+>>>>>>> b6e5466bce575ebb4498be25c79f1bf7c40f1770
         {
             this.randWordProvider = wordProvider;
             this.Word = this.randWordProvider.GetWord();
@@ -42,7 +48,7 @@
             this.IsGameRunning = true;
         }
 
-        public HangmanWord Word { get; set; }
+        public IWord Word { get; set; }
 
         public Scoreboard Scoreboard { get; set; }
 
@@ -73,7 +79,7 @@
         {
             return new Memento
             {
-                Word = this.Word,
+                Word = this.Word as HangmanWordProxy,
                 CurrentMistakes = this.CurrentMistakes,
                 HasCheated = this.HasCheated,
                 IsGameRunning = this.IsGameRunning

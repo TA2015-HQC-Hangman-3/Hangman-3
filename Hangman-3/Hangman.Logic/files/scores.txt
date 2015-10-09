@@ -1,19 +1,8 @@
-dse 6
-TYTY 2
-dedede 4
-tre 0
-tito 10
-toto 3
-sdsd 0
-top 10
-Pesh 2
-dssd 1
-shmenti 2
-john hohn 1
-pesho brat 1
-sososo 4
-sdasdsad 3
-sososos 0
-dsadsad 3
-chiocho 3
-stamen 7
+gogogo 1
+momomo 2
+hohoho 1
+Cookie 1
+Cookie2 0
+ 0
+E 1
+restart 2

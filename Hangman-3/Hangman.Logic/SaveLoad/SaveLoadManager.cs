@@ -11,9 +11,7 @@
     /// Class the saving of the game state.
     /// </summary>
     public class SaveLoadManager : ISaveLoadManager
-    {
-        private const string SavePath = @"..\..\..\Hangman.Logic\files\savedGameState.xml";
-
+    { 
         private IPrinter printer;
         private IDataManager<SaveLoadManager> gameStateInfoManager;
 
@@ -27,6 +25,7 @@
             this.gameStateInfoManager = new XmlGameStateManager<SaveLoadManager>();
         }
 
+<<<<<<< HEAD
         /// <summary>
         /// Initializes a new instance of the <see cref="SaveLoadManager"/> class.
         /// </summary>
@@ -42,6 +41,8 @@
         /// </summary>
         /// <param name="printer">Accepts parameter of type IPrinter to show message if the game was saved.</param>
         /// <param name="dataManager">Accepts parameter of type IDataManager to keep information about the current game state.</param>
+=======
+>>>>>>> b6e5466bce575ebb4498be25c79f1bf7c40f1770
         public SaveLoadManager(IPrinter printer, IDataManager<SaveLoadManager> dataManager)
         {
             this.printer = printer;
@@ -52,14 +53,14 @@
 
         public void SaveGame()
         {
-            this.gameStateInfoManager.Write(SavePath, this);
+            this.gameStateInfoManager.Write(this);
 
             this.printer.PrintLine("Game successfully saved!");
         }
 
         public void LoadGame()
         {
-            SaveLoadManager game = this.gameStateInfoManager.Read(SavePath);
+            SaveLoadManager game = this.gameStateInfoManager.Read();
 
             if (game == null)
             {

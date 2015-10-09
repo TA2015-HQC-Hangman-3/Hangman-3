@@ -6,8 +6,8 @@
     /// <typeparam name="T">Represents the type of file for reading/writing.</typeparam>
     public interface IDataManager<T>
     {
-        T Read(string filePath);
+        T Read();
 
-        void Write(string filePath, T information);
+        void Write(T information);
     }
 }

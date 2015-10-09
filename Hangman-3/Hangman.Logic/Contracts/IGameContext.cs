@@ -1,5 +1,6 @@
 ﻿namespace Hangman.Logic
 {
+    using Hangman.Logic.Contracts;
     using Hangman.Logic.SaveLoad;
 
     /// <summary>
@@ -9,7 +10,7 @@
     /// </summary>
     public interface IGameContext
     {
-        HangmanWord Word { get; set; }
+        IWord Word { get; set; }
 
         Scoreboard Scoreboard { get; set; }
 

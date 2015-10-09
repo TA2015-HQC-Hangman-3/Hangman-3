@@ -17,11 +17,11 @@
         public const int IndexOfTheLastPersonShownOnTheScoreboard = 4;
         public const string MessageWhenNameAlreadyExistsInTheScoreBoard = "This name already exists in the Scoreboard! Type another: ";
         public const string MessageForEmptyScoreboard = "Scoreboard is empty!";
-        public const string DefaultScoreFilePath = "../../../Hangman.Logic/files/scores.txt";
 
         private readonly IPrinter printer;
         private ISorter sorter;
         private IDataManager<Dictionary<string, int>> scoresDataManager;
+<<<<<<< HEAD
         private string scoreFilePath;
 
         /// <summary>
@@ -43,11 +43,14 @@
         /// <param name="scoresDataManager">Accepts parameter scores data manager to read the scores.</param>
         /// <param name="scoreFilePath">Accepts parameter score file path to show from where the score should be read.</param>
         public Scoreboard(IPrinter printer, ISorter sorter, IDataManager<Dictionary<string, int>> scoresDataManager, string scoreFilePath)
+=======
+        
+        public Scoreboard(IPrinter printer, ISorter sorter, IDataManager<Dictionary<string, int>> scoresDataManager)
+>>>>>>> b6e5466bce575ebb4498be25c79f1bf7c40f1770
         {
             this.Score = new Dictionary<string, int>();
             this.printer = printer;
             this.sorter = sorter;
-            this.scoreFilePath = scoreFilePath;
             this.scoresDataManager = scoresDataManager;
         }
 
@@ -63,7 +66,7 @@
                 name = Console.ReadLine();
                 this.Score.Add(name, mistakes);
 
-                var scores = this.scoresDataManager.Read(this.scoreFilePath);
+                var scores = this.scoresDataManager.Read();
                 foreach (var item in scores)
                 {
                     if (item.Key == name)
@@ -76,41 +79,50 @@
             }
             while (hasDouble);
 
-            this.scoresDataManager.Write(this.scoreFilePath, this.Score);
+            this.scoresDataManager.Write(this.Score);
             this.Score.Remove(name);
         }
 
         public void PrintScore()
         {
-            var scores = this.scoresDataManager.Read(this.scoreFilePath);
-
-            if (scores.Count == 0)
+            Dictionary<string, int> scores;
+            try
             {
-                this.printer.PrintLine(MessageForEmptyScoreboard);
-                return;
-            }
+                scores = this.scoresDataManager.Read();
 
-            // List<KeyValuePair<string, int>> listOfScores = scores.ToList();
-            // List<KeyValuePair<string, int>> listOfScores = new List<KeyValuePair<string, int>>();
-            // foreach (var item in scores)
-            // {
-            // KeyValuePair<string, int> current = new KeyValuePair<string, int>(item.Key, item.Value);
-            // listOfScores.Add(current);
-            // }
-            var sortedScores = this.sorter.Sort(scores);
-
-            this.printer.PrintLine("Scoreboard:");
-            var index = 0;
-            foreach (var score in sortedScores)
-            {
-                var scoreEntry = string.Format("{0}. {1} --> {2} mistake", index + 1, score.Key, score.Value);
-                this.printer.PrintLine(scoreEntry);
-                if (index == IndexOfTheLastPersonShownOnTheScoreboard)
+                if (scores.Count == 0)
                 {
-                    break;
+                    this.printer.PrintLine(MessageForEmptyScoreboard);
+                    return;
                 }
 
-                index += 1;
+                // List<KeyValuePair<string, int>> listOfScores = scores.ToList();
+                // List<KeyValuePair<string, int>> listOfScores = new List<KeyValuePair<string, int>>();
+                // foreach (var item in scores)
+                // {
+                // KeyValuePair<string, int> current = new KeyValuePair<string, int>(item.Key, item.Value);
+                // listOfScores.Add(current);
+                // }
+                var sortedScores = this.sorter.Sort(scores);
+
+                this.printer.PrintLine("Scoreboard:");
+                var index = 0;
+                foreach (var score in sortedScores)
+                {
+                    var scoreEntry = string.Format("{0}. {1} --> {2} mistake", index + 1, score.Key, score.Value);
+                    this.printer.PrintLine(scoreEntry);
+                    if (index == IndexOfTheLastPersonShownOnTheScoreboard)
+                    {
+                        break;
+                    }
+
+                    index += 1;
+                }
+            }
+            catch (FileNotFoundException ex)
+            {
+
+                this.printer.Print(MessageForEmptyScoreboard + " " + ex.Message);
             }
 
             this.printer.PrintLine();
