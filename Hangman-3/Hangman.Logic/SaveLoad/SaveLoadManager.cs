@@ -19,12 +19,6 @@
             this.gameStateInfoManager = new XmlGameStateManager<SaveLoadManager>();
         }
 
-        public SaveLoadManager(IPrinter printer)
-        {
-            this.printer = printer;
-            this.gameStateInfoManager = new XmlGameStateManager<SaveLoadManager>();
-        }
-
         public SaveLoadManager(IPrinter printer, IDataManager<SaveLoadManager> dataManager)
         {
             this.printer = printer;

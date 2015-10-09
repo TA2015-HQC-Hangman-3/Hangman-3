@@ -2,7 +2,7 @@
 {
     using Hangman.Logic.Contracts;
 
-    public interface IRandomWordProvider
+    public interface IWordProvider
     {
         IWord GetWord();
     }

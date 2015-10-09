@@ -9,50 +9,34 @@
     using Hangman.Logic.SaveLoad;
     using Hangman.Logic.Sorters;
 
-    public class HangmanGame
+    public class HangmanGame : IGameEngine
     {
         private const string NormalGameEndingCommandName = "finishGame";
         private const string CheaterGameEndingCommandName = "cheater";
-
-        private static volatile HangmanGame hangmanGameInstance;
-        private static object syncLock = new object();
-
-        private readonly GameContext context;
+        
+        private readonly IGameContext context;
         private readonly CommandFactory commandFactory;
         private readonly IPrinter printer;
-        private ISorter sorter;
-        private IDataManager<Dictionary<string, int>> scoresDataManager;
         private ISaveLoadManager gameSaver;
         private ICommandInvoker commandExecutioner;
 
-        private HangmanGame()
+        public HangmanGame()
         {
             this.printer = new ConsolePrinter();
-            this.sorter = new SelectionSorter();
-            this.scoresDataManager = new TextFileScoreboardDataManager<Dictionary<string, int>>();
-            this.context = new GameContext(new SimpleRandomWordProvider(), new Scoreboard(this.printer, this.sorter, this.scoresDataManager));
+            this.context = new GameContext(new SimpleRandomWordProvider(), new Scoreboard(new ConsolePrinter(), new SelectionSorter(), new TextFileScoreboardDataManager<Dictionary<string, int>>()));
             this.commandFactory = new CommandFactory();
-            this.gameSaver = new SaveLoadManager(this.printer);
+            this.gameSaver = new SaveLoadManager(this.printer, new XmlGameStateManager<SaveLoadManager>());
             this.commandExecutioner = new HangmanCommandInvoker();
         }
 
-        public static HangmanGame Instance
+        public HangmanGame(IPrinter printer, ISorter sorter, IDataManager<Dictionary<string, int>> scoresDataManager, IDataManager<SaveLoadManager> gameStateManager,
+                           CommandFactory commandFactory, ICommandInvoker commandExecutioner, IWordProvider wordProvider)
         {
-            get
-            {
-                if (hangmanGameInstance == null)
-                {
-                    lock (syncLock)
-                    {
-                        if (hangmanGameInstance == null)
-                        {
-                            hangmanGameInstance = new HangmanGame();
-                        }
-                    }
-                }
-
-                return hangmanGameInstance;
-            }
+            this.printer = printer;
+            this.context = new GameContext(wordProvider, new Scoreboard(printer, sorter, scoresDataManager));
+            this.commandFactory = new CommandFactory();
+            this.gameSaver = new SaveLoadManager(this.printer, gameStateManager);
+            this.commandExecutioner = new HangmanCommandInvoker();
         }
 
         public void Run()

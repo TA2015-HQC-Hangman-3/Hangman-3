@@ -22,9 +22,9 @@
         public const string LetterHasBeenTriedMessage = "Sorry! You have tried entering \"{0}\" before!";
         public const string IncorrectGuessOrCommandMessage = "Incorrect guess or command!";
 
-        private readonly IRandomWordProvider randWordProvider;
+        private readonly IWordProvider randWordProvider;
 
-        public GameContext(IRandomWordProvider wordProvider, Scoreboard scoreboard)
+        public GameContext(IWordProvider wordProvider, Scoreboard scoreboard)
         {
             this.randWordProvider = wordProvider;
             this.Word = this.randWordProvider.GetWord();

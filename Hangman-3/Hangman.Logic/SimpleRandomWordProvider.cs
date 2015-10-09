@@ -5,7 +5,7 @@
     using Logic;
     using Hangman.Logic.Contracts;
 
-    public class SimpleRandomWordProvider : IRandomWordProvider
+    public class SimpleRandomWordProvider : IWordProvider
     {
         private static Random rand = new Random();
 
