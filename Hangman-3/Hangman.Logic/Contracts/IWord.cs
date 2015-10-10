@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
-namespace Hangman.Logic.Contracts
+﻿namespace Hangman.Logic.Contracts
 {
+    using System.Collections.Generic;
+
     public interface IWord
     {
         bool IsLetterGuessedForFirstTime(string letter);

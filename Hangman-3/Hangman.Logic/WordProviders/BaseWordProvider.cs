@@ -1,18 +1,25 @@
-﻿using Hangman.Logic.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Hangman.Logic.WordProviders
+﻿namespace Hangman.Logic.WordProviders
 {
-    public abstract class BaseWordProvider:IWordProvider
-    {
-        protected IEnumerable<string> AvailableWords {get; set;}
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Hangman.Logic.Contracts;
 
+    /// <summary>
+    /// Represents word provider and contains method for getting a word.
+    /// </summary>
+    public abstract class BaseWordProvider : IWordProvider
+    {
         private static Random rand = new Random();
 
+        protected IEnumerable<string> AvailableWords { get; set; }
+
+        /// <summary>
+        /// Gets a word.
+        /// </summary>
+        /// <returns>A word of type IWord</returns>
         public IWord GetWord()
         {
             var index = rand.Next(0, this.AvailableWords.Count());

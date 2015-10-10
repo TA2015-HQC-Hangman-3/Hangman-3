@@ -1,5 +1,8 @@
 ﻿namespace Hangman.Logic.SaveLoad
 {
+    /// <summary>
+    /// Provides a state of the game.
+    /// </summary>
     public class Memento
     {
         public HangmanWordProxy Word { get; set; }

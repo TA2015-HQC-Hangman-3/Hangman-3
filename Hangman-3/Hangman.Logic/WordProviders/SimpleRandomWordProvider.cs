@@ -1,10 +1,12 @@
 ﻿namespace Hangman.Logic.WordProviders
 {
     using System;
-
-    using Logic;
     using Hangman.Logic.Contracts;
-
+    using Logic;
+    
+    /// <summary>
+    /// Represents random word provider.
+    /// </summary>
     public sealed class SimpleRandomWordProvider : BaseWordProvider
     {
         private static volatile SimpleRandomWordProvider randWordProviderInstance;
@@ -29,6 +31,9 @@
             this.AvailableWords = this.availableWords;
         }
 
+        /// <summary>
+        /// Gets an instance of random word provider. Uses lazy loading. 
+        /// </summary>
         public static SimpleRandomWordProvider Instance
         {
             get

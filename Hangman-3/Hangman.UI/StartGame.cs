@@ -1,7 +1,6 @@
 ﻿namespace Hangman.UI
 {
     using System.Collections.Generic;
-
     using Hangman;
     using Hangman.Logic;
     using Hangman.Logic.Commands;
@@ -9,9 +8,12 @@
     using Hangman.Logic.DataManagers;
     using Hangman.Logic.SaveLoad;
     using Hangman.Logic.Sorters;
-    using Ninject;
     using Logic.WordProviders;
+    using Ninject;
 
+    /// <summary>
+    /// Entry point of the game.
+    /// </summary>
     public class StartGame
     {
         public static void Main()
@@ -30,7 +32,7 @@
             var gameStateManager = kernel.Get<IDataManager<SaveLoadManager>>();
             var commandFactory = new CommandFactory();
             var commandExecutioner = kernel.Get<ICommandInvoker>();
-            //var wordProvider = SimpleRandomWordProvider.Instance;
+            // var wordProvider = SimpleRandomWordProvider.Instance;
             var wordProvider = XmlWordProvider.Instance;
 
             var game = new HangmanGame(printer, sorter, scoresDataManager, gameStateManager, commandFactory, commandExecutioner, wordProvider);

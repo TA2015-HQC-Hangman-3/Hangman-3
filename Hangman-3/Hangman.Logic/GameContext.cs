@@ -1,10 +1,12 @@
 ﻿namespace Hangman.Logic
 {
     using System;
-
-    using Hangman.Logic.SaveLoad;
     using Hangman.Logic.Contracts;
+    using Hangman.Logic.SaveLoad;
 
+    /// <summary>
+    /// Represents the information available for the current state o fteh game.
+    /// </summary>
     public class GameContext : IGameContext
     {
         public const string StartMessage = "Welcome to “Hangman” game. Please try to guess my secret word. \n" +
@@ -25,6 +27,11 @@
 
         private readonly IWordProvider randWordProvider;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GameContext"/> class.
+        /// </summary>
+        /// <param name="wordProvider">The object that will provide the word.</param>
+        /// <param name="scoreboard">The scoreboard where the result will be kept.</param>
         public GameContext(IWordProvider wordProvider, Scoreboard scoreboard)
         {
             this.randWordProvider = wordProvider;
@@ -48,6 +55,9 @@
 
         public string CurrentMessage { get; set; }
 
+        /// <summary>
+        /// Start from the beginning.
+        /// </summary>
         public void Reset()
         {
             this.Word = this.randWordProvider.GetWord();
@@ -56,6 +66,10 @@
             this.HasCheated = false;
         }
 
+        /// <summary>
+        /// Save the current situation.
+        /// </summary>
+        /// <returns>An object containing information about the current state.</returns>
         public Memento Save()
         {
             return new Memento
@@ -67,6 +81,10 @@
             };
         }
 
+        /// <summary>
+        /// Loads the game from the saved state.
+        /// </summary>
+        /// <param name="gameState">Represents the saved state.</param>
         public void Load(Memento gameState)
         {
             if (gameState == null)

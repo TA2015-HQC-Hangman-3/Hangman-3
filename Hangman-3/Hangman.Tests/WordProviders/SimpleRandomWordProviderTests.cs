@@ -1,13 +1,13 @@
-﻿using Hangman.Logic.WordProviders;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Hangman.Tests.WordProviders
+﻿namespace Hangman.Tests.WordProviders
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Hangman.Logic.WordProviders;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class SimpleRandomWordProviderTests
     {

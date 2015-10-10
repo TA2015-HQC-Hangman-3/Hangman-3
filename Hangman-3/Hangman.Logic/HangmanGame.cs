@@ -10,6 +10,9 @@
     using Hangman.Logic.Sorters;
     using Logic.WordProviders;
 
+    /// <summary>
+    /// Represents the game engine for Hangman game.
+    /// </summary>
     public class HangmanGame : IGameEngine
     {
         private const string NormalGameEndingCommandName = "finishGame";
@@ -21,6 +24,10 @@
         private ISaveLoadManager gameSaver;
         private ICommandInvoker commandExecutioner;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HangmanGame"/> class.
+        /// Provides methods for running the game, ending the game and executing commands.
+        /// </summary>
         public HangmanGame()
         {
             this.printer = new ConsolePrinter();
@@ -30,6 +37,17 @@
             this.commandExecutioner = new HangmanCommandInvoker();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HangmanGame"/> class.
+        /// Provides methods for running the game, ending the game and executing commands.
+        /// </summary>
+        /// <param name="printer">The object used to show messages.</param>
+        /// <param name="sorter">The object used to sort scores.</param>
+        /// <param name="scoresDataManager">The object from which scores are read and written in.</param>
+        /// <param name="gameStateManager">The object used to save the current game state.</param>
+        /// <param name="commandFactory">The object used to deal with commands needed.</param>
+        /// <param name="commandExecutioner">The object used for the execution of commands.</param>
+        /// <param name="wordProvider">The object that provides the word for the current game.</param>
         public HangmanGame(IPrinter printer, ISorter sorter, IDataManager<Dictionary<string, int>> scoresDataManager, IDataManager<SaveLoadManager> gameStateManager,
                            CommandFactory commandFactory, ICommandInvoker commandExecutioner, IWordProvider wordProvider)
         {
@@ -40,6 +58,9 @@
             this.commandExecutioner = new HangmanCommandInvoker();
         }
 
+        /// <summary>
+        /// Represents the initialization of the game.
+        /// </summary>
         public void Run()
         {
             this.printer.PrintLine(this.context.CurrentMessage);
@@ -69,6 +90,9 @@
             }
         }
 
+        /// <summary>
+        /// Represents the ending of the current game.
+        /// </summary>
         private void EndCurrentGame()
         {
             this.context.IsGameRunning = false;
@@ -91,6 +115,10 @@
             this.context.Reset();
         }
 
+        /// <summary>
+        /// Represents the execution of commands in the game.
+        /// </summary>
+        /// <param name="commandName"></param>
         private void ExecuteCommand(string commandName)
         {
             var command = this.commandFactory.GetCommand(commandName, this.printer, this.gameSaver);

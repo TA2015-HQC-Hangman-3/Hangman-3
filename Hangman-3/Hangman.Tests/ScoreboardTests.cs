@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-namespace Hangman.Tests
+﻿namespace Hangman.Tests
 {
     using System;
     using System.Collections.Generic;

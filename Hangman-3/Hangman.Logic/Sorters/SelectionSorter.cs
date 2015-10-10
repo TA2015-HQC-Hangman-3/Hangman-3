@@ -3,8 +3,16 @@
     using System.Collections.Generic;
     using System.Linq;
 
+    /// <summary>
+    /// Arranging by selection, provides method for sorting.
+    /// </summary>
     public class SelectionSorter : ISorter
     {
+        /// <summary>
+        /// Sorting by numeric values.
+        /// </summary>
+        /// <param name="scores">The scores to be sorted.</param>
+        /// <returns>The sorted collection.<</returns>
         public IEnumerable<KeyValuePair<string, int>> Sort(IEnumerable<KeyValuePair<string, int>> scores)
         {
             var scoresToSort = scores.ToList();

@@ -5,22 +5,37 @@
 
     using Contracts;
 
+    /// <summary>
+    /// Implements the transfer of information about the game state from and to text file.
+    /// </summary>
+    /// <typeparam name="T">The type of object that deals with saving and loading the game.</typeparam>
     public class TextFileScoreboardDataManager<T> : IDataManager<T> where T : Dictionary<string, int>
     {
         private const string DefaultScorePath = "../../../Hangman.Logic/files/scores.txt";
 
         private readonly string scoreFilePath;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TextFileScoreboardDataManager{T}"/> class.
+        /// </summary>
         public TextFileScoreboardDataManager()
         {
             this.scoreFilePath = DefaultScorePath;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TextFileScoreboardDataManager{T}"/> class.
+        /// </summary>
+        /// <param name="filePath">Specifies the path to the text file.</param>
         public TextFileScoreboardDataManager(string filePath)
         {
             this.scoreFilePath = filePath;
         }
 
+        /// <summary>
+        /// Implements the reading from the file.
+        /// </summary>
+        /// <returns>Object of the specified type.</returns>
         public T Read()
         {
             StreamReader scoresReader = new StreamReader(this.scoreFilePath);
@@ -69,6 +84,10 @@
             return (T)result;
         }
 
+        /// <summary>
+        /// Implements the writing in the text file.
+        /// </summary>
+        /// <param name="information">Specifies the information written in the file.</param>
         public void Write(T information)
         {
             StreamWriter scoreWriter = new StreamWriter(this.scoreFilePath, true);

@@ -1,9 +1,8 @@
 ﻿namespace Hangman.Tests
 {
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-
     using System;
     using System.IO;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
     public class ConsolePrinterTests
@@ -14,16 +13,16 @@
         [TestInitialize]
         public void BeforeEachTest()
         {
-            consoleOldOutput = Console.Out;
+            this.consoleOldOutput = Console.Out;
 
-            stringWriter = new StringWriter();
-            Console.SetOut(stringWriter);
+            this.stringWriter = new StringWriter();
+            Console.SetOut(this.stringWriter);
         }
 
         [TestCleanup]
         public void AfterEachTest()
         {
-            Console.SetOut(consoleOldOutput);
+            Console.SetOut(this.consoleOldOutput);
         }
 
         [TestMethod]
@@ -39,7 +38,7 @@
 
             //assert
 
-            var actual = stringWriter.ToString();
+            var actual = this.stringWriter.ToString();
             var expected = text;
 
             Assert.AreEqual(expected, actual);
@@ -58,7 +57,7 @@
 
             //assert
 
-            var actual = stringWriter.ToString();
+            var actual = this.stringWriter.ToString();
             var expected = text;
 
             Assert.AreEqual(expected, actual);
@@ -77,12 +76,11 @@
 
             //assert
 
-            var actual = stringWriter.ToString();
+            var actual = this.stringWriter.ToString();
             var expected = string.Empty;
 
             Assert.AreEqual(expected, actual);
         }
-
 
         [TestMethod]
         public void ConsolePrinterPrintLine_WhenAStringIsPassed_ShouldPrintTheStringWithNewLine()
@@ -97,7 +95,7 @@
 
             //assert
 
-            var actual = stringWriter.ToString();
+            var actual = this.stringWriter.ToString();
             var expected = text + Environment.NewLine;
 
             Assert.AreEqual(expected, actual);
@@ -115,7 +113,7 @@
 
             //assert
 
-            var actual = stringWriter.ToString();
+            var actual = this.stringWriter.ToString();
             var expected = Environment.NewLine;
 
             Assert.AreEqual(expected, actual);
@@ -137,7 +135,7 @@
 
             //assert
 
-            var actual = stringWriter.ToString();
+            var actual = this.stringWriter.ToString();
             var expected = string.Empty;
 
             Assert.AreEqual(expected, actual);

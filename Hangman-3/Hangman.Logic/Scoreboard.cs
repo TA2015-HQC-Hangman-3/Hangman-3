@@ -4,11 +4,13 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-
     using Hangman.Logic;
     using Hangman.Logic.Contracts;
     using Hangman.Logic.DataManagers;
 
+    /// <summary>
+    /// Represents the scoreboard of the game.
+    /// </summary>
     public class Scoreboard
     {
         public const int IndexOfTheLastPersonShownOnTheScoreboard = 4;
@@ -19,6 +21,12 @@
         private ISorter sorter;
         private IDataManager<Dictionary<string, int>> scoresDataManager;
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Scoreboard"/> class.
+        /// </summary>
+        /// <param name="printer">The object used to show messages.</</param>
+        /// <param name="sorter">The object used to sort scores.</param>
+        /// <param name="scoresDataManager">The object from which scores are read and written in.</param>
         public Scoreboard(IPrinter printer, ISorter sorter, IDataManager<Dictionary<string, int>> scoresDataManager)
         {
             this.Score = new Dictionary<string, int>();
@@ -29,6 +37,10 @@
 
         public Dictionary<string, int> Score { get; set; }
 
+        /// <summary>
+        /// Implementation of adding score.
+        /// </summary>
+        /// <param name="mistakes">The number of mistakes done.</param>
         public void AddScore(int mistakes)
         {
             string name = string.Empty;
@@ -56,6 +68,9 @@
             this.Score.Remove(name);
         }
 
+        /// <summary>
+        /// Implementation of score printing.
+        /// </summary>
         public void PrintScore()
         {
             Dictionary<string, int> scores;
@@ -94,7 +109,6 @@
             }
             catch (FileNotFoundException ex)
             {
-
                 this.printer.Print(MessageForEmptyScoreboard + " " + ex.Message);
             }
 
