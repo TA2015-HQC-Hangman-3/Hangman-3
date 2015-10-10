@@ -1,0 +1,55 @@
+.tile {
+	width: 25%;
+	display: inline-block;
+}
+
+.tile h6 {
+	font-size: 0.7em;
+	margin: 0;
+	margin-top: -4%;
+}
+
+.tile img {
+	max-height: 180px;
+}
+
+.controls .navigate-left {
+	border-right-color: #777 !important;
+}
+
+.controls .navigate-right {
+	border-left-color: #777 !important;
+}
+
+.controls .navigate-up {
+	border-bottom-color: #777 !important;
+}
+
+.controls .navigate-down {
+	border-top-color: #777 !important;
+}
+
+.controls .navigate-left .enabled {
+	border-right-color: #777 !important;
+}
+
+.controls .navigate-right .enabled {
+	border-left-color: #777 !important;
+}
+
+.controls .navigate-up .enabled {
+	border-bottom-color: #777 !important;
+}
+
+.controls .navigate-down .enabled {
+	border-top-color: #777 !important;
+}
+
+.progress span {
+	background: #777 !important;
+}
+
+::selection {
+	color: white;
+	background: #777;
+}
