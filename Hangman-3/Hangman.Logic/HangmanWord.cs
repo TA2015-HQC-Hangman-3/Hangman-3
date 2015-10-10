@@ -12,6 +12,7 @@
     {
         public const int LowerBoundaryFromTheAsciiTable = 97;
         public const int UpperBoundaryFromTheAsciiTable = 122;
+        private string theChosenWord;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HangmanWord"/> class.
@@ -35,7 +36,21 @@
 
         public char[] HiddenWord { get; set; }
 
-        public string TheChosenWord { get; set; }
+        public string TheChosenWord
+        {
+            get
+            {
+                return this.theChosenWord;
+            }
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException("Invalid value for word");
+                }
+                this.theChosenWord = value;
+            }
+        }
 
         /// <summary>
         /// Checks if the letter is guessed for the first time.
