@@ -10,8 +10,6 @@
     /// </summary>
     public class HangmanWord : IWord
     {
-        public const int LowerBoundaryFromTheAsciiTable = 97;
-        public const int UpperBoundaryFromTheAsciiTable = 122;
         private string theChosenWord;
 
         /// <summary>
