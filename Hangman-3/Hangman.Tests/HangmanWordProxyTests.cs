@@ -6,6 +6,7 @@
     [TestClass]
     public class HangmanWordProxyTests
     {
+
         [TestMethod]
         public void HangmanWordProxy_IsValidLetter_ShouldReturnFalseWhenInvalidLetterIsPassed()
         {
@@ -25,6 +26,18 @@
             PrivateObject hangmanWordProxy = new PrivateObject(typeof(Logic.HangmanWordProxy));
 
             bool actual = Convert.ToBoolean(hangmanWordProxy.Invoke("IsValidLetter", letter));
+            bool expected = true;
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void HangmanWordProxy_IsLetterGuessedForFirstTime_ShouldReturnTrueWhenSingleLetterIsPassed()
+        {
+            var letter = "a";
+            var hangmanWordProxy = new Logic.HangmanWordProxy(letter);
+
+            bool actual = hangmanWordProxy.IsLetterGuessedForFirstTime(letter);
             bool expected = true;
 
             Assert.AreEqual(expected, actual);
