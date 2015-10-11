@@ -4,6 +4,7 @@
     using System.Collections.Generic;
 
     using Logic.Contracts;
+    using System.Linq;
 
     /// <summary>
     /// Representing the words used in Hangman game.
@@ -55,7 +56,7 @@
         /// </summary>
         /// <param name="letter">The letter to be checked.</param>
         /// <returns>True, if the letter was guessed and false, if it was not.</returns>
-        public bool IsLetterGuessedForFirstTime (string letter)
+        public bool IsLetterGuessedForFirstTime(string letter)
         {
             char enteredLetter = Convert.ToChar(letter);
             if (this.ListOfLettersTried.Contains(enteredLetter))
@@ -100,15 +101,7 @@
         /// <returns>True, if the word was guessed and false, if it was not.</returns>
         public bool IsWordGuessed()
         {
-            for (int i = 0; i < this.HiddenWord.Length; i++)
-            {
-                if (this.HiddenWord[i] == '_')
-                {
-                    return false;
-                }
-            }
-
-            return true;
+            return !this.HiddenWord.Any(ch => ch == '_');
         }
 
         /// <summary>
