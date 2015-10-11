@@ -33,7 +33,7 @@
             var commandFactory = new CommandFactory();
             var commandExecutioner = kernel.Get<ICommandInvoker>();
             var wordProvider = SimpleRandomWordProvider.Instance;
-            //var wordProvider = XmlWordProvider.Instance;
+            // var wordProvider = XmlWordProvider.Instance;
 
             var game = new HangmanGame(printer, sorter, scoresDataManager, gameStateManager, commandFactory, commandExecutioner, wordProvider);
             game.Run();

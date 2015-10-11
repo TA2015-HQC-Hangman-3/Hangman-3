@@ -8,9 +8,15 @@
     using Hangman.Logic.WordProviders;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    /// <summary>
+    /// Provides unit tests for <see cref="SimpleRandomWordProvider"/> class.
+    /// </summary>
     [TestClass]
     public class SimpleRandomWordProviderTests
     {
+        /// <summary>
+        /// Checks if method GetWord returns different words when called twice and there are many words in the file.
+        /// </summary>
         [TestMethod]
         public void SimpleWordProviderGetWord_ManyWordsInFileAndCalledTwice_ShouldReturnDifferentWords()
         {

@@ -35,6 +35,9 @@
             this.scoresDataManager = scoresDataManager;
         }
 
+        /// <summary>
+        /// Gets or sets score for the game's scoreboard.
+        /// </summary>
         public Dictionary<string, int> Score { get; set; }
 
         /// <summary>

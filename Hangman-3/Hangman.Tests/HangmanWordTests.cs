@@ -1,25 +1,33 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Hangman.Tests
+﻿namespace Hangman.Tests
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Moq;
+
+    /// <summary>
+    /// Provides Unit Tests for <see cref="HangmanWord"/> class.
+    /// </summary>
     [TestClass]
     public class HangmanWordTests
     {
+        /// <summary>
+        /// Checks if the chosen word's length equals the hidden word's length.
+        /// </summary>
         [TestMethod]
         public void HangmanWord_ShouldChosenWordLenghtEqualToHiddenWordLength()
         {
             var word = "cookie";
             var hangmanWord = new HangmanWord(word);
             Assert.AreEqual(hangmanWord.TheChosenWord.Length, hangmanWord.HiddenWord.Length);
-
         }
 
+        /// <summary>
+        /// Checks if it throws when null is passed.
+        /// </summary>
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void HangmanWord_WhenNullWordIsProvided_ShouldThrow()
@@ -28,15 +36,21 @@ namespace Hangman.Tests
             var hangmanWord = new HangmanWord(word);
         }
 
+        /// <summary>
+        /// Checks if length of valid chosen word and length hidden word are equal.
+        /// </summary>
         [TestMethod]
         public void HangmanWord_WhenWordIsValid_ShouldGenerateHiddenWordWithLenghtEqualToChosenWordLength()
         {
             string word = "cookie";
             var hangmanWord = new HangmanWord(word);
 
-            Assert.AreEqual(hangmanWord.TheChosenWord.Length,hangmanWord.HiddenWord.Length);
+            Assert.AreEqual(hangmanWord.TheChosenWord.Length, hangmanWord.HiddenWord.Length);
         }
 
+        /// <summary>
+        /// Checks if IsLetterGuessedForFirstTime method returns true if letter is guessed for the first time.
+        /// </summary>
         [TestMethod]
         public void HangmanWordIsGuessedForTheFirstTime_WhenIsTheFirstTime_ShouldReturnTrue()
         {
@@ -49,6 +63,9 @@ namespace Hangman.Tests
             Assert.IsTrue(actual);
         }
 
+        /// <summary>
+        /// Checks if IsLetterGuessedForFirstTime method returns false if letter is not guessed for the first time.
+        /// </summary>
         [TestMethod]
         public void HangmanWordIsGuessedForTheFirstTime_WhenNotTheFirstTime_ShouldReturnFalse()
         {
@@ -62,6 +79,9 @@ namespace Hangman.Tests
             Assert.IsFalse(actual);
         }
 
+        /// <summary>
+        /// Checks whether only underlines are returned when no letter is guessed.
+        /// </summary>
         [TestMethod]
         public void HangmanWordPrintTheWord_WhenNoLetterIsGuessed_ShouldPrintOnlyUnderscores()
         {
@@ -89,6 +109,9 @@ namespace Hangman.Tests
             Assert.AreEqual(3, calledCount);
         }
 
+        /// <summary>
+        /// Checks if IsWordGuessed returns false when it is not guessed.
+        /// </summary>
         [TestMethod]
         public void HangmanWordIsWordGuessed_WhenNotGuessed_ShouldReturnFalse()
         {
@@ -100,12 +123,15 @@ namespace Hangman.Tests
             Assert.IsFalse(actual);
         }
 
+        /// <summary>
+        /// Checks if IsWordGuessed returns true when it is guessed.
+        /// </summary>
         [TestMethod]
         public void HangmanWordIsWordGuessed_WhenGuessed_ShouldReturnFalse()
         {
             var word = "cookie";
             var hangmanWord = new HangmanWord(word);
-            foreach(var ch in word)
+            foreach (var ch in word)
             {
                 hangmanWord.IsLetterInTheWord(ch.ToString());
             }

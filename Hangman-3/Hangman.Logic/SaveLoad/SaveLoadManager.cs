@@ -35,6 +35,9 @@
             this.gameStateInfoManager = dataManager;
         }
 
+        /// <summary>
+        /// Gets or sets a game state.
+        /// </summary>
         public Memento GameState { get; set; }
 
         /// <summary>

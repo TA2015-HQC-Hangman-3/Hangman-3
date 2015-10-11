@@ -20,7 +20,7 @@
         private string xmlWordsFilePath;
 
         /// <summary>
-        /// Prevents a default instance of the <see cref="XmlWordProvider"/> class of being created.
+        /// Prevents a default instance of the <see cref="XmlWordProvider"/> class from being created.
         /// </summary>
         private XmlWordProvider()
         {

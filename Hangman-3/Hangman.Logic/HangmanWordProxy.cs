@@ -20,7 +20,7 @@
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="HangmanWord"/> class.
+        /// Initializes a new instance of the <see cref="HangmanWordProxy"/> class.
         /// </summary>
         /// <param name="chosenWord">The word for the current game.</param>
         public HangmanWordProxy(string chosenWord)
@@ -28,6 +28,9 @@
             this.Word = new HangmanWord(chosenWord);
         }
 
+        /// <summary>
+        /// Gets or sets the word for the game.
+        /// </summary>
         public HangmanWord Word { get; set; }
 
         /// <summary>
@@ -47,9 +50,10 @@
             }
         }
 
-        /// <summary>
-        /// Show the word as underlines. 
-        /// </summary> 
+       /// <summary>
+        /// Show the word as underlines.
+       /// </summary>
+       /// <param name="printer">The object to print the word on the screen.</param>
         public void PrintTheWord(IPrinter printer)
         {
             this.Word.PrintTheWord(printer);

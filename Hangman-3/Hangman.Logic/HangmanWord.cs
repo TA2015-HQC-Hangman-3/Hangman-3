@@ -2,9 +2,8 @@
 {
     using System;
     using System.Collections.Generic;
-
-    using Logic.Contracts;
     using System.Linq;
+    using Logic.Contracts;
 
     /// <summary>
     /// Representing the words used in Hangman game.
@@ -31,22 +30,33 @@
             this.ListOfLettersTried = new List<char>();
         }
 
+        /// <summary>
+        /// Gets or sets a collection of all letters tried.
+        /// </summary>
         public List<char> ListOfLettersTried { get; set; }
 
+        /// <summary>
+        /// Gets or sets a word of underlines.
+        /// </summary>
         public char[] HiddenWord { get; set; }
 
+        /// <summary>
+        /// Gets or sets the word for the game.
+        /// </summary>
         public string TheChosenWord
         {
             get
             {
                 return this.theChosenWord;
             }
+
             set
             {
                 if (value == null)
                 {
                     throw new ArgumentNullException("Invalid value for word");
                 }
+
                 this.theChosenWord = value;
             }
         }
@@ -69,8 +79,9 @@
         }
 
         /// <summary>
-        /// Show the word as underlines. 
+        /// Show the word as underlines.
         /// </summary>
+        /// <param name="printer">The object to print it on the screen.</param>
         public void PrintTheWord(IPrinter printer)
         {
             printer.Print("The secret word is: ");

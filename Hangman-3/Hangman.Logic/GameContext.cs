@@ -5,7 +5,7 @@
     using Hangman.Logic.SaveLoad;
 
     /// <summary>
-    /// Represents the information available for the current state o fteh game.
+    /// Represents the information available for the current state of the game.
     /// </summary>
     public class GameContext : IGameContext
     {
@@ -43,16 +43,34 @@
             this.IsGameRunning = true;
         }
 
+        /// <summary>
+        /// Gets or sets the word for the game context.
+        /// </summary>
         public IWord Word { get; set; }
 
+        /// <summary>
+        /// Gets or sets the scoreboard for the game context.
+        /// </summary>
         public Scoreboard Scoreboard { get; set; }
 
+        /// <summary>
+        /// Gets or sets the number of mistakes for the game context.
+        /// </summary>
         public int CurrentMistakes { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether it was cheated. 
+        /// </summary>
         public bool HasCheated { get; set; }
-
+        
+        /// <summary>
+        /// Gets or sets a value indicating whether the game is running.
+        /// </summary>
         public bool IsGameRunning { get; set; }
 
+        /// <summary>
+        /// Gets or sets the current message for the game context.
+        /// </summary>
         public string CurrentMessage { get; set; }
 
         /// <summary>

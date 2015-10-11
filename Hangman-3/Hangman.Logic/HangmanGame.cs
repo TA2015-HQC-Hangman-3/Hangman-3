@@ -48,8 +48,14 @@
         /// <param name="commandFactory">The object used to deal with commands needed.</param>
         /// <param name="commandExecutioner">The object used for the execution of commands.</param>
         /// <param name="wordProvider">The object that provides the word for the current game.</param>
-        public HangmanGame(IPrinter printer, ISorter sorter, IDataManager<Dictionary<string, int>> scoresDataManager, IDataManager<SaveLoadManager> gameStateManager,
-                           CommandFactory commandFactory, ICommandInvoker commandExecutioner, IWordProvider wordProvider)
+        public HangmanGame(
+            IPrinter printer, 
+            ISorter sorter, 
+            IDataManager<Dictionary<string, int>> scoresDataManager, 
+            IDataManager<SaveLoadManager> gameStateManager,
+            CommandFactory commandFactory, 
+            ICommandInvoker commandExecutioner, 
+            IWordProvider wordProvider)
         {
             this.printer = printer;
             this.context = new GameContext(wordProvider, new Scoreboard(printer, sorter, scoresDataManager));
@@ -118,7 +124,7 @@
         /// <summary>
         /// Represents the execution of commands in the game.
         /// </summary>
-        /// <param name="commandName"></param>
+        /// <param name="commandName">The name of the command to be executed.</param>
         private void ExecuteCommand(string commandName)
         {
             var command = this.commandFactory.GetCommand(commandName, this.printer, this.gameSaver);

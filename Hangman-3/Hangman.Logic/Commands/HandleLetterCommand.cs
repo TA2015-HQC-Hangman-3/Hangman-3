@@ -22,6 +22,9 @@
             this.printer = printer;
         }
 
+        /// <summary>
+        /// Gets the guessed letter.
+        /// </summary>
         public string GuessLetter { get; private set; }
 
         /// <summary>

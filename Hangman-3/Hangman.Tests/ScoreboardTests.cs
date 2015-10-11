@@ -7,10 +7,16 @@
     using Logic.Sorters;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Moq;
-
+    
+    /// <summary>
+    /// Provides unit tests for <see cref="Scoreboard"/> class.
+    /// </summary>
     [TestClass]
     public class ScoreboardTests
     {
+        /// <summary>
+        /// Checks if method PrintScores returns the right message when there are no scores.
+        /// </summary>
         [TestMethod]
         public void ScoreboardPrintScores_WhenNoScores_ShouldPrint1Message()
         {

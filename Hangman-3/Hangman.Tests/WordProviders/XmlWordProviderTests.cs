@@ -7,10 +7,16 @@
     using Logic.WordProviders;
     //using Extensions;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-
+    
+    /// <summary>
+    /// Provides unit tests for <see cref="XmlWordProvider"/> class.
+    /// </summary>
     [TestClass]
     public class XmlWordProviderTests
     {
+        /// <summary>
+        /// Checks if method GetWord returns different words when called twice and there are many words in the file.
+        /// </summary>
         [TestMethod]
         public void XmlWordProviderGetWord_ManyWordsInFileAndCalledTwice_ShouldReturnDifferentWords()
         {
@@ -24,6 +30,9 @@
             Assert.AreNotEqual(word1, word2);
         }
 
+        /// <summary>
+        /// Checks if method GetWord returns the same word when called twice and there is one word in the file.
+        /// </summary>
         [TestMethod]
         public void XmlWordProviderGetWord_OneWordsInFileAndCalledTwice_ShouldReturnTheSameWord()
         {
@@ -37,6 +46,9 @@
             Assert.AreEqual(word1, word2);
         }
 
+        /// <summary>
+        /// Checks if method GetWord returns different words when called twice and there are 40 words in the file.
+        /// </summary>
         [TestMethod]
         public void XmlWordProviderGetWord_FourtyWordsInFileAndCalledTwice_ShouldReturnDifferentWords()
         {
@@ -50,6 +62,9 @@
             Assert.AreNotEqual(word1, word2);
         }
 
+        /// <summary>
+        /// Checks if method GetWord returns different words when called twice and there are random number of words in the file.
+        /// </summary>
         [TestMethod]
         public void XmlWordProviderGetWord_RandomcountOfWordsInFileAndCalledTwice_ShouldReturnDifferentWords()
         {

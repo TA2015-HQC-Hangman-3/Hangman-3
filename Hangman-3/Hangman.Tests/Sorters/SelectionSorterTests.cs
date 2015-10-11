@@ -6,9 +6,15 @@
     using Hangman.Logic.Sorters;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    /// <summary>
+    /// Provides unit tests for <see cref="SelectionSorter"/> class.
+    /// </summary>
     [TestClass]
     public class SelectionSorterTests
     {
+        /// <summary>
+        /// Checks if the sorter returns the right collection when there is only one element.
+        /// </summary>
         [TestMethod]
         public void SelectionSorterSort_WhenCollectionHasASingleElement_ShouldReturnCollectionWithSingleElement()
         {
@@ -25,7 +31,10 @@
             Assert.AreEqual(collection.Count(), result.Count());
             Assert.AreEqual(collection[0], result.ElementAt(0));
         }
-
+        
+        /// <summary>
+        /// Checks if the sorter returns the right collection when there are two sorted elements.
+        /// </summary>
         [TestMethod]
         public void SelectionSorterSort_WhenCollectionHasTwoSortedElements_ShouldReturnTheSameElementInTheSameOrder()
         {
@@ -47,6 +56,9 @@
             }
         }
 
+        /// <summary>
+        /// Checks if the sorter returns the right collection when there are two unsorted elements.
+        /// </summary>
         [TestMethod]
         public void SelectionSorterSort_WhenCollectionHasTwoUnsortedElements_ShouldReturnTheSameElementInTheSameOrder()
         {
@@ -69,6 +81,9 @@
             }
         }
 
+        /// <summary>
+        /// Checks if the sorter returns the right collection when there are no elements.
+        /// </summary>
         [TestMethod]
         public void SelectionSorterSort_WhenCollectionIsEmpty_ShouldReturnEmtpyCollection()
         {
@@ -84,6 +99,9 @@
             Assert.AreEqual(0, result.Count());
         }
 
+        /// <summary>
+        /// Checks if the sorter throws an exception when it is null.
+        /// </summary>
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void SelectionSorterSort_WhenCollectionIsNull_ShouldThrow()
