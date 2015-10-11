@@ -18,6 +18,9 @@ namespace Hangman.Tests
         private TextWriter consoleOldOutput;
         private StringWriter stringWriter;
 
+        /// <summary>
+        /// Executed before each test.
+        /// </summary>
         [TestInitialize]
         public void BeforeEachTest()
         {
@@ -27,12 +30,18 @@ namespace Hangman.Tests
             Console.SetOut(this.stringWriter);
         }
 
+        /// <summary>
+        /// Executed after each test.
+        /// </summary>
         [TestCleanup]
         public void AfterEachTest()
         {
             Console.SetOut(this.consoleOldOutput);
         }
 
+        /// <summary>
+        /// Checks if text is printed without new line.
+        /// </summary>
         [TestMethod]
         public void ConsolePrinterPrint_WhenAStringIsPassed_ShouldPrintTheStringWithoutNewLine()
         {
@@ -50,6 +59,9 @@ namespace Hangman.Tests
             Assert.AreEqual(expected, actual);
         }
 
+        /// <summary>
+        /// Checks if a single symbol is printed without new line.
+        /// </summary>
         [TestMethod]
         public void ConsolePrinterPrint_WhenASingleSymbolStringIsPassed_ShouldPrintTheStringWithoutNewLine()
         {
@@ -67,6 +79,9 @@ namespace Hangman.Tests
             Assert.AreEqual(expected, actual);
         }
 
+        /// <summary>
+        /// Checks if printer prints empty string if null is passed.
+        /// </summary>
         [TestMethod]
         public void ConsolePrinterPrint_WhenNullIsPassed_ShouldPrintEmptyString()
         {
@@ -84,6 +99,9 @@ namespace Hangman.Tests
             Assert.AreEqual(expected, actual);
         }
 
+        /// <summary>
+        /// Checks if text is printed with new line. 
+        /// </summary>
         [TestMethod]
         public void ConsolePrinterPrintLine_WhenAStringIsPassed_ShouldPrintTheStringWithNewLine()
         {
@@ -101,6 +119,9 @@ namespace Hangman.Tests
             Assert.AreEqual(expected, actual);
         }
 
+        /// <summary>
+        /// Checks if printer prints only a new line if no text is passed.
+        /// </summary>
         [TestMethod]
         public void ConsolePrinterPrintLine_WhenNoStringIsPassed_ShouldPrintOnlyNewLine()
         {
@@ -117,6 +138,9 @@ namespace Hangman.Tests
             Assert.AreEqual(expected, actual);
         }
 
+        /// <summary>
+        /// Checks screen cleaning.
+        /// </summary>
         [Ignore]
         [TestMethod]
         public void ConsolePrinterClearScreen_WhenSomethingIsPrinted_ShouldClearIt()

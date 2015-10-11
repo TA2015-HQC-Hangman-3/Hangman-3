@@ -7,8 +7,15 @@ namespace Hangman
 {
     using Hangman.Logic.Contracts;
 
+    /// <summary>
+    /// Declares the method for each word provider.
+    /// </summary>
     public interface IWordProvider
     {
+        /// <summary>
+        /// Provides with a word.
+        /// </summary>
+        /// <returns>The word for the game.</returns>
         IWord GetWord();
     }
 }

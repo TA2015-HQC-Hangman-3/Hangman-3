@@ -17,6 +17,9 @@ namespace Hangman.Tests.Sorters
     [TestClass]
     public class ComparerSorterTests
     {
+        /// <summary>
+        /// Checks if the sorter returns the right collection when there is only one element.
+        /// </summary>
         [TestMethod]
         public void ComparerSorterSort_WhenCollectionHasASingleElement_ShouldReturnCollectionWithSingleElement()
         {
@@ -34,6 +37,9 @@ namespace Hangman.Tests.Sorters
             Assert.AreEqual(collection[0], result.ElementAt(0));
         }
 
+        /// <summary>
+        /// Checks if the sorter returns the right collection when there are two sorted elements.
+        /// </summary>
         [TestMethod]
         public void ComparerSorterSort_WhenCollectionHasTwoSortedElements_ShouldReturnTheSameElementInTheSameOrder()
         {
@@ -55,6 +61,9 @@ namespace Hangman.Tests.Sorters
             }
         }
 
+        /// <summary>
+        /// Checks if the sorter returns the right collection when there are two unsorted elements.
+        /// </summary>
         [TestMethod]
         public void ComparerSorterSort_WhenCollectionHasTwoUnsortedElements_ShouldReturnTheSameElementInTheSameOrder()
         {
@@ -77,6 +86,9 @@ namespace Hangman.Tests.Sorters
             }
         }
 
+        /// <summary>
+        /// Checks if the sorter returns the right collection when there are no elements.
+        /// </summary>
         [TestMethod]
         public void ComparerSorterSort_WhenCollectionIsEmpty_ShouldReturnEmtpyCollection()
         {
@@ -92,6 +104,9 @@ namespace Hangman.Tests.Sorters
             Assert.AreEqual(0, result.Count());
         }
 
+        /// <summary>
+        /// Checks if the sorter throws an exception when it is null.
+        /// </summary>
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void ComparerSorterSort_WhenCollectionIsNull_ShouldThrow()

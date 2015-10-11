@@ -25,13 +25,13 @@ namespace Hangman.Logic.SaveLoad
         /// <summary>
         /// Gets or sets a value indicating whether the player has cheated.
         /// </summary>
-        /// <value>Returns bool value, whether the player has cheated or not.</value>
+        /// <value>Returns boolean value, whether the player has cheated or not.</value>
         public bool HasCheated { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether the game is running.
         /// </summary>
-        /// <value>Returns bool value, whether the game is running or not.</value>
+        /// <value>Returns boolean value, whether the game is running or not.</value>
         public bool IsGameRunning { get; set; }
     }
 }
