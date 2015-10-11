@@ -6,3 +6,4 @@ Cookie2 0
  0
 E 1
 restart 2
+Cookie3 0

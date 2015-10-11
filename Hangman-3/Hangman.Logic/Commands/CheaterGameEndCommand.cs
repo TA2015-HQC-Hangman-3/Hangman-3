@@ -28,7 +28,7 @@
             context.CurrentMessage = string.Format(GameContext.WinByCheatingMessage, context.CurrentMistakes);
             this.printer.PrintLine(context.CurrentMessage);
 
-            context.Word.PrintTheWord();
+            context.Word.PrintTheWord(this.printer);
 
             context.CurrentMessage = GameContext.PromptForCommand;
             this.printer.PrintLine(context.CurrentMessage);

@@ -50,9 +50,9 @@
         /// <summary>
         /// Show the word as underlines. 
         /// </summary> 
-        public void PrintTheWord()
+        public void PrintTheWord(IPrinter printer)
         {
-            this.Word.PrintTheWord();
+            this.Word.PrintTheWord(printer);
         }
 
         /// <summary>

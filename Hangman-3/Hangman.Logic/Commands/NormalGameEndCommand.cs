@@ -26,7 +26,7 @@
         {
             context.CurrentMessage = string.Format(GameContext.WinMessage, context.CurrentMistakes);
             this.printer.PrintLine(context.CurrentMessage);
-            context.Word.PrintTheWord();
+            context.Word.PrintTheWord(this.printer);
 
             context.CurrentMessage = GameContext.PromptForUserName;
             this.printer.PrintLine(context.CurrentMessage);

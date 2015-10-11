@@ -71,7 +71,7 @@
                 if (this.context.IsGameRunning)
                 {
                     this.context.CurrentMessage = GameContext.PropmtForUserGuess;
-                    this.context.Word.PrintTheWord();
+                    this.context.Word.PrintTheWord(this.printer);
                 }
                 else
                 {

@@ -55,7 +55,7 @@
         /// </summary>
         /// <param name="letter">The letter to be checked.</param>
         /// <returns>True, if the letter was guessed and false, if it was not.</returns>
-        public bool IsLetterGuessedForFirstTime(string letter)
+        public bool IsLetterGuessedForFirstTime (string letter)
         {
             char enteredLetter = Convert.ToChar(letter);
             if (this.ListOfLettersTried.Contains(enteredLetter))
@@ -70,19 +70,19 @@
         /// <summary>
         /// Show the word as underlines. 
         /// </summary>
-        public void PrintTheWord()
+        public void PrintTheWord(IPrinter printer)
         {
-            Console.Write("The secret word is: ");
+            printer.Print("The secret word is: ");
             for (int i = 0; i < this.HiddenWord.Length; i++)
             {
-                Console.Write("{0} ", this.HiddenWord[i]);
+                printer.Print(string.Format("{0} ", this.HiddenWord[i]));
             }
 
-            Console.WriteLine();
+            printer.PrintLine();
         }
 
         /// <summary>
-        /// Providesthe word to be guessed as underlines.
+        /// Provides the word to be guessed as underlines.
         /// </summary>
         /// <returns>A collection of underlines. Its length is the same as the word's. </returns>
         public char[] GenerateHiddenWord()

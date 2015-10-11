@@ -6,7 +6,7 @@
     {
         bool IsLetterGuessedForFirstTime(string letter);
 
-        void PrintTheWord();
+        void PrintTheWord(IPrinter printer);
 
         char[] GenerateHiddenWord();
 
