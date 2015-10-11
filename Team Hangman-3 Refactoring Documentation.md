@@ -98,11 +98,136 @@ bool HasCheated { get; set; }
 - public const string CurrentlyUsedLettersMessage = "Currently used letters: {0}";
 - and many others;
 
-5. Extraction of methods ...
-6. Introducing classes ...
-7. Introducing interfaces ...
-8. Implemented Design Patterns ...
-9. New Functionalities ...
-10. Description where we use the SOLID principles ...
-11. Unit Testing ...
-12. Documentation ...
+5. Extracted different methods from "Hangman.cs", e.g. :
+Before:
+```c#
+if (check(command))
+    {
+        bool isLetterInTheWord = false;
+        int letterKnown = 0;
+        char enteredSymbol = char.Parse(command);
+        for (int i = 0; i < unknownWord.Length; i++)
+        {
+            if (theChosenWord[i] == enteredSymbol)
+            {
+                unknownWord[i] = enteredSymbol;
+                letterKnown++;
+                isLetterInTheWord = true;
+            }
+        }
+        if (isLetterInTheWord)
+        {
+            Console.WriteLine("Good job! You revealed {0} letters.", letterKnown);
+        }
+        else
+        {
+            Console.WriteLine("Sorry! There are no unrevealed letters \"{0}\".", command);
+            mistakeCounter++;
+        }
+    }
+    else
+    {
+        Console.WriteLine("Incorrect guess or command!");
+    }
+```
+After:
+```c#
+private int GetNumberOfLettersThatAreGuessed(string letter)
+    {
+        var lettersGuessed = 0;
+        char enteredSymbol = char.Parse(letter);
+        for (int i = 0; i < unknownWord.Length; i++)
+        {
+            if (theChosenWord[i] == enteredSymbol)
+            {
+                lettersGuessed++;
+            }
+        }
+    
+        return lettersGuessed;
+    }
+
+private bool IsLetterInTheWord(string letter)
+    {
+        bool isLetterInTheWord = false;
+        char enteredSymbol = char.Parse(letter);
+        for (int i = 0; i < unknownWord.Length; i++)
+        {
+            if (theChosenWord[i] == enteredSymbol)
+            {
+                unknownWord[i] = enteredSymbol;
+                isLetterInTheWord = true;
+            }
+        }
+    
+        return isLetterInTheWord;
+    }
+    
+private bool IsValidLetter(string input)
+    {
+        char enteredSymbol;
+        if (char.TryParse(input, out enteredSymbol) &&
+            ((int)enteredSymbol >= LowerBoundaryFromTheAsciiTable &&
+             (int)enteredSymbol <= UpperBoundaryFromTheAsciiTable))
+        {
+            return true;
+        }
+
+        return false;
+    }
+```
+
+6. Introduced new methods for improving the program, e.g. :
+- In class "HangmanWord": public bool IsLetterGuessedForFirstTime(string letter), public int GetNumberOfLettersThatAreGuessed(string letter), public List<char> GetAllTriedLetters();
+- In class "ConsolePrinter": public void Print(string currentText),  public void PrintLine(string currentText), public void ClearScreen();
+- In class "HangmanGame": public void Run(),  private void EndCurrentGame(), private void ExecuteCommand(string commandName);
+- and many others;
+
+7. Extracted classes from the given code, e.g. :
+- "Scoreboard.cs";
+- "HangmanGame.cs";
+- "HangmanWord.cs";
+- "GameContext.cs";
+- a lot of different commands;
+- and others.
+
+8. Introduced new classes for improving the program, e.g. :
+- "HangmanWordProxy.cs";
+- "ConsolePrinter.cs";
+- "BaseWordProvider.cs";
+- "SampleWordProvider.cs";
+- "XmlWordProvider.cs";
+- "JsonGameStateManager.cs";
+- "XmlGameStateManager.cs";
+- and others.
+
+9. Introduced interfaces for the classes that share the same logic, e.g. :
+- "IComandInvoker.cs";
+- "IDateManager.cs";
+- "ISorter.cs";
+- "IWord.cs";
+- "IWordProvider.cs";
+- and others;
+
+10. Implemented the following Design Patterns for improving the program:
+- Creational:
+    - Double Locking Thread Safe Singleton - in class "SimpleRandomWordProvider.cs";
+    - Lazy Initialization - in class "SimpleRandomWordProvider.cs";
+    - Simple Factory - in class "CommandFactory.cs" for executing the concrete given command;
+- Structural:
+    - Facade - class "HangmanGame.cs" - method Run(), 
+    - Bridge - NOT VERY SURE!!!!!;
+    - Proxy - class "HangmanWordProxy.cs" that implements the "IWord.cs" interface;
+- Behavioral:
+    - Strategy: 
+        - "IDateManager.cs" interface and classes "TextFileScoreboardDataManager.cs", "XmlGameStateManager.cs", "JsonGameStateManager.cs";
+        - "IWordProvider.cs" interface and classes "BaseWordProvider.cs", "SimpleRandomWordProvider.cs" and "XmlWordProvider.cs";
+        - "ISorter.cs" interface and classes "SelectionSorter.cs" and "ComparerSorter.cs".
+    - Command - "ICommand.cs" and classes "RestartCommand.cs", "LoadCommand.cs", "SaveCommand", "HandleLetterCommand.cs" and all other commands;
+    - Memento - class "Memento.cs" in combination with class "SaveLoadManager.cs" and methods public Memento Save() and public void Load(Memento gameState) in class "GameContext.cs" ;
+ 
+11. New Functionalities ...
+12. Description where we use the SOLID principles ...
+13. Unit Testing ...
+14. Code coverage ...
+14. Documentation ...
