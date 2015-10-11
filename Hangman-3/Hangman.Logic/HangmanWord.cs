@@ -73,11 +73,8 @@
         public void PrintTheWord(IPrinter printer)
         {
             printer.Print("The secret word is: ");
-            for (int i = 0; i < this.HiddenWord.Length; i++)
-            {
-                printer.Print(string.Format("{0} ", this.HiddenWord[i]));
-            }
-
+            var wordAsString = string.Join(" ", this.HiddenWord);
+            printer.Print(wordAsString + " ");
             printer.PrintLine();
         }
 
