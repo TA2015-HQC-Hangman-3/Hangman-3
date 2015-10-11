@@ -208,5 +208,15 @@ namespace Hangman
 
             return this.TheChosenWord == word.TheChosenWord;
         }
+
+        /// <summary>
+        /// Gets unique hash code based on chosen word.
+        /// </summary>
+        /// <returns>Unique Int32 hash code</returns>
+        public override int GetHashCode()
+        {
+            int hash = (13 * 23) + this.TheChosenWord.GetHashCode();
+            return hash;
+        }
     }
 }
