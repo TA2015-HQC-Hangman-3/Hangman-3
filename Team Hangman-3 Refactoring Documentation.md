@@ -216,8 +216,8 @@ private bool IsValidLetter(string input)
     - Simple Factory - in class "CommandFactory.cs" for executing the concrete given command;
 - Structural:
     - Facade - class "HangmanGame.cs" - method Run(), 
-    - Bridge - NOT VERY SURE!!!!!;
-    - Proxy - class "HangmanWordProxy.cs" that implements the "IWord.cs" interface;
+    - Bridge - the abstraction ISaveLoadManager uses the abstraction IDataManager to save and load information from files using XML (or JSON if you want) formats.
+    - Proxy - client uses interface IWord, and its descendant HangmanWordProxy is validating input for the methods of HangmanWord and acting as a sort of a "protection proxy" for it.
 - Behavioral:
     - Strategy: 
         - "IDateManager.cs" interface and classes "TextFileScoreboardDataManager.cs", "XmlGameStateManager.cs", "JsonGameStateManager.cs";
@@ -235,11 +235,13 @@ private bool IsValidLetter(string input)
 12. Description where we implemented the SOLID principles:
 - Single Responsibility Principle:
     - class "ConsolePrinter.cs" prints only given messages;
-    - class "GameContext.cs" only saves, loads and restarts the current game;
-    - class "Scoreboard.cs" only adds scores and prints them;
+    - Data manager classes only write and read information to/from files;
+    - class "Scoreboard.cs" only deals with scores;
 
 - Open/Closed Principle:
-    - NEEDS MORE INFORMATION!!!!!
+    - We can easily introduce new ways of providing a word, through the IWordProvider interface;
+	- Same for sorting through the ISorter interface;
+	- We can introduce new engine for diferent type of UI through the IEngine interface;
 
 - Liskov Substitution Principle:
     - the base class "BaseWordProvider.cs" and it's inheritants "SimpleRandomWordProvider.cs" and "XmlWordProvider.cs";
@@ -248,12 +250,11 @@ private bool IsValidLetter(string input)
     - "IHangmanCommand.cs";
     - "IDateManager.cs";
     - "ISorter.cs";
-    - "IWord.cs";
     - "IWordProvider.cs";
     - and others;
 
 - Dependency Inversion Principle:
-    - Used Ninject - NEEDS MORE INFORMATION!!!!!
+    - All dependencies are resolved through constructor injection and method injections(e.g. all the Commands classes). Where possible empty constructors with "poor man's IoC" are used.
 
 13. Unit Testing - Made Unit tests in all classes for all the methods.
 
