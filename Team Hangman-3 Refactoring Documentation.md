@@ -202,7 +202,7 @@ private bool IsValidLetter(string input)
 - and others.
 
 9. Introduced interfaces for the classes that share the same logic, e.g. :
-- "IComandInvoker.cs";
+- "IHangmanCommand.cs";
 - "IDateManager.cs";
 - "ISorter.cs";
 - "IWord.cs";
@@ -226,8 +226,41 @@ private bool IsValidLetter(string input)
     - Command - "ICommand.cs" and classes "RestartCommand.cs", "LoadCommand.cs", "SaveCommand", "HandleLetterCommand.cs" and all other commands;
     - Memento - class "Memento.cs" in combination with class "SaveLoadManager.cs" and methods public Memento Save() and public void Load(Memento gameState) in class "GameContext.cs" ;
  
-11. New Functionalities ...
-12. Description where we use the SOLID principles ...
-13. Unit Testing ...
-14. Code coverage ...
-14. Documentation ...
+11. Added the following new functionalities:
+- saving and loading the current state of the game - using the Memento Design Pattern;
+- saving the name of the players and their scores in an outer txt file and loading the scoreboard from the file;
+- notifying the player if he already used the letter that he have entered;
+- showing all currently used letters;
+
+12. Description where we implemented the SOLID principles:
+- Single Responsibility Principle:
+    - class "ConsolePrinter.cs" prints only given messages;
+    - class "GameContext.cs" only saves, loads and restarts the current game;
+    - class "Scoreboard.cs" only adds scores and prints them;
+
+- Open/Closed Principle:
+    - NEEDS MORE INFORMATION!!!!!
+
+- Liskov Substitution Principle:
+    - the base class "BaseWordProvider.cs" and it's inheritants "SimpleRandomWordProvider.cs" and "XmlWordProvider.cs";
+
+- Interface Segregation Principle:
+    - "IHangmanCommand.cs";
+    - "IDateManager.cs";
+    - "ISorter.cs";
+    - "IWord.cs";
+    - "IWordProvider.cs";
+    - and others;
+
+- Dependency Inversion Principle:
+    - Used Ninject - NEEDS MORE INFORMATION!!!!!
+
+13. Unit Testing - Made Unit tests in all classes for all the methods.
+
+14. Code coverage - NOT DONE YET!!!!!
+
+15. Xml Documentation - Made xml documentation in all classes.
+
+16. StyleCop - 0 Warnings and Errors.
+
+The last four points must be further altered!!!!!
