@@ -1,13 +1,17 @@
-﻿namespace Hangman.Logic.DataManagers
+﻿// <copyright file="XmlGameStateManager.cs" company="Team Hangman 3">
+// All rights reserved.
+// </copyright>
+// <summary>Class XmlGameStateManager.</summary>
+// <author>Team Hangman 3</author>
+namespace Hangman.Logic.DataManagers
 {
     using System.IO;
     using System.Xml.Serialization;
-
     using Contracts;
     using SaveLoad;
 
     /// <summary>
-    /// Represents saving game state in XML
+    /// Represents saving game state in XML.
     /// </summary>
     /// <typeparam name="T">The type of object that deals with saving and loading the game.</typeparam>
     public class XmlGameStateManager<T> : IDataManager<T> where T : SaveLoadManager

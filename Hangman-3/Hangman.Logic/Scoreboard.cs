@@ -1,4 +1,9 @@
-﻿namespace Hangman
+﻿// <copyright file="Scoreboard.cs" company="Team Hangman 3">
+// All rights reserved.
+// </copyright>
+// <summary>Class Scoreboard.</summary>
+// <author>Team Hangman 3</author>
+namespace Hangman
 {
     using System;
     using System.Collections.Generic;
@@ -24,7 +29,7 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="Scoreboard"/> class.
         /// </summary>
-        /// <param name="printer">The object used to show messages.</</param>
+        /// <param name="printer">The object used to show messages.</param>
         /// <param name="sorter">The object used to sort scores.</param>
         /// <param name="scoresDataManager">The object from which scores are read and written in.</param>
         public Scoreboard(IPrinter printer, ISorter sorter, IDataManager<Dictionary<string, int>> scoresDataManager)
@@ -38,6 +43,7 @@
         /// <summary>
         /// Gets or sets score for the game's scoreboard.
         /// </summary>
+        /// <value>Returns dictionary with all players and their scores.</value>
         public Dictionary<string, int> Score { get; set; }
 
         /// <summary>

@@ -1,4 +1,9 @@
-﻿using System.Reflection;
+﻿// <copyright file="AssemblyInfo.cs" company="Team Hangman 3">
+// All rights reserved.
+// </copyright>
+// <summary>File AssemblyInfo.</summary>
+// <author>Team Hangman 3</author>
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 

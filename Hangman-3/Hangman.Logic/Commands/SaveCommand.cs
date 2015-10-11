@@ -1,4 +1,9 @@
-﻿namespace Hangman.Logic.Commands
+﻿// <copyright file="SaveCommand.cs" company="Team Hangman 3">
+// All rights reserved.
+// </copyright>
+// <summary>Class SaveCommand.</summary>
+// <author>Team Hangman 3</author>
+namespace Hangman.Logic.Commands
 {
     using Hangman.Logic;
     using Hangman.Logic.Contracts;

@@ -1,8 +1,12 @@
-﻿namespace Hangman.Logic.Commands
+﻿// <copyright file="LoadCommand.cs" company="Team Hangman 3">
+// All rights reserved.
+// </copyright>
+// <summary>Class LoadCommand.</summary>
+// <author>Team Hangman 3</author>
+namespace Hangman.Logic.Commands
 {
     using System;
     using System.IO;
-
     using Hangman.Logic;
     using Hangman.Logic.Contracts;
 

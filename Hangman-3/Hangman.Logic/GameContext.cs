@@ -1,4 +1,9 @@
-﻿namespace Hangman.Logic
+﻿// <copyright file="GameContext.cs" company="Team Hangman 3">
+// All rights reserved.
+// </copyright>
+// <summary>Class GameContext.</summary>
+// <author>Team Hangman 3</author>
+namespace Hangman.Logic
 {
     using System;
     using Hangman.Logic.Contracts;
@@ -46,31 +51,37 @@
         /// <summary>
         /// Gets or sets the word for the game context.
         /// </summary>
+        /// <value>Returns Word instance.</value>
         public IWord Word { get; set; }
 
         /// <summary>
         /// Gets or sets the scoreboard for the game context.
         /// </summary>
+        /// <value>Returns Scoreboard instance.</value>
         public Scoreboard Scoreboard { get; set; }
 
         /// <summary>
         /// Gets or sets the number of mistakes for the game context.
         /// </summary>
+        /// <value>Returns the current mistakes count.</value>
         public int CurrentMistakes { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether it was cheated. 
         /// </summary>
+        /// <value>Returns bool value, whether the player has cheated or not.</value>
         public bool HasCheated { get; set; }
         
         /// <summary>
         /// Gets or sets a value indicating whether the game is running.
         /// </summary>
+        /// <value>Returns bool value, whether the game is running or not.</value>
         public bool IsGameRunning { get; set; }
 
         /// <summary>
         /// Gets or sets the current message for the game context.
         /// </summary>
+        /// <value>Returns the current message.</value>
         public string CurrentMessage { get; set; }
 
         /// <summary>

@@ -1,4 +1,9 @@
-﻿namespace Hangman.Logic
+﻿// <copyright file="HangmanWordProxy.cs" company="Team Hangman 3">
+// All rights reserved.
+// </copyright>
+// <summary>Class HangmanWordProxy.</summary>
+// <author>Team Hangman 3</author>
+namespace Hangman.Logic
 {
     using System;
     using System.Collections.Generic; 
@@ -31,6 +36,7 @@
         /// <summary>
         /// Gets or sets the word for the game.
         /// </summary>
+        /// <value>Returns a Word.</value>
         public HangmanWord Word { get; set; }
 
         /// <summary>

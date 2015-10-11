@@ -1,4 +1,9 @@
-﻿namespace Hangman.Logic
+﻿// <copyright file="ISorter.cs" company="Team Hangman 3">
+// All rights reserved.
+// </copyright>
+// <summary>Interface ISorter.</summary>
+// <author>Team Hangman 3</author>
+namespace Hangman.Logic
 {
     using System.Collections.Generic;
 

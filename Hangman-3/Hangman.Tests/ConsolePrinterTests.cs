@@ -1,9 +1,17 @@
-﻿namespace Hangman.Tests
+﻿// <copyright file="ConsolePrinterTests.cs" company="Team Hangman 3">
+// All rights reserved.
+// </copyright>
+// <summary>Class ConsolePrinterTests.</summary>
+// <author>Team Hangman 3</author>
+namespace Hangman.Tests
 {
     using System;
     using System.IO;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    /// <summary>
+    /// Provides unit tests for <see cref="ConsolePrinter"/> class.
+    /// </summary>
     [TestClass]
     public class ConsolePrinterTests
     {
@@ -28,16 +36,14 @@
         [TestMethod]
         public void ConsolePrinterPrint_WhenAStringIsPassed_ShouldPrintTheStringWithoutNewLine()
         {
-            //arrange
+            // arrange
             var text = "To be printed";
             var printer = new ConsolePrinter();    
 
-            //act
-            
+            // act
             printer.Print(text);
 
-            //assert
-
+            // assert
             var actual = this.stringWriter.ToString();
             var expected = text;
 
@@ -47,16 +53,14 @@
         [TestMethod]
         public void ConsolePrinterPrint_WhenASingleSymbolStringIsPassed_ShouldPrintTheStringWithoutNewLine()
         {
-            //arrange
+            // arrange
             var text = "t";
             var printer = new ConsolePrinter();
 
-            //act
-
+            // act
             printer.Print(text);
 
-            //assert
-
+            // assert
             var actual = this.stringWriter.ToString();
             var expected = text;
 
@@ -66,16 +70,14 @@
         [TestMethod]
         public void ConsolePrinterPrint_WhenNullIsPassed_ShouldPrintEmptyString()
         {
-            //arrange
+            // arrange
             string text = null;
             var printer = new ConsolePrinter();
 
-            //act
-
+            // act
             printer.Print(text);
 
-            //assert
-
+            // assert
             var actual = this.stringWriter.ToString();
             var expected = string.Empty;
 
@@ -85,16 +87,14 @@
         [TestMethod]
         public void ConsolePrinterPrintLine_WhenAStringIsPassed_ShouldPrintTheStringWithNewLine()
         {
-            //arrange
+            // arrange
             var text = "To be printed";
             var printer = new ConsolePrinter();
 
-            //act
-
+            // act
             printer.PrintLine(text);
 
-            //assert
-
+            // assert
             var actual = this.stringWriter.ToString();
             var expected = text + Environment.NewLine;
 
@@ -104,15 +104,13 @@
         [TestMethod]
         public void ConsolePrinterPrintLine_WhenNoStringIsPassed_ShouldPrintOnlyNewLine()
         {
-            //arrange
+            // arrange
             var printer = new ConsolePrinter();
 
-            //act
-
+            // act
             printer.PrintLine();
 
-            //assert
-
+            // assert
             var actual = this.stringWriter.ToString();
             var expected = Environment.NewLine;
 
@@ -123,18 +121,17 @@
         [TestMethod]
         public void ConsolePrinterClearScreen_WhenSomethingIsPrinted_ShouldClearIt()
         {
-            //arrange
+            // arrange
             var printer = new ConsolePrinter();
             printer.PrintLine();
             printer.PrintLine("Test line");
             printer.PrintLine();
             printer.Print("Test");
 
-            //act
+            // act
             printer.ClearScreen();
 
-            //assert
-
+            // assert
             var actual = this.stringWriter.ToString();
             var expected = string.Empty;
 

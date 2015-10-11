@@ -1,4 +1,9 @@
-﻿namespace Hangman.Tests.Sorters
+﻿// <copyright file="SelectionSorterTests.cs" company="Team Hangman 3">
+// All rights reserved.
+// </copyright>
+// <summary>Class SelectionSorterTests.</summary>
+// <author>Team Hangman 3</author>
+namespace Hangman.Tests.Sorters
 {
     using System;
     using System.Collections.Generic;

@@ -1,4 +1,9 @@
-﻿namespace Hangman.Logic.Contracts
+﻿// <copyright file="IWord.cs" company="Team Hangman 3">
+// All rights reserved.
+// </copyright>
+// <summary>Interface IWord.</summary>
+// <author>Team Hangman 3</author>
+namespace Hangman.Logic.Contracts
 {
     using System.Collections.Generic;
 

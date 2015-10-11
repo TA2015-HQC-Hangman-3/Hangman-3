@@ -1,4 +1,9 @@
-﻿namespace Hangman
+﻿// <copyright file="ConsolePrinter.cs" company="Team Hangman 3">
+// All rights reserved.
+// </copyright>
+// <summary>Class ConsolePrinter.</summary>
+// <author>Team Hangman 3</author>
+namespace Hangman
 {
     using System;
 

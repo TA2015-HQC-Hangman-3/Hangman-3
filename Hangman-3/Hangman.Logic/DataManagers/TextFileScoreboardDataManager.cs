@@ -1,4 +1,9 @@
-﻿namespace Hangman.Logic.DataManagers
+﻿// <copyright file="TextFileScoreboardDataManager.cs" company="Team Hangman 3">
+// All rights reserved.
+// </copyright>
+// <summary>Class TextFileScoreboardDataManager.</summary>
+// <author>Team Hangman 3</author>
+namespace Hangman.Logic.DataManagers
 {
     using System.Collections.Generic;
     using System.IO;

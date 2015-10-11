@@ -1,4 +1,9 @@
-﻿namespace Hangman.Tests.WordProviders
+﻿// <copyright file="SimpleRandomWordProviderTests.cs" company="Team Hangman 3">
+// All rights reserved.
+// </copyright>
+// <summary>Class SimpleRandomWordProviderTests.</summary>
+// <author>Team Hangman 3</author>
+namespace Hangman.Tests.WordProviders
 {
     using System;
     using System.Collections.Generic;

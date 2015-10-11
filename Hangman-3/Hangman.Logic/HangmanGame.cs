@@ -1,4 +1,9 @@
-﻿namespace Hangman
+﻿// <copyright file="HangmanGame.cs" company="Team Hangman 3">
+// All rights reserved.
+// </copyright>
+// <summary>Class HangmanGame.</summary>
+// <author>Team Hangman 3</author>
+namespace Hangman
 {
     using System;
     using System.Collections.Generic;

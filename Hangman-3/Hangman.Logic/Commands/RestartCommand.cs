@@ -1,4 +1,9 @@
-﻿namespace Hangman.Logic.Commands
+﻿// <copyright file="RestartCommand.cs" company="Team Hangman 3">
+// All rights reserved.
+// </copyright>
+// <summary>Class RestartCommand.</summary>
+// <author>Team Hangman 3</author>
+namespace Hangman.Logic.Commands
 {
     using Hangman.Logic;
 

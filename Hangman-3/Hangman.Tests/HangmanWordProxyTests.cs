@@ -1,4 +1,9 @@
-﻿namespace Hangman.Tests
+﻿// <copyright file="HangmanWordProxyTests.cs" company="Team Hangman 3">
+// All rights reserved.
+// </copyright>
+// <summary>Class HangmanWordProxyTests.</summary>
+// <author>Team Hangman 3</author>
+namespace Hangman.Tests
 {
     using System;
     using Microsoft.VisualStudio.TestTools.UnitTesting;

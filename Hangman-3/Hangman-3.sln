@@ -1,13 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hangman.Logic", "Hangman.Logic\Hangman.Logic.csproj", "{DE80F49A-6813-40FA-8ABF-1F5B3FE680AA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hangman.Tests", "Hangman.tests\Hangman.Tests.csproj", "{23D2AB0D-F465-4648-9995-209D12582B3B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hangman.ConsoleUI", "Hangman.UI\Hangman.ConsoleUI.csproj", "{3A4C9652-5CF6-4DDE-B163-BC1A19D7C479}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{14A5704D-285D-4782-9F5C-4FD8F44661E1}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,4 +1,9 @@
-﻿namespace Hangman.Tests.Sorters
+﻿// <copyright file="ComparerSorterTests.cs" company="Team Hangman 3">
+// All rights reserved.
+// </copyright>
+// <summary>Class ComparerSorterTests.</summary>
+// <author>Team Hangman 3</author>
+namespace Hangman.Tests.Sorters
 {
     using System;
     using System.Collections.Generic;
@@ -6,6 +11,9 @@
     using Logic.Sorters;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    /// <summary>
+    /// Provides unit tests for <see cref="ComparerSorter"/> class.
+    /// </summary>
     [TestClass]
     public class ComparerSorterTests
     {

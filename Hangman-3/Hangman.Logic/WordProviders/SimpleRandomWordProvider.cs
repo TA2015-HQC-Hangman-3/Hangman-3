@@ -1,4 +1,9 @@
-﻿namespace Hangman.Logic.WordProviders
+﻿// <copyright file="SimpleRandomWordProvider.cs" company="Team Hangman 3">
+// All rights reserved.
+// </copyright>
+// <summary>Class SimpleRandomWordProvider.</summary>
+// <author>Team Hangman 3</author>
+namespace Hangman.Logic.WordProviders
 {
     using System;
     using Hangman.Logic.Contracts;
@@ -26,6 +31,9 @@
                                                     "variable"
                                                     };
 
+        /// <summary>
+        /// Prevents a default instance of the <see cref="SimpleRandomWordProvider"/> class from being created.
+        /// </summary>
         private SimpleRandomWordProvider()
         {
             this.AvailableWords = this.availableWords;
@@ -34,6 +42,7 @@
         /// <summary>
         /// Gets an instance of random word provider. Uses lazy loading. 
         /// </summary>
+        /// <value>Returns the singleton instance of the SimpleRandomWordProvider.</value>
         public static SimpleRandomWordProvider Instance
         {
             get

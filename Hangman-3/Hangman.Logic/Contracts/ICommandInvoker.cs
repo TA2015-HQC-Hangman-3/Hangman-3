@@ -1,4 +1,9 @@
-﻿namespace Hangman.Logic.Contracts
+﻿// <copyright file="ICommandInvoker.cs" company="Team Hangman 3">
+// All rights reserved.
+// </copyright>
+// <summary>Interface ICommandInvoker.</summary>
+// <author>Team Hangman 3</author>
+namespace Hangman.Logic.Contracts
 {
     using Commands;
 

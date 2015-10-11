@@ -1,4 +1,9 @@
-﻿namespace Hangman.Logic.WordProviders
+﻿// <copyright file="BaseWordProvider.cs" company="Team Hangman 3">
+// All rights reserved.
+// </copyright>
+// <summary>Class BaseWordProvider.</summary>
+// <author>Team Hangman 3</author>
+namespace Hangman.Logic.WordProviders
 {
     using System;
     using System.Collections.Generic;
@@ -14,12 +19,16 @@
     {
         private static Random rand = new Random();
 
+        /// <summary>
+        /// Gets or sets the Available words.
+        /// </summary>
+        /// <value>Returns the available words.</value>
         protected IEnumerable<string> AvailableWords { get; set; }
 
         /// <summary>
         /// Gets a word.
         /// </summary>
-        /// <returns>A word of type IWord</returns>
+        /// <returns>A word of type IWord.</returns>
         public IWord GetWord()
         {
             var index = rand.Next(0, this.AvailableWords.Count());

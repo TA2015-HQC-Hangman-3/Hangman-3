@@ -1,4 +1,9 @@
-﻿namespace Hangman.Logic.SaveLoad
+﻿// <copyright file="SaveLoadManager.cs" company="Team Hangman 3">
+// All rights reserved.
+// </copyright>
+// <summary>Class SaveLoadManager.</summary>
+// <author>Team Hangman 3</author>
+namespace Hangman.Logic.SaveLoad
 {
     using System;
     using System.IO;
@@ -38,6 +43,7 @@
         /// <summary>
         /// Gets or sets a game state.
         /// </summary>
+        /// <value>Returns the current game state.</value>
         public Memento GameState { get; set; }
 
         /// <summary>

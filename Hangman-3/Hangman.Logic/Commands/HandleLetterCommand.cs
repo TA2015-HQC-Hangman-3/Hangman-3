@@ -1,4 +1,9 @@
-﻿namespace Hangman.Logic.Commands
+﻿// <copyright file="HandleLetterCommand.cs" company="Team Hangman 3">
+// All rights reserved.
+// </copyright>
+// <summary>Class HandleLetterCommand.</summary>
+// <author>Team Hangman 3</author>
+namespace Hangman.Logic.Commands
 {
     using System;
     using System.Linq;
@@ -25,6 +30,7 @@
         /// <summary>
         /// Gets the guessed letter.
         /// </summary>
+        /// <value>Returns the guessed letter.</value>
         public string GuessLetter { get; private set; }
 
         /// <summary>

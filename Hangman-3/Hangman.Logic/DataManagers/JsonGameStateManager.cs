@@ -1,4 +1,9 @@
-﻿namespace Hangman.Logic.DataManagers
+﻿// <copyright file="JsonGameStateManager.cs" company="Team Hangman 3">
+// All rights reserved.
+// </copyright>
+// <summary>Class JsonGameStateManager.</summary>
+// <author>Team Hangman 3</author>
+namespace Hangman.Logic.DataManagers
 {
     using System.IO;
     using System.Web.Script.Serialization;

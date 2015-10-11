@@ -1,4 +1,9 @@
-﻿namespace Hangman.UI
+﻿// <copyright file="StartGame.cs" company="Team Hangman 3">
+// All rights reserved.
+// </copyright>
+// <summary>Class StartGame.</summary>
+// <author>Team Hangman 3</author>
+namespace Hangman.UI
 {
     using System.Collections.Generic;
     using Hangman;
@@ -16,6 +21,9 @@
     /// </summary>
     public class StartGame
     {
+        /// <summary>
+        /// Entry point of the game. 
+        /// </summary>
         public static void Main()
         {
             var kernel = new StandardKernel();
@@ -33,7 +41,6 @@
             var commandFactory = new CommandFactory();
             var commandExecutioner = kernel.Get<ICommandInvoker>();
             var wordProvider = SimpleRandomWordProvider.Instance;
-            // var wordProvider = XmlWordProvider.Instance;
 
             var game = new HangmanGame(printer, sorter, scoresDataManager, gameStateManager, commandFactory, commandExecutioner, wordProvider);
             game.Run();

@@ -1,4 +1,9 @@
-﻿namespace Hangman.Logic
+﻿// <copyright file="IGameContext.cs" company="Team Hangman 3">
+// All rights reserved.
+// </copyright>
+// <summary>Interface IGameContext.</summary>
+// <author>Team Hangman 3</author>
+namespace Hangman.Logic
 {
     using Hangman.Logic.Contracts;
     using Hangman.Logic.SaveLoad;

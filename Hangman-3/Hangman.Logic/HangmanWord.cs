@@ -1,4 +1,9 @@
-﻿namespace Hangman
+﻿// <copyright file="HangmanWord.cs" company="Team Hangman 3">
+// All rights reserved.
+// </copyright>
+// <summary>Class HangmanWord.</summary>
+// <author>Team Hangman 3</author>
+namespace Hangman
 {
     using System;
     using System.Collections.Generic;
@@ -33,16 +38,19 @@
         /// <summary>
         /// Gets or sets a collection of all letters tried.
         /// </summary>
+        /// <value>Returns all currently tried letters.</value>
         public List<char> ListOfLettersTried { get; set; }
 
         /// <summary>
         /// Gets or sets a word of underlines.
         /// </summary>
+        /// <value>Returns a set of underlines.</value>
         public char[] HiddenWord { get; set; }
 
         /// <summary>
         /// Gets or sets the word for the game.
         /// </summary>
+        /// <value>Returns the chosen word.</value>
         public string TheChosenWord
         {
             get

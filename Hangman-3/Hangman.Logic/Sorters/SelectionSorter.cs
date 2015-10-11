@@ -1,4 +1,9 @@
-﻿namespace Hangman.Logic.Sorters
+﻿// <copyright file="SelectionSorter.cs" company="Team Hangman 3">
+// All rights reserved.
+// </copyright>
+// <summary>Class SelectionSorter.</summary>
+// <author>Team Hangman 3</author>
+namespace Hangman.Logic.Sorters
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -12,7 +17,7 @@
         /// Sorting by numeric values.
         /// </summary>
         /// <param name="scores">The scores to be sorted.</param>
-        /// <returns>The sorted collection.<</returns>
+        /// <returns>The sorted collection.</returns>
         public IEnumerable<KeyValuePair<string, int>> Sort(IEnumerable<KeyValuePair<string, int>> scores)
         {
             var scoresToSort = scores.ToList();

@@ -1,11 +1,15 @@
-﻿namespace Hangman.Tests.WordProviders
+﻿// <copyright file="XmlWordProviderTests.cs" company="Team Hangman 3">
+// All rights reserved.
+// </copyright>
+// <summary>Class XmlWordProviderTests.</summary>
+// <author>Team Hangman 3</author>
+namespace Hangman.Tests.WordProviders
 {
     using System;
     using System.IO;
     using System.Linq;
     using System.Xml.Linq;
     using Logic.WordProviders;
-    //using Extensions;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     
     /// <summary>

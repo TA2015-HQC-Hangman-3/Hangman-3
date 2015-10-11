@@ -1,4 +1,9 @@
-﻿namespace Hangman.Logic.Commands
+﻿// <copyright file="ExitGameCommand.cs" company="Team Hangman 3">
+// All rights reserved.
+// </copyright>
+// <summary>Class ExitGameCommand.</summary>
+// <author>Team Hangman 3</author>
+namespace Hangman.Logic.Commands
 {
     using System;
     using Hangman.Logic;

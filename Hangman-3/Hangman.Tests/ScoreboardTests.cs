@@ -1,4 +1,9 @@
-﻿namespace Hangman.Tests
+﻿// <copyright file="ScoreboardTests.cs" company="Team Hangman 3">
+// All rights reserved.
+// </copyright>
+// <summary>Class ScoreboardTests.</summary>
+// <author>Team Hangman 3</author>
+namespace Hangman.Tests
 {
     using System;
     using System.Collections.Generic;

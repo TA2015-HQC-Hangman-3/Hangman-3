@@ -1,4 +1,9 @@
-﻿namespace Hangman.Logic.Sorters
+﻿// <copyright file="ComparerSorter.cs" company="Team Hangman 3">
+// All rights reserved.
+// </copyright>
+// <summary>Class ComparerSorter.</summary>
+// <author>Team Hangman 3</author>
+namespace Hangman.Logic.Sorters
 {
     using System.Collections.Generic;
     using System.Linq;
