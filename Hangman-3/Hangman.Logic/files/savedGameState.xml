@@ -5,22 +5,20 @@
       <Word>
         <ListOfLettersTried>
           <char>97</char>
-          <char>105</char>
-          <char>111</char>
-          <char>99</char>
-          <char>109</char>
+          <char>101</char>
         </ListOfLettersTried>
         <HiddenWord>
-          <char>99</char>
-          <char>111</char>
-          <char>109</char>
           <char>95</char>
-          <char>105</char>
+          <char>101</char>
+          <char>95</char>
+          <char>101</char>
           <char>95</char>
           <char>95</char>
+          <char>95</char>
+          <char>101</char>
           <char>95</char>
         </HiddenWord>
-        <TheChosenWord>compiler</TheChosenWord>
+        <TheChosenWord>developer</TheChosenWord>
       </Word>
     </Word>
     <CurrentMistakes>1</CurrentMistakes>
