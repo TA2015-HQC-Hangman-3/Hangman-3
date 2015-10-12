@@ -83,7 +83,7 @@ namespace Hangman.Logic
         /// </summary>
         /// <param name="wordProvider">The object that will provide the word.</param>
         /// <param name="scoreboard">The scoreboard where the result will be kept.</param>
-        public GameContext(IWordProvider wordProvider, Scoreboard scoreboard)
+        public GameContext(IWordProvider wordProvider, IScoreboard scoreboard)
         {
             this.randWordProvider = wordProvider;
             this.Word = this.randWordProvider.GetWord();
@@ -104,7 +104,7 @@ namespace Hangman.Logic
         /// Gets or sets the scoreboard for the game context.
         /// </summary>
         /// <value>Returns Scoreboard instance.</value>
-        public Scoreboard Scoreboard { get; set; }
+        public IScoreboard Scoreboard { get; set; }
 
         /// <summary>
         /// Gets or sets the number of mistakes for the game context.

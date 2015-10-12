@@ -16,7 +16,7 @@ namespace Hangman
     /// <summary>
     /// Represents the scoreboard of the game.
     /// </summary>
-    public class Scoreboard
+    public class Scoreboard : IScoreboard
     {
         /// <summary>
         /// Sets how many results should be shown on the console - the value + 1.
