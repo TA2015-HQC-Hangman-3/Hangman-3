@@ -254,7 +254,7 @@ private bool IsValidLetter(string input)
     - and others;
 
 - Dependency Inversion Principle:
-    - All dependencies are resolved through constructor injection and method injections(e.g. all the Commands classes). Where possible empty constructors with "poor man's IoC" are used.
+    - All dependencies are resolved through constructor injection and method injections(e.g. all the Commands classes). All constructors rely on abstractions, rather than concrete implementations. Where possible empty constructors with "poor man's IoC" are used.
 
 13. Unit Testing - Made Unit tests for all sorters(ComparerSorter, SelectionSorter), word providers(SimpleRandomWordProvider, XmlWordProvider), HangmanWord, HangmanWordProxy, Scoreboard and ConsolePrinter.
 

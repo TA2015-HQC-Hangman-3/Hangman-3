@@ -1,1 +1,0 @@
-{"GameState":{"Word":{"ListOfLettersTried":["d","e","r"],"UnknownWord":["d","e","_","_","_","_","e","r"],"TheChosenWord":"debugger"},"CurrentMistakes":0,"HasCheated":false,"IsGameRunning":true}}
