@@ -7,3 +7,4 @@ Az 7
 ak 1
 opa 0
 aslahan 1
+jimmy 1

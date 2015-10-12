@@ -1,14 +1,25 @@
-﻿namespace Hangman.Tests
+﻿// <copyright file="GameContextTests.cs" company="Team Hangman 3">
+// All rights reserved.
+// </copyright>
+// <summary>Class GameContextTests.</summary>
+// <author>Team Hangman 3</author>
+namespace Hangman.Tests
 {
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Hangman.Logic;
-    using Hangman.Logic.WordProviders;
     using Hangman.Logic.Contracts;
+    using Hangman.Logic.WordProviders;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Moq;
 
+    /// <summary>
+    /// Provides Unit Tests for <see cref="GameContext"/> class.
+    /// </summary>
     [TestClass]
     public class GameContextTests
     {
+        /// <summary>
+        /// Tests if all fields in class GameContext are filled properly.
+        /// </summary>
         [TestMethod]
         public void GameContextConstructorShouldInitializeAllFieldsProperly()
         {

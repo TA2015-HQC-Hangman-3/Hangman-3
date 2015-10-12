@@ -1,4 +1,9 @@
-﻿namespace Hangman.Logic.Contracts
+﻿// <copyright file="IScoreboard.cs" company="Team Hangman 3">
+// All rights reserved.
+// </copyright>
+// <summary>Interface IScoreboard.</summary>
+// <author>Team Hangman 3</author>
+namespace Hangman.Logic.Contracts
 {
     /// <summary>
     /// Declares the methods for each scoreboard object.
