@@ -23,14 +23,27 @@ namespace Hangman.Tests.WordProviders
         /// Checks if method GetWord returns different words when called twice and there are many words in the file.
         /// </summary>
         [TestMethod]
-        public void SimpleWordProviderGetWord_ManyWordsInFileAndCalledTwice_ShouldReturnDifferentWords()
+        public void SimpleWordProviderGetWord_ManyWordsInFileAndCalledManyTimes_ShouldReturnDifferentWords()
         {
             var wordProvider = SimpleRandomWordProvider.Instance;
 
-            var word1 = wordProvider.GetWord();
-            var word2 = wordProvider.GetWord();
+            var differentWordCount = 0;
+            var numberOfIterations = 100;
 
-            Assert.AreNotEqual(word1, word2);
+            for (var i = 0; i < numberOfIterations; i++)
+            {
+                var word1 = wordProvider.GetWord();
+                var word2 = wordProvider.GetWord();
+
+                if (!word1.Equals(word2))
+                {
+                    differentWordCount++;
+                }
+            }
+
+            var enoughPasses = differentWordCount > numberOfIterations * 0.75;
+
+            Assert.AreEqual(true, enoughPasses);
         }
     }
 }

@@ -22,16 +22,28 @@ namespace Hangman.Tests.WordProviders
         /// Checks if method GetWord returns different words when called twice and there are many words in the file.
         /// </summary>
         [TestMethod]
-        public void XmlWordProviderGetWord_ManyWordsInFileAndCalledTwice_ShouldReturnDifferentWords()
+        public void XmlWordProviderGetWord_ManyWordsInFileAndCalledManyTimes_ShouldReturnDifferentWords()
         {
             var path = this.GetFilePathForWordsCount(15);
             var wordProvider = XmlWordProvider.Instance;
             wordProvider.XmlWordsFilePath = path;
+            var differentWordCount = 0;
+            var numberOfIterations = 100;
 
-            var word1 = wordProvider.GetWord();
-            var word2 = wordProvider.GetWord();
+            for (var i = 0; i < numberOfIterations; i++)
+            {
+                var word1 = wordProvider.GetWord();
+                var word2 = wordProvider.GetWord();
 
-            Assert.AreNotEqual(word1, word2);
+                if (!word1.Equals(word2))
+                {
+                    differentWordCount++;
+                }
+            }
+
+            var enoughPasses = differentWordCount > numberOfIterations * 0.75;
+
+            Assert.AreEqual(true, enoughPasses);
         }
 
         /// <summary>
@@ -60,10 +72,23 @@ namespace Hangman.Tests.WordProviders
             var wordProvider = XmlWordProvider.Instance;
             wordProvider.XmlWordsFilePath = path;
 
-            var word1 = wordProvider.GetWord();
-            var word2 = wordProvider.GetWord();
-            
-            Assert.AreNotEqual(word1, word2);
+            var differentWordCount = 0;
+            var numberOfIterations = 100;
+
+            for (var i = 0; i < numberOfIterations; i++)
+            {
+                var word1 = wordProvider.GetWord();
+                var word2 = wordProvider.GetWord();
+
+                if (!word1.Equals(word2))
+                {
+                    differentWordCount++;
+                }
+            }
+
+            var enoughPasses = differentWordCount > numberOfIterations * 0.75;
+
+            Assert.AreEqual(true, enoughPasses);
         }
 
         /// <summary>
@@ -77,11 +102,23 @@ namespace Hangman.Tests.WordProviders
             var path = this.GetFilePathForWordsCount(randomNumber);
             var wordProvider = XmlWordProvider.Instance;
             wordProvider.XmlWordsFilePath = path;
+            var differentWordCount = 0;
+            var numberOfIterations = 100;
 
-            var word1 = wordProvider.GetWord();
-            var word2 = wordProvider.GetWord();
+            for (var i = 0; i < numberOfIterations; i++)
+            {
+                var word1 = wordProvider.GetWord();
+                var word2 = wordProvider.GetWord();
 
-            Assert.AreNotEqual(word1, word2);
+                if (!word1.Equals(word2))
+                {
+                    differentWordCount++;
+                }
+            }
+
+            var enoughPasses = differentWordCount > numberOfIterations * 0.75;
+
+            Assert.AreEqual(true, enoughPasses);
         }
 
         /// <summary>
