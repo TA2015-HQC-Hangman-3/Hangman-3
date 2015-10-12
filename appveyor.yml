@@ -2,4 +2,5 @@ version: 1.0.{build}
 before_build:
 - nuget restore Hangman-3\Hangman-3.sln
 build:
+  project: Hangman-3.sln
   verbosity: minimal
