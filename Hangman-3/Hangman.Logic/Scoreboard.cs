@@ -19,17 +19,17 @@ namespace Hangman
     public class Scoreboard
     {
         /// <summary>
-        /// Sets how many results should be shown on the console - the value + 1
+        /// Sets how many results should be shown on the console - the value + 1.
         /// </summary>
         public const int IndexOfTheLastPersonShownOnTheScoreboard = 4;
 
         /// <summary>
-        /// Message to show when user inputs a name that is already on the scoreboard
+        /// Message to show when user inputs a name that is already on the scoreboard.
         /// </summary>
         public const string MessageWhenNameAlreadyExistsInTheScoreBoard = "This name already exists in the Scoreboard! Type another: ";
 
         /// <summary>
-        /// Message to show when there are no results in the scoreboard
+        /// Message to show when there are no results in the scoreboard.
         /// </summary>
         public const string MessageForEmptyScoreboard = "Scoreboard is empty!";
 

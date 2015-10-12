@@ -16,6 +16,8 @@ namespace Hangman.Logic
     {
         private const int LowerBoundaryFromTheAsciiTable = 97;
         private const int UpperBoundaryFromTheAsciiTable = 122;
+        private const int FirstRandomNumberForCreatingTheHashCode = 13;
+        private const int SecondRandomNumberForCreatingTheHashCode = 23;
         
         /// <summary>
         /// Initializes a new instance of the <see cref="HangmanWordProxy"/> class.
@@ -158,10 +160,10 @@ namespace Hangman.Logic
         /// <summary>
         /// Gets unique hash code based on chosen word.
         /// </summary>
-        /// <returns>Unique Int32 hash code</returns>
+        /// <returns>Unique hash code.</returns>
         public override int GetHashCode()
         {
-            int hash = (13 * 23) + this.Word.GetHashCode();
+            int hash = (FirstRandomNumberForCreatingTheHashCode * SecondRandomNumberForCreatingTheHashCode) + this.Word.GetHashCode();
             return hash;
         }
 

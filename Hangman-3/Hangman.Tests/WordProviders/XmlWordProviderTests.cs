@@ -84,6 +84,11 @@ namespace Hangman.Tests.WordProviders
             Assert.AreNotEqual(word1, word2);
         }
 
+        /// <summary>
+        /// Returns the file path of the words.
+        /// </summary>
+        /// <param name="count">Takes a random number.</param>
+        /// <returns>Returns words file path.</returns>
         private string GetFilePathForWordsCount(int count)
         {
             var words = Enumerable.Range(0, count).Select(i => "Word" + i);

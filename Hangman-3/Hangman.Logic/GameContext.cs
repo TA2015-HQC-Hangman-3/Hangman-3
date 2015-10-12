@@ -15,64 +15,64 @@ namespace Hangman.Logic
     public class GameContext : IGameContext
     {
         /// <summary>
-        /// Message to show the user when the game starts
+        /// Message to show the user when the game starts.
         /// </summary>
         public const string StartMessage = "Welcome to “Hangman” game. Please try to guess my secret word. \n" +
                                            "Use 'top' to view the top scoreboard, 'restart' to start a new game, 'help' \nto cheat and 'exit' " +
                                            "to quit the game.";
 
         /// <summary>
-        /// Message to prompt for letter/command
+        /// Message to prompt for letter/command.
         /// </summary>
         public const string PropmtForUserGuess = "Enter a letter/command: ";
 
         /// <summary>
-        /// Message to prompt for command
+        /// Message to prompt for command.
         /// </summary>
         public const string PromptForCommand = "Enter command - restart, top, exit: ";
 
         /// <summary>
-        /// Message to show when the game is won
+        /// Message to show when the game is won.
         /// </summary>
         public const string WinMessage = "You won with {0} mistakes.";
 
         /// <summary>
-        /// Message to show when the game is won, but the user has cheated
+        /// Message to show when the game is won, but the user has cheated.
         /// </summary>
         public const string WinByCheatingMessage = "You won with {0} mistakes but you have cheated. You are not allowed to enter into the scoreboard.";
 
         /// <summary>
-        /// Message asking user for his name for the top scoreboard
+        /// Message asking user for his name for the top scoreboard.
         /// </summary>
         public const string PromptForUserName = "Please enter your name for the top scoreboard: ";
 
         /// <summary>
-        /// Message to show when user chooses to exit the game
+        /// Message to show when user chooses to exit the game.
         /// </summary>
         public const string GoodbyeMessage = "Good bye!";
 
         /// <summary>
-        /// Message to show on correctly guessed letter
+        /// Message to show on correctly guessed letter.
         /// </summary>
         public const string RevealedLetterMessage = "Good job! You revealed {0} letters.";
 
         /// <summary>
-        /// Message to show on incorrectly guessed letter
+        /// Message to show on incorrectly guessed letter.
         /// </summary>
         public const string NotRevealedLetterMessage = "Sorry! There are no unrevealed letters \"{0}\".";
 
         /// <summary>
-        /// Message to show when user has already tried given letter
+        /// Message to show when user has already tried given letter.
         /// </summary>
         public const string LetterHasBeenTriedMessage = "Sorry! You have tried entering \"{0}\" before!";
 
         /// <summary>
-        /// Message to show when invalid command is entered
+        /// Message to show when invalid command is entered.
         /// </summary>
         public const string IncorrectGuessOrCommandMessage = "Incorrect guess or command!";
 
         /// <summary>
-        /// Message showing currently used letters
+        /// Message showing currently used letters.
         /// </summary>
         public const string CurrentlyUsedLettersMessage = "Currently used letters: {0}";
 

@@ -256,12 +256,8 @@ private bool IsValidLetter(string input)
 - Dependency Inversion Principle:
     - All dependencies are resolved through constructor injection and method injections(e.g. all the Commands classes). Where possible empty constructors with "poor man's IoC" are used.
 
-13. Unit Testing - Made Unit tests in all classes for all the methods.
+13. Unit Testing - Made Unit tests for all sorters(ComparerSorter, SelectionSorter), word providers(SimpleRandomWordProvider, XmlWordProvider), HangmanWord, HangmanWordProxy, Scoreboard and ConsolePrinter.
 
-14. Code coverage - NOT DONE YET!!!!!
+14. Xml Documentation - Made xml documentation in all classes and also SandCastle documentation.
 
-15. Xml Documentation - Made xml documentation in all classes.
-
-16. StyleCop - 0 Warnings and Errors.
-
-The last four points must be further altered!!!!!
+15. StyleCop - 0 Warnings and Errors.

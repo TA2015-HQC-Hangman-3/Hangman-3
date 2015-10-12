@@ -15,6 +15,9 @@ namespace Hangman
     /// </summary>
     public class HangmanWord : IWord
     {
+        private const int FirstRandomNumberForCreatingTheHashCode = 13;
+        private const int SecondRandomNumberForCreatingTheHashCode = 23;
+
         private string theChosenWord;
 
         /// <summary>
@@ -212,10 +215,10 @@ namespace Hangman
         /// <summary>
         /// Gets unique hash code based on chosen word.
         /// </summary>
-        /// <returns>Unique Int32 hash code</returns>
+        /// <returns>Unique hash code.</returns>
         public override int GetHashCode()
         {
-            int hash = (13 * 23) + this.TheChosenWord.GetHashCode();
+            int hash = (FirstRandomNumberForCreatingTheHashCode * SecondRandomNumberForCreatingTheHashCode) + this.TheChosenWord.GetHashCode();
             return hash;
         }
     }
