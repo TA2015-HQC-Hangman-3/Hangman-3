@@ -229,7 +229,7 @@ private bool IsValidLetter(string input)
 11. Added the following new functionalities:
 - saving and loading the current state of the game - using the Memento Design Pattern;
 - saving the name of the players and their scores in an outer txt file and loading the scoreboard from the file;
-- notifying the player if he already used the letter that he have entered;
+- notifying the player if he already used the letter that he has entered;
 - showing all currently used letters;
 
 12. Description where we implemented the SOLID principles:
