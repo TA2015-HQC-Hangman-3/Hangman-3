@@ -4,3 +4,6 @@ restart 2
 Santa 0
 Dido 3
 Az 7
+ak 1
+opa 0
+aslahan 1

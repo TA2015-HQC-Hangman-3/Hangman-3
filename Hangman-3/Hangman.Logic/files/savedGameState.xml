@@ -4,22 +4,26 @@
     <Word>
       <Word>
         <ListOfLettersTried>
-          <char>101</char>
+          <char>97</char>
+          <char>108</char>
+          <char>118</char>
+          <char>114</char>
+          <char>116</char>
         </ListOfLettersTried>
         <HiddenWord>
+          <char>118</char>
+          <char>97</char>
+          <char>114</char>
           <char>95</char>
+          <char>97</char>
           <char>95</char>
-          <char>95</char>
-          <char>95</char>
-          <char>95</char>
-          <char>95</char>
-          <char>101</char>
+          <char>108</char>
           <char>95</char>
         </HiddenWord>
-        <TheChosenWord>compiler</TheChosenWord>
+        <TheChosenWord>variable</TheChosenWord>
       </Word>
     </Word>
-    <CurrentMistakes>0</CurrentMistakes>
+    <CurrentMistakes>1</CurrentMistakes>
     <HasCheated>false</HasCheated>
     <IsGameRunning>true</IsGameRunning>
   </GameState>

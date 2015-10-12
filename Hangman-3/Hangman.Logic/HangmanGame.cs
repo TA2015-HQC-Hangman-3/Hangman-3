@@ -75,7 +75,6 @@ namespace Hangman
         public void Run()
         {
             this.printer.PrintLine(this.context.CurrentMessage);
-            this.printer.PrintLine();
 
             while (true)
             {

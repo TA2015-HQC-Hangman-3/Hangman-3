@@ -19,7 +19,7 @@ namespace Hangman.Logic
         /// </summary>
         public const string StartMessage = "Welcome to “Hangman” game. Please try to guess my secret word. \n" +
                                            "Use 'top' to view the top scoreboard, 'restart' to start a new game, 'help' to cheat, \n" +
-                                           "'save' to save your current state, 'load' to load you saved state and 'exit' to quit the game.";
+                                           "'save' to save your current state, 'load' to load you saved state and 'exit' to quit the game.\n";
 
         /// <summary>
         /// Message to prompt for letter/command.

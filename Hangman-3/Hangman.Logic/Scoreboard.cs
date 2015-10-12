@@ -76,7 +76,6 @@ namespace Hangman
                 {
                     if (item.Key == name)
                     {
-                        // podari fakta che Dictionary-to ne e Multi (Wintellect Power Collections), ne moje da povarqme imena
                         this.printer.Print(MessageWhenNameAlreadyExistsInTheScoreBoard);
                         hasDouble = true;
                     }
@@ -104,13 +103,6 @@ namespace Hangman
                     return;
                 }
 
-                // List<KeyValuePair<string, int>> listOfScores = scores.ToList();
-                // List<KeyValuePair<string, int>> listOfScores = new List<KeyValuePair<string, int>>();
-                // foreach (var item in scores)
-                // {
-                // KeyValuePair<string, int> current = new KeyValuePair<string, int>(item.Key, item.Value);
-                // listOfScores.Add(current);
-                // }
                 var sortedScores = this.sorter.Sort(scores);
 
                 this.printer.PrintLine("Scoreboard:");
