@@ -14,20 +14,66 @@ namespace Hangman.Logic
     /// </summary>
     public class GameContext : IGameContext
     {
+        /// <summary>
+        /// A message for game start.
+        /// </summary>
         public const string StartMessage = "Welcome to “Hangman” game. Please try to guess my secret word. \n" +
                                            "Use 'top' to view the top scoreboard, 'restart' to start a new game, 'help' \nto cheat and 'exit' " +
                                            "to quit the game.";
 
+        /// <summary>
+        /// A message telling the player to enter a letter or a command.
+        /// </summary>
         public const string PropmtForUserGuess = "Enter a letter/command: ";
+
+        /// <summary>
+        /// A message showing available commands.
+        /// </summary>
         public const string PromptForCommand = "Enter command - restart, top, exit: ";
+        
+        /// <summary>
+        /// A message for winning the game.
+        /// </summary>
         public const string WinMessage = "You won with {0} mistakes.";
+        
+        /// <summary>
+        /// A message for winning the game with cheating.
+        /// </summary>
         public const string WinByCheatingMessage = "You won with {0} mistakes but you have cheated. You are not allowed to enter into the scoreboard.";
+        
+        /// <summary>
+        /// A message telling the user to input his/her name.
+        /// </summary>
         public const string PromptForUserName = "Please enter your name for the top scoreboard: ";
+        
+        /// <summary>
+        /// A message for goodbye.
+        /// </summary>
         public const string GoodbyeMessage = "Good bye!";
+       
+        /// <summary>
+        /// A message showed when a player has guessed a letter.
+        /// </summary>
         public const string RevealedLetterMessage = "Good job! You revealed {0} letters.";
+        
+        /// <summary>
+        /// A message saying that a player hasn't guessed a letter.
+        /// </summary>
         public const string NotRevealedLetterMessage = "Sorry! There are no unrevealed letters \"{0}\".";
+        
+        /// <summary>
+        /// A message saying that a player has already tried this letter.
+        /// </summary>
         public const string LetterHasBeenTriedMessage = "Sorry! You have tried entering \"{0}\" before!";
+        
+        /// <summary>
+        /// A message saying that a player has entered invalid command or word.
+        /// </summary>
         public const string IncorrectGuessOrCommandMessage = "Incorrect guess or command!";
+        
+        /// <summary>
+        /// A message saying the currently used words.
+        /// </summary>
         public const string CurrentlyUsedLettersMessage = "Currently used letters: {0}";
 
         private readonly IWordProvider randWordProvider;

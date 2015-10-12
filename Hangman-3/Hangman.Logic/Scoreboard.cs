@@ -18,8 +18,19 @@ namespace Hangman
     /// </summary>
     public class Scoreboard
     {
+        /// <summary>
+        /// A constant value used to print only highest scores.
+        /// </summary>
         public const int IndexOfTheLastPersonShownOnTheScoreboard = 4;
+        
+        /// <summary>
+        /// A message saying there is name duplication.
+        /// </summary>
         public const string MessageWhenNameAlreadyExistsInTheScoreBoard = "This name already exists in the Scoreboard! Type another: ";
+        
+        /// <summary>
+        /// A message for empty scoreboard.
+        /// </summary>
         public const string MessageForEmptyScoreboard = "Scoreboard is empty!";
 
         private readonly IPrinter printer;
