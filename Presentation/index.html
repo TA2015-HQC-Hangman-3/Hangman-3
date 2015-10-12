@@ -172,6 +172,142 @@
 						</div>
 					</section>
 				</section>
+				<section>
+					<section>
+						<div>
+							<h2>Design patterns</h2>
+							<h6>Creational Design Patterns</h6>
+							<ul>
+								<li>Double Locking Thread Safe Singleton</li>
+								<li>Lazy Initialization</li>
+								<li>Simple Factory</li>
+							</ul>
+						</div>
+					</section>
+					<section>
+						<div>
+							<h6>Creational Design Patterns</h6>
+							<h6>Double Locking Thread Safe Singleton and Lazy Loading</h6>
+							<img src="imgs/DesignPatterns/Simpleton&LazyLoading.png" />
+							<ul></ul>
+						</div>
+					</section>
+					<section>
+						<div>
+							<h6>Creational Design Patterns</h6>
+							<h6>Simple Factory</h6>
+							<img src="imgs/DesignPatterns/SimpleFactory.png" />
+						</div>
+					</section>
+					<section>
+						<div>
+							<h6>Structural Design Patterns</h6>
+							<h6>Facade</h6>
+							<img src="imgs/DesignPatterns/Facade.png" />
+						</div>							
+					</section>
+					<section>
+						<div>
+							<h6>Structural Design Patterns</h6>
+							<h6>Bridge</h6>
+							<ul>
+								<li>It is used in the ISaveLoadManager</li>
+								<li>Uses the abstraction IDataManager to save and load information from files</li>
+							</ul>
+						</div>
+					</section>
+					<section>
+						<div>
+							<h6>Structural Design Patterns</h6>
+							<h6>Proxy</h6>
+							<ul>
+								<li>It is used to validate the input of the methods of the HangmanWord class.</li>
+								<li>It is acting as a defensive proxy.</li>
+							</ul>
+						</div>						
+					</section>
+					<section>
+						<div>
+							<h6>Behavioral Design Patterns</h6>
+							<h6>Strategy</h6>
+							<ul>
+								<li>This helps us change the behavior of our program during runtime.</li>
+								<li>"IDateManager.cs" interface, classes "TextFileScoreboardDataManager.cs", "XmlGameStateManager.cs", "JsonGameStateManager.cs"</li>
+								<li>"IWordProvider.cs" interface, classes "BaseWordProvider.cs", "SimpleRandomWordProvider.cs", "XmlWordProvider.cs"</li>
+								<li>"ISorter.cs" interface, classes "SelectionSorter.cs", "ComparerSorter.cs".</li>
+							</ul>
+						</div>							
+					</section>
+					<section>
+						<div>
+							<h6>Behavioral Design Patterns</h6>
+							<h6>Command</h6>
+							<ul>
+								<li>"IHangmanCommand.cs", classes "RestartCommand.cs", "LoadCommand.cs", "SaveCommand", "HandleLetterCommand.cs" and all other commands</li>
+							</ul>
+						</div>							
+					</section>
+					<section>
+						<div>
+							<h6>Behavioral Design Patterns</h6>
+						<h6>Memento</h6>
+						<ul>
+							<li>class "Memento.cs" in combination with class "SaveLoadManager.cs" and methods public Memento Save() and public void Load(Memento gameState) in class "GameContext.cs"</li>
+						</ul>
+						</div>						
+					</section>
+				</section>
+				<section>
+					<section>
+						<div>
+							<h2>Solid Principles</h2>
+							<h6>Single Responsibility Principle</h6>
+							<ul>
+								<li>Class "ConsolePrinter.cs" prints only given messages.</li>
+								<li>Data manager classes only write and read information to/from files.</li>
+								<li>Class "Scoreboard.cs" only deals with scores.</li>
+							</ul>
+						</div>
+					</section>
+					<section>
+						<div>
+							<h2>Solid Principles</h2>
+							<h6>Open/Closed Principle</h6>
+							<ul>
+								<li>We can easily introduce new ways of providing a word, through the IWordProvider interface.</li>
+								<li>Same for sorting through the ISorter interface.</li>
+								<li>We can introduce new engine for diferent type of UI through the IEngine interface.</li>
+							</ul>
+						</div>							
+					</section>
+					<section>
+						<div>
+							<h2>Solid Principles</h2>
+							<h6>Liskov Substitution Principle</h6>
+							<ul>
+								<li>The base class "BaseWordProvider.cs" and it's inheritants "SimpleRandomWordProvider.cs" and "XmlWordProvider.cs"</li>
+							</ul>
+						</div>
+					</section>
+					<section>
+						<div>
+							<h2>Solid Principles</h2>
+							<h6>Interface Segregation Principle</h6>
+							<img src="imgs/DesignPatterns/Interfaces.png" />
+						</div>
+					</section>
+					<section>
+						<div>
+							<h2>Solid Principles</h2>
+							<h6>Dependency Inversion Principle</h6>
+							<ul>
+								<li>All dependencies are resolved through constructor injection and method injections.</li>
+								<li>All constructors rely on abstractions, rather than concrete implementations.</li>
+								<li>Where possible empty constructors with "poor man's IoC" are used.</li>
+							</ul>
+						</div>
+					</section>
+				</section>
 					
 			</div>
 
