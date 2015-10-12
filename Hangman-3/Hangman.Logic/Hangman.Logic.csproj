@@ -67,6 +67,7 @@
     <Compile Include="Contracts\ICommandInvoker.cs" />
     <Compile Include="Contracts\IDataManager.cs" />
     <Compile Include="Contracts\IGameEngine.cs" />
+    <Compile Include="Contracts\IScoreboard.cs" />
     <Compile Include="Contracts\IWord.cs" />
     <Compile Include="DataManagers\TextFileScoreboardDataManager.cs" />
     <Compile Include="DataManagers\JsonGameStateManager.cs" />
