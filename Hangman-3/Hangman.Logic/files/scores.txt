@@ -1,11 +1,6 @@
-gogogo 1
-momomo 2
 hohoho 1
 Cookie 1
-Cookie2 0
- 0
-E 1
 restart 2
-Cookie3 0
-Geri 1
-Dido 9
+Santa 0
+Dido 3
+Az 7

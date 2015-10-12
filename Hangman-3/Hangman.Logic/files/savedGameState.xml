@@ -4,29 +4,22 @@
     <Word>
       <Word>
         <ListOfLettersTried>
-          <char>100</char>
-          <char>99</char>
-          <char>111</char>
-          <char>109</char>
-          <char>112</char>
-          <char>117</char>
-          <char>116</char>
           <char>101</char>
         </ListOfLettersTried>
-        <UnknownWord>
-          <char>99</char>
-          <char>111</char>
-          <char>109</char>
-          <char>112</char>
-          <char>117</char>
-          <char>116</char>
+        <HiddenWord>
+          <char>95</char>
+          <char>95</char>
+          <char>95</char>
+          <char>95</char>
+          <char>95</char>
+          <char>95</char>
           <char>101</char>
           <char>95</char>
-        </UnknownWord>
-        <TheChosenWord>computer</TheChosenWord>
+        </HiddenWord>
+        <TheChosenWord>compiler</TheChosenWord>
       </Word>
     </Word>
-    <CurrentMistakes>1</CurrentMistakes>
+    <CurrentMistakes>0</CurrentMistakes>
     <HasCheated>false</HasCheated>
     <IsGameRunning>true</IsGameRunning>
   </GameState>
