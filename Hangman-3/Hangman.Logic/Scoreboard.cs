@@ -16,20 +16,20 @@ namespace Hangman
     /// <summary>
     /// Represents the scoreboard of the game.
     /// </summary>
-    public class Scoreboard
+    public class Scoreboard : IScoreboard
     {
         /// <summary>
-        /// A constant value used to print only highest scores.
+        /// Sets how many results should be shown on the console - the value + 1.
         /// </summary>
         public const int IndexOfTheLastPersonShownOnTheScoreboard = 4;
-        
+
         /// <summary>
-        /// A message saying there is name duplication.
+        /// Message to show when user inputs a name that is already on the scoreboard.
         /// </summary>
         public const string MessageWhenNameAlreadyExistsInTheScoreBoard = "This name already exists in the Scoreboard! Type another: ";
-        
+
         /// <summary>
-        /// A message for empty scoreboard.
+        /// Message to show when there are no results in the scoreboard.
         /// </summary>
         public const string MessageForEmptyScoreboard = "Scoreboard is empty!";
 
@@ -76,7 +76,6 @@ namespace Hangman
                 {
                     if (item.Key == name)
                     {
-                        // podari fakta che Dictionary-to ne e Multi (Wintellect Power Collections), ne moje da povarqme imena
                         this.printer.Print(MessageWhenNameAlreadyExistsInTheScoreBoard);
                         hasDouble = true;
                     }
@@ -104,13 +103,6 @@ namespace Hangman
                     return;
                 }
 
-                // List<KeyValuePair<string, int>> listOfScores = scores.ToList();
-                // List<KeyValuePair<string, int>> listOfScores = new List<KeyValuePair<string, int>>();
-                // foreach (var item in scores)
-                // {
-                // KeyValuePair<string, int> current = new KeyValuePair<string, int>(item.Key, item.Value);
-                // listOfScores.Add(current);
-                // }
                 var sortedScores = this.sorter.Sort(scores);
 
                 this.printer.PrintLine("Scoreboard:");

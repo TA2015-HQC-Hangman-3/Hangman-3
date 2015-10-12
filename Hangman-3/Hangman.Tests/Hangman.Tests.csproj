@@ -64,6 +64,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="ConsolePrinterTests.cs" />
+    <Compile Include="GameContextTests.cs" />
     <Compile Include="HangmanWordProxyTests.cs" />
     <Compile Include="HangmanWordTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -84,6 +85,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="test-score.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Commands\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

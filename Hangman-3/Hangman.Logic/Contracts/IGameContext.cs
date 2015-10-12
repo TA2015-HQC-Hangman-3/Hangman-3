@@ -23,7 +23,7 @@ namespace Hangman.Logic
         /// Gets or sets the scoreboard for the game.
         /// </summary>
         /// <value>The value is of type <see cref="Scoreboard"/>.</value> 
-        Scoreboard Scoreboard { get; set; }
+        IScoreboard Scoreboard { get; set; }
 
         /// <summary>
         /// Gets or sets the number of mistakes.

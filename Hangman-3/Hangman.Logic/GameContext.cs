@@ -15,64 +15,64 @@ namespace Hangman.Logic
     public class GameContext : IGameContext
     {
         /// <summary>
-        /// A message for game start.
+        /// Message to show the user when the game starts.
         /// </summary>
         public const string StartMessage = "Welcome to “Hangman” game. Please try to guess my secret word. \n" +
-                                           "Use 'top' to view the top scoreboard, 'restart' to start a new game, 'help' \nto cheat and 'exit' " +
-                                           "to quit the game.";
+                                           "Use 'top' to view the top scoreboard, 'restart' to start a new game, 'help' to cheat, \n" +
+                                           "'save' to save your current state, 'load' to load you saved state and 'exit' to quit the game.\n";
 
         /// <summary>
-        /// A message telling the player to enter a letter or a command.
+        /// Message to prompt for letter/command.
         /// </summary>
         public const string PropmtForUserGuess = "Enter a letter/command: ";
 
         /// <summary>
-        /// A message showing available commands.
+        /// Message to prompt for command.
         /// </summary>
         public const string PromptForCommand = "Enter command - restart, top, exit: ";
-        
+
         /// <summary>
-        /// A message for winning the game.
+        /// Message to show when the game is won.
         /// </summary>
         public const string WinMessage = "You won with {0} mistakes.";
-        
+
         /// <summary>
-        /// A message for winning the game with cheating.
+        /// Message to show when the game is won, but the user has cheated.
         /// </summary>
         public const string WinByCheatingMessage = "You won with {0} mistakes but you have cheated. You are not allowed to enter into the scoreboard.";
-        
+
         /// <summary>
-        /// A message telling the user to input his/her name.
+        /// Message asking user for his name for the top scoreboard.
         /// </summary>
         public const string PromptForUserName = "Please enter your name for the top scoreboard: ";
-        
+
         /// <summary>
-        /// A message for goodbye.
+        /// Message to show when user chooses to exit the game.
         /// </summary>
         public const string GoodbyeMessage = "Good bye!";
-       
+
         /// <summary>
-        /// A message showed when a player has guessed a letter.
+        /// Message to show on correctly guessed letter.
         /// </summary>
         public const string RevealedLetterMessage = "Good job! You revealed {0} letters.";
-        
+
         /// <summary>
-        /// A message saying that a player hasn't guessed a letter.
+        /// Message to show on incorrectly guessed letter.
         /// </summary>
         public const string NotRevealedLetterMessage = "Sorry! There are no unrevealed letters \"{0}\".";
-        
+
         /// <summary>
-        /// A message saying that a player has already tried this letter.
+        /// Message to show when user has already tried given letter.
         /// </summary>
         public const string LetterHasBeenTriedMessage = "Sorry! You have tried entering \"{0}\" before!";
-        
+
         /// <summary>
-        /// A message saying that a player has entered invalid command or word.
+        /// Message to show when invalid command is entered.
         /// </summary>
         public const string IncorrectGuessOrCommandMessage = "Incorrect guess or command!";
-        
+
         /// <summary>
-        /// A message saying the currently used words.
+        /// Message showing currently used letters.
         /// </summary>
         public const string CurrentlyUsedLettersMessage = "Currently used letters: {0}";
 
@@ -83,7 +83,7 @@ namespace Hangman.Logic
         /// </summary>
         /// <param name="wordProvider">The object that will provide the word.</param>
         /// <param name="scoreboard">The scoreboard where the result will be kept.</param>
-        public GameContext(IWordProvider wordProvider, Scoreboard scoreboard)
+        public GameContext(IWordProvider wordProvider, IScoreboard scoreboard)
         {
             this.randWordProvider = wordProvider;
             this.Word = this.randWordProvider.GetWord();
@@ -104,7 +104,7 @@ namespace Hangman.Logic
         /// Gets or sets the scoreboard for the game context.
         /// </summary>
         /// <value>Returns Scoreboard instance.</value>
-        public Scoreboard Scoreboard { get; set; }
+        public IScoreboard Scoreboard { get; set; }
 
         /// <summary>
         /// Gets or sets the number of mistakes for the game context.

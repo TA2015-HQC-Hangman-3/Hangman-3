@@ -85,10 +85,10 @@ namespace Hangman.Tests.WordProviders
         }
 
         /// <summary>
-        /// Provides the path for the file of words.
+        /// Returns the file path of the words.
         /// </summary>
-        /// <param name="count">The number of words.</param>
-        /// <returns>The path to the file as text.</returns>
+        /// <param name="count">Takes a random number.</param>
+        /// <returns>Returns words file path.</returns>
         private string GetFilePathForWordsCount(int count)
         {
             var words = Enumerable.Range(0, count).Select(i => "Word" + i);

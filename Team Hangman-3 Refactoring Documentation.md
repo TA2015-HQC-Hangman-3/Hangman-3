@@ -229,7 +229,7 @@ private bool IsValidLetter(string input)
 11. Added the following new functionalities:
 - saving and loading the current state of the game - using the Memento Design Pattern;
 - saving the name of the players and their scores in an outer txt file and loading the scoreboard from the file;
-- notifying the player if he already used the letter that he have entered;
+- notifying the player if he already used the letter that he has entered;
 - showing all currently used letters;
 
 12. Description where we implemented the SOLID principles:
@@ -254,14 +254,10 @@ private bool IsValidLetter(string input)
     - and others;
 
 - Dependency Inversion Principle:
-    - All dependencies are resolved through constructor injection and method injections(e.g. all the Commands classes). Where possible empty constructors with "poor man's IoC" are used.
+    - All dependencies are resolved through constructor injection and method injections(e.g. all the Commands classes). All constructors rely on abstractions, rather than concrete implementations. Where possible empty constructors with "poor man's IoC" are used.
 
-13. Unit Testing - Made Unit tests in all classes for all the methods.
+13. Unit Testing - Made Unit tests for all sorters(ComparerSorter, SelectionSorter), word providers(SimpleRandomWordProvider, XmlWordProvider), HangmanWord, HangmanWordProxy, Scoreboard and ConsolePrinter.
 
-14. Code coverage - NOT DONE YET!!!!!
+14. Xml Documentation - Made xml documentation in all classes and also SandCastle documentation.
 
-15. Xml Documentation - Made xml documentation in all classes.
-
-16. StyleCop - 0 Warnings and Errors.
-
-The last four points must be further altered!!!!!
+15. StyleCop - 0 Warnings and Errors.
